@@ -1,0 +1,59 @@
+/* COMMON */
+.body__container {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #767676;
+}
+
+.section {
+    position: relative;
+    padding-top: 30px;
+}
+
+.section .container {
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(#e5e5e5, #fff);
+    padding: 20px 0;
+}
+
+.section .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #656565;
+}
+
+/* HEADER */
+header.section .container {
+    background: linear-gradient(to left top, #ee0979, #ff6a00);
+}
+
+header.section .title {
+    font-size: 32px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+/* CURRENT TIME */
+.section--current-time ul {
+    display: flex;
+    justify-content: center;
+}
+
+.section--current-time ul li {
+    font-size: 22px;
+}
+
+.section--current-time ul .date {
+    margin-right: 20px;
+}
+
+.section--current-time ul .time {
+    color: #ff6a00;
+}
