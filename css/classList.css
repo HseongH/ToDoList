@@ -1,8 +1,9 @@
 /* SUN RISE */
-.after-sun-rise {
-    background: linear-gradient(#000428, #004e92) !important;
+.section .sunset {
+    background: linear-gradient(to left top, #000428, #004e92);
+    color: #eee;
 }
 
-.sun-rise-color {
-    color: #004e92 !important;
+.sunset-color {
+    color: #004e92;
 }

@@ -19,7 +19,7 @@
 
     <!-- HEADER -->
     <header class="section">
-        <div class="container">
+        <div class="container sunrise">
 
             <h1 class="title">To Do List</h1>
 
@@ -34,8 +34,38 @@
 
             <ul>
                 <li class="date">0000.00.00</li>
-                <li class="time">00:00</li>
+                <li class="time sunrise-color">00:00</li>
             </ul>
+
+        </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="section section--calendar">
+        <div class="container">
+
+            <h2 class="title">달력</h2>
+
+            <div class="control clearfix">
+                <div class="control__select float--left">
+                    <ul class="sunrise-color">
+                        <li class="select-year">0000</li>
+                        <li class="select-month">00</li>
+                    </ul>
+                    
+                    <div class="select-today">TODAY</div>
+                </div>
+
+                <div class="control__unfold float--right">
+                    <h3>월 별로 보기</h3>
+                    <span class="btn btn--unfold"></span>
+                </div>
+            </div>
+
+            <ul class="calendar"></ul>
+
+            <span class="btn btn--left"></span>
+            <span class="btn btn--right"></span>
 
         </div>
     </section>
@@ -43,6 +73,7 @@
 </div>
 
 <script src="js/currentTime.js"></script>
-<script src="js/sunRise.js"></script>
+<script src="js/sunset.js"></script>
+<script src="js/calendarWeek.js"></script>
 </body>
 </html>
