@@ -140,22 +140,30 @@ header.section .title {
 .section--calendar .calendar {
     padding: 0 40px;
     margin-top: 20px;
-    display: flex;
     border: 1px solid #ccc;
     border-radius: 8px;
+    position: relative;
 }
 
-.section--calendar .calendar .calendar__list {
+.section--calendar .calendar .calendar-area {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section--calendar .calendar-area .calendar__list {
     width: 14.285%;
+    height: 72px;
     padding: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid #ccc;
+    line-height: 1.25;
 }
 
 .section--calendar .calendar .calendar__list .day {
     font-size: 12px;
+    margin-bottom: 5px;
 }
 
 .section--calendar .calendar .calendar__list 
@@ -164,7 +172,7 @@ header.section .title {
 }
 
 .section--calendar .calendar 
-.calendar__list:last-child {
+.calendar__list:nth-of-type(7n) {
     border-right: 0;
 }
 
@@ -174,16 +182,18 @@ header.section .title {
     height: 25px;
     border-width: 3px;
     position: absolute;
-    bottom: 40px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     cursor: pointer;
 }
 
 .section--calendar .btn--left {
-    left: 65px;
+    left: 20px;
     transform: rotate(45deg);
 }
 
 .section--calendar .btn--right {
-    right: 65px;
+    right: 20px;
     transform: rotate(-135deg);
 }

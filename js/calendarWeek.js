@@ -45,6 +45,7 @@ function makeCalendarLists(list, calendar) {
         
         if (weekCalendar.toDateString() === currentDate.toDateString()) {
             sunset([calList]);
+            calList.classList.add('today');
         }
 
         list.appendChild(calList);
@@ -55,70 +56,20 @@ function deleteLists(list) {
     list.innerText = '';
 }
 
-function pastWeeks(list, index) {
-    const pastWeek = new Date;
-
-    index -= 7;
-    pastWeek.setDate(pastWeek.getDate() + index);
-
-    deleteLists(list);
-    makeCalendarLists(list, pastWeek);
-    selectYear(pastWeek);
-    selectMonth(pastWeek);
-
-    return index;
-}
-
-function nextWeeks(list, index) {
-    const nextWeek = new Date;
-
-    index += 7;
-    nextWeek.setDate(nextWeek.getDate() + index);
-
-    deleteLists(list);
-    makeCalendarLists(list, nextWeek);
-    selectYear(nextWeek);
-    selectMonth(nextWeek);
-
-    return index;
-}
-
-function currentWeeks(list, index) {
-    const currentWeek = new Date;
-
-    index = 0;
-
-    deleteLists(list);
-    makeCalendarLists(list, currentWeek);
-    selectYear(currentWeek);
-    selectMonth(currentWeek);
-
-    return index;
+function callCalendarMake(area, calendar) {
+    deleteLists(area);
+    selectYear(calendar);
+    selectMonth(calendar);
 }
 
 function init() {
-    const calendarList = document.querySelector('.calendar');
-    const leftBtn = document.querySelector('.btn--left');
-    const rightBtn = document.querySelector('.btn--right');
-    const today = document.querySelector('.select-today');
+    const calendarList = document.querySelector('.calendar-area');
 
     const calendar = new Date;
-
-    let weekIndex = 0;
 
     selectYear(calendar);
     selectMonth(calendar);
     makeCalendarLists(calendarList, calendar);
-
-    leftBtn.addEventListener('click', () => {
-        weekIndex = pastWeeks(calendarList, weekIndex);
-    });
-    rightBtn.addEventListener('click', () => {
-        weekIndex = nextWeeks(calendarList, weekIndex);
-    });
-    today.addEventListener('click', () => {
-        weekIndex = currentWeeks(calendarList, weekIndex);
-    });
 }
 
 init();
