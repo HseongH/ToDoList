@@ -1,9 +1,11 @@
-function calendarContainMonth(area) {
-    return area.classList.contains('month');
+function calendarContainMonth() {
+    const calendarArea = document.querySelector('.calendar-area');
+
+    return calendarArea.classList.contains('month');
 }
 
 function foldUnfold(area, calendar) {
-    const contain = calendarContainMonth(area);
+    const contain = calendarContainMonth();
 
     callCalendarMake(area, calendar);
     if (contain) {
@@ -13,46 +15,78 @@ function foldUnfold(area, calendar) {
     }
 }
 
+function wayOfShowing(fold) {
+    const contain = calendarContainMonth();
+    const foldText = fold.querySelector('h3');
+    const btnUnfold = document.querySelector('.btn--unfold');
+
+    if (contain) {
+        btnUnfold.classList.add('showing-month');
+        foldText.innerText = '주 별로 보기';
+    } else {
+        btnUnfold.classList.remove('showing-month');
+        foldText.innerText = '월 별로 보기';
+    }
+}
+
+function pastDate(area, calendar) {
+    const contain = calendarContainMonth();
+
+    if (contain) {
+        calendar.setMonth(calendar.getMonth() - 1);
+    } else {
+        calendar.setDate(calendar.getDate() - 7);
+    }
+
+    foldUnfold(area, calendar);
+
+    return calendar;
+}
+
+function nextDate(area, calendar) {
+    const contain = calendarContainMonth();
+
+    if (contain) {
+        calendar.setMonth(calendar.getMonth() + 1);
+    } else {
+        calendar.setDate(calendar.getDate() + 7);
+    }
+
+    foldUnfold(area, calendar);
+
+    return calendar;
+}
+
+function currentDate(area, calendar) {
+    calendar = new Date;
+
+    foldUnfold(area, calendar);
+
+    return calendar;
+}
+
 function init() {
-    const calendarList = document.querySelector('.calendar-area');
+    const calendarArea = document.querySelector('.calendar-area');
     const leftBtn = document.querySelector('.btn--left');
     const rightBtn = document.querySelector('.btn--right');
     const today = document.querySelector('.select-today');
-    const unfonld = document.querySelector('.control__unfold');
+    const unfold = document.querySelector('.control__unfold');
 
-    let calendar = new Date;
+    let date = new Date;
 
-    leftBtn.addEventListener('click', () => {    
-        const contain = calendarContainMonth(calendarList);
-
-        if (contain) {
-            calendar.setMonth(calendar.getMonth() - 1);
-            console.log(calendar.getMonth());
-        } else {
-            calendar.setDate(calendar.getDate() - 7);
-        }
-
-        foldUnfold(calendarList, calendar);
+    leftBtn.addEventListener('click', () => {
+        date = pastDate(calendarArea, date);
     });
     rightBtn.addEventListener('click', () => {
-        const contain = calendarContainMonth(calendarList);
-
-        if (contain) {
-            calendar.setMonth(calendar.getMonth() + 1);
-            console.log(calendar.getMonth());
-        } else {
-            calendar.setDate(calendar.getDate() + 7);
-        }
-
-        foldUnfold(calendarList, calendar);
+        date = nextDate(calendarArea, date);
     });
     today.addEventListener('click', () => {
-        calendar = new Date;
-        foldUnfold(calendarList, calendar);
+        date = currentDate(calendarArea, date);
     });
-    unfonld.addEventListener('click', () => {
-        calendarList.classList.toggle('month');
-        foldUnfold(calendarList, calendar);
+    unfold.addEventListener('click', () => {
+        calendarArea.classList.toggle('month');
+        foldUnfold(calendarArea, date);
+        wayOfShowing(unfold);
     });
 }
 

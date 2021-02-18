@@ -1,13 +1,16 @@
 function makeMonthCalendar(area, calendar) {
-    const month = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate(calendar.setDate(1)));
+    const month = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
+    const nextMonth = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
     const currentDate = new Date;
 
+    month.setDate(1);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    nextMonth.setDate(0);
+
     const firstDay = month.getDay();
-    let lastDay = 0
+    const lastDay = nextMonth.getDate();
 
     month.setDate(month.getDate() - month.getDay());
-    calendar.setMonth(calendar.getMonth() + 1);
-    lastDay = calendar.getDate(calendar.setDate(0));
 
     for (let i = 0; i < 42; i++) {
         const calList = document.createElement('li');

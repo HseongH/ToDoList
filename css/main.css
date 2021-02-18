@@ -117,6 +117,7 @@ header.section .title {
     width: 7px;
     height: 7px;
     transform: rotate(-45deg);
+    transition-duration: 0.3s;
 }
 
 .section--calendar .control__select ul {

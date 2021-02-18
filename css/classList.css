@@ -19,3 +19,6 @@
 }
 
 /* MONTH */
+.showing-month {
+    transform: rotate(-225deg) !important;
+}
