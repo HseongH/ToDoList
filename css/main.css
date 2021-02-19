@@ -7,6 +7,7 @@
     color: #767676;
 }
 
+/* SECTION */
 .section {
     position: relative;
     padding-top: 30px;
@@ -19,7 +20,8 @@
     border-radius: 15px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
     background: linear-gradient(#e5e5e5, #fff);
-    padding: 20px 0;
+    padding: 20px 40px;
+    box-sizing: border-box;
 }
 
 .section .title {
@@ -29,15 +31,49 @@
     color: #656565;
 }
 
-/* HEADER */
-header.section .container {
+/* SUNRISE */
+.section .sunrise {
     background: linear-gradient(to left top, #ee0979, #ff6a00);
+    color: #eee;
 }
 
+.sunrise-color {
+    color: #ff6a00;
+}
+
+/* BTN */
+.btn {
+    border-left: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    border-left: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+}
+
+/* CLEARFIX FLOAT */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.float--left {
+    float: left;
+}
+
+.float--right {
+    float: right;
+}
+
+/* HEADER */
 header.section .title {
     font-size: 32px;
     margin-bottom: 0;
-    color: #fff;
+    color: #eee;
 }
 
 /* CURRENT TIME */
@@ -54,6 +90,209 @@ header.section .title {
     margin-right: 20px;
 }
 
-.section--current-time ul .time {
-    color: #ff6a00;
+/* CALENDAR */
+.section--calendar .control__unfold {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.section--calendar .control__unfold:hover h3 {
+    text-decoration: underline;
+}
+
+.section--calendar .control__unfold:hover .btn--unfold {
+    border-left: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+}
+
+.section--calendar .control__unfold h3 {
+    margin-right: 10px;
+}
+
+.section--calendar .control__unfold .btn--unfold {
+    width: 7px;
+    height: 7px;
+    transform: rotate(-45deg);
+    transition-duration: 0.3s;
+}
+
+.section--calendar .control__unfold .btn--unfold.showing-month {
+    transform: rotate(-225deg);
+}
+
+.section--calendar .control__select ul {
+    display: flex;
+}
+
+.section--calendar .control__select ul .select-year {
+    margin-right: 10px;
+}
+
+.section--calendar .control__select .select-today {
+    color: #aaa;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.section--calendar .control__select .select-today:hover {
+    color: #767676;
+}
+
+.section--calendar .calendar {
+    padding: 0 40px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: relative;
+}
+
+.section--calendar .calendar .calendar-area {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section--calendar .calendar-area .calendar__list {
+    width: 14.285%;
+    height: 72px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.25;
+    cursor: pointer;
+}
+
+.section--calendar .calendar .calendar__list .day {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.section--calendar .calendar .calendar__list 
+.calendar__date {
+    font-size: 23px;
+}
+
+.section--calendar .calendar 
+.calendar__list:nth-of-type(7n) {
+    border-right: 0;
+}
+
+.section--calendar .btn--left,
+.section--calendar .btn--right {
+    width: 25px;
+    height: 25px;
+    border-width: 3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.section--calendar .btn--left {
+    left: 20px;
+    transform: rotate(45deg);
+}
+
+.section--calendar .btn--right {
+    right: 20px;
+    transform: rotate(-135deg);
+}
+
+/* TO DO LIST */
+.section--to-do-list {
+    margin-bottom: 50px;
+}
+
+.section--to-do-list .todos .todos__list  {
+    max-width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.section--to-do-list .todos .todos__list .todos--complete {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.section--to-do-list .todos .todos__list .todos--complete .btn--complete {
+    width: 50%;
+    height: 30%;
+    border-left: 3px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    transform: rotate(-45deg);
+    margin-top: -13%;
+}
+
+.section--to-do-list .todos .todos__list .task {
+    flex: 2;
+}
+
+.section--to-do-list .todos .todos__list .task .task__title {
+    font-size: 20px;
+    line-height: 2;
+}
+
+.section--to-do-list .todos .todos__list .task .task__description {
+    color: #888;
+    text-indent: 30px;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete:hover {
+    color: #767676;
+}
+
+.section--to-do-list .add-todos {
+    max-width: 150px;
+    height: 50px;
+    display: block;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+/* TASK COMPLETE */
+.section--to-do-list .todos .todos__list.complete {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.section--to-do-list .todos .todos__list.complete .todos--complete {
+    border: 0;
+}
+
+.section--to-do-list .todos .todos__list.complete .todos--complete .btn--complete {
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.section--to-do-list .todos .todos__list.complete .task .task__description {
+    color: #ccc;
 }

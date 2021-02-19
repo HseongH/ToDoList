@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/taskmain.css">
+    <link rel="stylesheet" href="css/classList.css">
+</head>
+<body>
+<div class="body__container">
+
+    <!-- TITLE -->
+    <section class="section section--task-title">
+        <div class="container">
+
+            <h2 class="title">제목</h2>
+
+            <form id="title-form" action="" method="POST">
+                <input class="input--text" type="text" id="title-input" placeholder="제목을 입력해주세요">
+            </form>
+
+        </div>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="section section--task-description">
+        <div class="container">
+
+            <h2 class="title">내용</h2>
+
+            <form id="description-form" action="" method="POST">
+                <textarea class="input--text" id="description-input" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- CALENDAR -->
+
+</div>
+
+<script src="js/standardDate.js"></script>
+<script src="js/twoDigit.js"></script>
+</body>
+</html>
