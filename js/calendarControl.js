@@ -39,8 +39,6 @@ function pastDate(area, calendar) {
     }
 
     foldUnfold(area, calendar);
-
-    return calendar;
 }
 
 function nextDate(area, calendar) {
@@ -53,12 +51,10 @@ function nextDate(area, calendar) {
     }
 
     foldUnfold(area, calendar);
-
-    return calendar;
 }
 
 function currentDate(area, calendar) {
-    calendar = new Date;
+    calendar = standardDate();
 
     foldUnfold(area, calendar);
 
@@ -74,16 +70,18 @@ function init() {
 
     let date = new Date;
 
+    foldUnfold(calendarArea, date);
+
     leftBtn.addEventListener('click', () => {
-        date = pastDate(calendarArea, date);
+        pastDate(calendarArea, date);
     });
     rightBtn.addEventListener('click', () => {
-        date = nextDate(calendarArea, date);
+        nextDate(calendarArea, date);
     });
     today.addEventListener('click', () => {
         date = currentDate(calendarArea, date);
     });
-    unfold.addEventListener('click', () => {
+    unfold && unfold.addEventListener('click', () => {
         calendarArea.classList.toggle('month');
         foldUnfold(calendarArea, date);
         wayOfShowing(unfold);

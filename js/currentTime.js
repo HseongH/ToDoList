@@ -1,27 +1,21 @@
-function makeTwoString(str) {
-    return `${str}`.length === 2 ? str : `0${str}`;
-}
-
-function currentDate(date) {
-    const today = new Date;
-
+function currentDate(date, today) {
     date.innerText = `${today.getFullYear()}.${makeTwoString(today.getMonth() + 1)}.${makeTwoString(today.getDate())}`;
 }
 
-function currentTime(time) {
-    const hour = new Date;
-
-    time.innerText = `${makeTwoString(hour.getHours())}:${makeTwoString(hour.getMinutes())}`;
+function currentTime(time, today) {
+    time.innerText = `${makeTwoString(today.getHours())}:${makeTwoString(today.getMinutes())}`;
 }
 
 function init() {
+    const today = standardDate();
+
     const date = document.querySelector('.date');
     const time = document.querySelector('.time');
 
-    currentDate(date);
+    currentDate(date, today);
 
     window.setInterval(() => {
-        currentTime(time);
+        currentTime(time, today);
     }, 1000);
 }
 

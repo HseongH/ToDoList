@@ -1,7 +1,7 @@
 function makeMonthCalendar(area, calendar) {
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
     const nextMonth = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
-    const currentDate = new Date;
+    const currentDate = standardDate();
 
     month.setDate(1);
     nextMonth.setMonth(nextMonth.getMonth() + 1);

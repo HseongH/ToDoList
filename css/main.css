@@ -20,7 +20,7 @@
     border-radius: 15px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
     background: linear-gradient(#e5e5e5, #fff);
-    padding: 20px 0;
+    padding: 20px 40px;
     box-sizing: border-box;
 }
 
@@ -46,6 +46,7 @@
     border-left: 2px solid #ddd;
     border-bottom: 2px solid #ddd;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 .btn:hover {
@@ -90,10 +91,6 @@ header.section .title {
 }
 
 /* CALENDAR */
-.section--calendar .container {
-    padding: 20px 40px;
-}
-
 .section--calendar .control__unfold {
     display: flex;
     align-items: center;
@@ -118,6 +115,10 @@ header.section .title {
     height: 7px;
     transform: rotate(-45deg);
     transition-duration: 0.3s;
+}
+
+.section--calendar .control__unfold .btn--unfold.showing-month {
+    transform: rotate(-225deg);
 }
 
 .section--calendar .control__select ul {
@@ -160,6 +161,7 @@ header.section .title {
     flex-direction: column;
     align-items: center;
     line-height: 1.25;
+    cursor: pointer;
 }
 
 .section--calendar .calendar .calendar__list .day {
@@ -197,4 +199,100 @@ header.section .title {
 .section--calendar .btn--right {
     right: 20px;
     transform: rotate(-135deg);
+}
+
+/* TO DO LIST */
+.section--to-do-list {
+    margin-bottom: 50px;
+}
+
+.section--to-do-list .todos .todos__list  {
+    max-width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.section--to-do-list .todos .todos__list .todos--complete {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.section--to-do-list .todos .todos__list .todos--complete .btn--complete {
+    width: 50%;
+    height: 30%;
+    border-left: 3px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    transform: rotate(-45deg);
+    margin-top: -13%;
+}
+
+.section--to-do-list .todos .todos__list .task {
+    flex: 2;
+}
+
+.section--to-do-list .todos .todos__list .task .task__title {
+    font-size: 20px;
+    line-height: 2;
+}
+
+.section--to-do-list .todos .todos__list .task .task__description {
+    color: #888;
+    text-indent: 30px;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete:hover {
+    color: #767676;
+}
+
+.section--to-do-list .add-todos {
+    max-width: 150px;
+    height: 50px;
+    display: block;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+/* TASK COMPLETE */
+.section--to-do-list .todos .todos__list.complete {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.section--to-do-list .todos .todos__list.complete .todos--complete {
+    border: 0;
+}
+
+.section--to-do-list .todos .todos__list.complete .todos--complete .btn--complete {
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.section--to-do-list .todos .todos__list.complete .task .task__description {
+    color: #ccc;
 }

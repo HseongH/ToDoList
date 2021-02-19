@@ -31,7 +31,7 @@ function showDate(calendar) {
 }
 
 function makeCalendarLists(list, calendar) {
-    const currentDate = new Date;
+    const currentDate = standardDate();
 
     for (let i = -3; i <= 3; i++) {
         const calList = document.createElement('li');
@@ -61,15 +61,3 @@ function callCalendarMake(area, calendar) {
     selectYear(calendar);
     selectMonth(calendar);
 }
-
-function init() {
-    const calendarList = document.querySelector('.calendar-area');
-
-    const calendar = new Date;
-
-    selectYear(calendar);
-    selectMonth(calendar);
-    makeCalendarLists(calendarList, calendar);
-}
-
-init();
