@@ -3,7 +3,7 @@ function foldUnfold(area, calendar) {
     const containYear = calendarContainYear();
 
     callCalendarMake(area, calendar);
-    if (containMonth) {
+    if (containMonth && !containYear) {
         makeMonthCalendar(area, calendar);
     } 
     if (containYear) {
@@ -33,7 +33,7 @@ function pastDate(area, calendar) {
     const containMonth = calendarContainMonth();
     const containYear = calendarContainYear();
 
-    if (containMonth) {
+    if (containMonth && !containYear) {
         calendar.setMonth(calendar.getMonth() - 1);
     }
     if (containYear) {
@@ -50,7 +50,7 @@ function nextDate(area, calendar) {
     const containMonth = calendarContainMonth();
     const containYear = calendarContainYear();
 
-    if (containMonth) {
+    if (containMonth && !containYear) {
         calendar.setMonth(calendar.getMonth() + 1);
     }
     if (containYear) {
