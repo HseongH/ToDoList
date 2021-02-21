@@ -6,8 +6,10 @@ function selectYear(select) {
 
 function selectMonth(select) {
     const month = document.querySelector('.select-month');
+    const containYear = calendarContainYear();
 
-    month.innerText = makeTwoString(select.getMonth() + 1);
+    if (!containYear) month.innerText = makeTwoString(select.getMonth() + 1);
+    else month.innerText = '';
 }
 
 function showDay(calendar) {
@@ -31,7 +33,7 @@ function showDate(calendar) {
 }
 
 function makeCalendarLists(list, calendar) {
-    const currentDate = standardDate();
+    const currentDate = new Date;
 
     for (let i = -3; i <= 3; i++) {
         const calList = document.createElement('li');

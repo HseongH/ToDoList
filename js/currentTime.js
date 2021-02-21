@@ -7,7 +7,7 @@ function currentTime(time, today) {
 }
 
 function init() {
-    const today = standardDate();
+    const today = new Date;
 
     const date = document.querySelector('.date');
     const time = document.querySelector('.time');
@@ -15,7 +15,7 @@ function init() {
     currentDate(date, today);
 
     window.setInterval(() => {
-        currentTime(time, today);
+        currentTime(time, new Date);
     }, 1000);
 }
 

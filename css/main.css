@@ -1,3 +1,109 @@
+/* COMMON */
+.body__container {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #767676;
+}
+
+/* SECTION */
+.section {
+    position: relative;
+    padding-top: 30px;
+}
+
+.section .container {
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(#e5e5e5, #fff);
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.section .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #656565;
+}
+
+/* SUNRISE */
+.section .sunrise {
+    background: linear-gradient(to left top, #ee0979, #ff6a00);
+    color: #eee;
+}
+
+.sunrise-color {
+    color: #ff6a00;
+}
+
+/* BTN */
+.btn {
+    border-left: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    border-left: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+}
+
+/* CLEARFIX FLOAT */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.float--left {
+    float: left;
+}
+
+.float--right {
+    float: right;
+}
+
+/* INPUT */
+.input--text {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    background: none;
+    outline: none;
+    resize: none;
+    border-radius: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #767676;
+    box-sizing: border-box;
+}
+
+.input--text:focus {
+    border: 1px solid #999;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* VENDOR PREFIX */
+.input--text::-webkit-input-placeholder {
+    color: #aaa
+}
+
+.input--text::-ms-input-placeholder {
+    color: #aaa
+}
+
+.input--text::-moz-input-placeholder {
+    color: #aaa
+}
+
 /* HEADER */
 header.section .title {
     font-size: 32px;
@@ -54,6 +160,11 @@ header.section .title {
     display: flex;
 }
 
+.section--calendar .control__select ul .select-year,
+.section--calendar .control__select ul .select-month {
+    cursor: pointer;
+}
+
 .section--calendar .control__select ul .select-year {
     margin-right: 10px;
 }
@@ -80,6 +191,7 @@ header.section .title {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .section--calendar .calendar-area .calendar__list {
@@ -91,6 +203,18 @@ header.section .title {
     align-items: center;
     line-height: 1.25;
     cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.section--calendar .calendar-area.month
+.calendar__list {
+    width: 13.5%;
+}
+
+.section--calendar .calendar-area.year
+.calendar__list {
+    width: 25%;
+    justify-content: center;
 }
 
 .section--calendar .calendar .calendar__list .day {
@@ -98,13 +222,18 @@ header.section .title {
     margin-bottom: 5px;
 }
 
-.section--calendar .calendar .calendar__list 
-.calendar__date {
-    font-size: 23px;
+.section--calendar .calendar .calendar__list .calendar__date {
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.section--calendar .calendar 
-.calendar__list:nth-of-type(7n) {
+.section--calendar .calendar .calendar__list:nth-of-type(7n) {
     border-right: 0;
 }
 
@@ -135,7 +264,7 @@ header.section .title {
     margin-bottom: 50px;
 }
 
-.section--to-do-list .todos .todos__list  {
+.section--to-do-list .todos .todos__list {
     max-width: 100%;
     padding: 10px 20px;
     border: 1px solid #ccc;

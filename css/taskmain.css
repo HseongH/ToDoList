@@ -1,0 +1,62 @@
+/* SET DATE */
+.section--calendar {
+    margin-bottom: 50px;
+}
+
+.section--calendar .set-date {
+    display: flex;
+    margin: 30px 0;
+}
+
+.section--calendar .license {
+    text-indent: -9999px;
+}
+
+.section--calendar .icon {
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+    margin-right: 20px;
+}
+
+.section--calendar .icon svg {
+    fill: #767676;
+}
+
+.section--calendar .set-date .start-date,
+.section--calendar .set-date .end-date,
+.section--calendar .set-time {
+    display: flex;
+    align-items: center;
+}
+
+.section--calendar .set-date .start-date {
+    margin-right: 40px;
+}
+
+.section--calendar .set-date .start-date li,
+.section--calendar .set-date .end-date li,
+.section--calendar .set-time li {
+    margin-right: 12px;
+}
+
+.section--calendar .set-date .start-date li:last-child,
+.section--calendar .set-date .end-date li:last-child,
+.section--calendar .set-time li:last-child {
+    margin-right: 0;
+}
+
+.section--calendar .submit-todos {
+    max-width: 150px;
+    height: 50px;
+    display: block;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-decoration: none;
+}

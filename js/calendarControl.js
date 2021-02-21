@@ -1,16 +1,16 @@
-function calendarContainMonth() {
-    const calendarArea = document.querySelector('.calendar-area');
-
-    return calendarArea.classList.contains('month');
-}
-
 function foldUnfold(area, calendar) {
-    const contain = calendarContainMonth();
+    const containMonth = calendarContainMonth();
+    const containYear = calendarContainYear();
 
     callCalendarMake(area, calendar);
-    if (contain) {
+    if (containMonth) {
         makeMonthCalendar(area, calendar);
-    } else {
+    } 
+    if (containYear) {
+        callCalendarMake(area, calendar);
+        makeCalendarYear(area, calendar);
+    } 
+    if (!containMonth && !containYear) {
         makeCalendarLists(area, calendar);
     }
 }
@@ -30,11 +30,16 @@ function wayOfShowing(fold) {
 }
 
 function pastDate(area, calendar) {
-    const contain = calendarContainMonth();
+    const containMonth = calendarContainMonth();
+    const containYear = calendarContainYear();
 
-    if (contain) {
+    if (containMonth) {
         calendar.setMonth(calendar.getMonth() - 1);
-    } else {
+    }
+    if (containYear) {
+        calendar.setFullYear(calendar.getFullYear() - 1);
+    }
+    if (!containMonth && !containYear) {
         calendar.setDate(calendar.getDate() - 7);
     }
 
@@ -42,11 +47,16 @@ function pastDate(area, calendar) {
 }
 
 function nextDate(area, calendar) {
-    const contain = calendarContainMonth();
+    const containMonth = calendarContainMonth();
+    const containYear = calendarContainYear();
 
-    if (contain) {
+    if (containMonth) {
         calendar.setMonth(calendar.getMonth() + 1);
-    } else {
+    }
+    if (containYear) {
+        calendar.setFullYear(calendar.getFullYear() + 1);
+    }
+    if (!containMonth && !containYear) {
         calendar.setDate(calendar.getDate() + 7);
     }
 
@@ -54,7 +64,7 @@ function nextDate(area, calendar) {
 }
 
 function currentDate(area, calendar) {
-    calendar = standardDate();
+    calendar = new Date;
 
     foldUnfold(area, calendar);
 
@@ -67,6 +77,7 @@ function init() {
     const rightBtn = document.querySelector('.btn--right');
     const today = document.querySelector('.select-today');
     const unfold = document.querySelector('.control__unfold');
+    const select = document.querySelector('.select');
 
     let date = new Date;
 
@@ -82,9 +93,14 @@ function init() {
         date = currentDate(calendarArea, date);
     });
     unfold && unfold.addEventListener('click', () => {
+        calendarArea.classList.remove('year');
         calendarArea.classList.toggle('month');
         foldUnfold(calendarArea, date);
         wayOfShowing(unfold);
+    });
+    select.addEventListener('click', () => {
+        calendarArea.classList.toggle('year');
+        foldUnfold(calendarArea, date);
     });
 }
 
