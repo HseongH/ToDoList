@@ -69,41 +69,6 @@
     float: right;
 }
 
-/* INPUT */
-.input--text {
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    background: none;
-    outline: none;
-    resize: none;
-    border-radius: 15px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #767676;
-    box-sizing: border-box;
-}
-
-.input--text:focus {
-    border: 1px solid #999;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* VENDOR PREFIX */
-.input--text::-webkit-input-placeholder {
-    color: #aaa
-}
-
-.input--text::-ms-input-placeholder {
-    color: #aaa
-}
-
-.input--text::-moz-input-placeholder {
-    color: #aaa
-}
-
 /* HEADER */
 header.section .title {
     font-size: 32px;
@@ -203,7 +168,18 @@ header.section .title {
     align-items: center;
     line-height: 1.25;
     cursor: pointer;
-    transition-duration: 0.5s;
+    animation-name: trans;
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+}
+
+@keyframes trans {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .section--calendar .calendar-area.month
