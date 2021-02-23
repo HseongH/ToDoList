@@ -121,3 +121,16 @@ textarea {
     margin: 0 auto;
     text-decoration: none;
 }
+
+.section--calendar .set-time .at-noon {
+    margin-left: 40px;
+}
+
+.section--calendar .set-time .at-noon ul .noon {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.section--calendar .set-time .at-noon ul .noon.current-noon {
+    color: #767676;
+}
