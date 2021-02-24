@@ -24,124 +24,73 @@ function evening() {
     }
 }
 
-function setFinishHours(elem) {
-    const availableTime = parseInt(elem.querySelector('.input-time').value);
-    const minutes = document.querySelector('.minutes');
-
-    if (availableTime < 0 || availableTime > 24) {
-        return;
-    } else {
-        if (availableTime > 12) {
-            if (availableTime !== 24) {
-                evening();
-            } else {
-                morning();
-            }
-            
-            elem.innerText = makeTwoString(availableTime - 12);
-        } else {
-            elem.innerText = makeTwoString(availableTime);
-            
-            if (availableTime === 0) {
-                morning();
-
-                elem.innerText = 12;
-            }
-        }
-
-        if (minutes.innerText === '--') minutes.innerText = '00';
-    }
-}
-
-function setFinishMinutes(elem) {
-    let availableTime = parseInt(elem.querySelector('.input-time').value);
-    const hours = document.querySelector('.hours');
+function setFinishHours(elem, sib, time) {
+    const availableTime = elem.querySelector('.input-time');
     
-    if (availableTime < 0) {
-        return;
-    } else {
-        if (availableTime >= 60) {
-            let minutesCount = 0;
-
-            while (Math.floor(availableTime / 60) > 0) {
-                availableTime -= 60;
-                minutesCount++;
-            }
-
-            hours.innerText = makeTwoString(parseInt(hours.innerText) + minutesCount);
-            elem.innerText = makeTwoString(availableTime);
-
-            if (hours.innerText > 12) {
-                let hourInner = parseInt(hours.innerText);
-
-                while (Math.floor(hourInner / 12) > 0) {
-                    hourInner -= 12;
-                }
-
-                hours.innerText = makeTwoString(hourInner);
-                elem.innerText = makeTwoString(availableTime);
-                evening();
-            }
+    if (availableTime) {
+        if (availableTime.value) {
+            time.setHours(availableTime.value);
         } else {
-            elem.innerText = makeTwoString(availableTime);
-        }
-    }
-}
-
-function callFinishTime(event) {
-    const parent = this.parentNode;
-
-    event.preventDefault();
-    
-    if (parent.classList.contains('hours')) {
-        setFinishHours(parent);
-    } else {
-        setFinishMinutes(parent);
-    }
-}
-
-function inputTime() {
-    const minutes = document.querySelector('.minutes');
-    const hours = document.querySelector('.hours');
-
-    if (this.querySelector('.input-time')) {
-        this.querySelector('.input-time').select();
-        return;
-    } else {
-        if (this === minutes && hours.innerText === '--') {
+            elem.innerText = '--';
             return;
-        }else {
-            const form = document.createElement('form');
-            const input = document.createElement('input');
+        }
+    }
 
-            form.setAttribute('class', 'time-form');
+    elem.innerText = makeTwoString(time.getHours());
+
+    if (time.getHours() > 12) {
+        elem.innerText = makeTwoString(time.getHours() - 12);
+        evening();
+    }
+
+    if (sib.innerText === '--') sib.innerText = '00';
+}
+
+function setFinishMinutes(elem, sib, time) {
+    let availableTime = parseInt(elem.querySelector('.input-time').value);
+    
+    if (availableTime) time.setMinutes(availableTime);
+
+    elem.innerText = makeTwoString(time.getMinutes());
+    setFinishHours(sib, elem, time);
+}
+
+function callFinishTime(elem, time) {
+    const hours = document.querySelector('.hours');
+    const minutes = document.querySelector('.minutes');
+
+    if (elem.classList.contains('hours')) {
+        setFinishHours(hours, minutes, time);
+    } else {
+        setFinishMinutes(minutes, hours, time);
+    }
+}
+
+function inputTime(elem, time) {
+    const minutes = document.querySelector('.minutes');
+    const hours = document.querySelector('.hours');
+
+    if (elem.querySelector('.input-time')) {
+        return;
+    } else {
+        if (elem === minutes && hours.innerText === '--') {
+            setFinishHours(hours, minutes, time);
+        }else {
+            const input = document.createElement('input');
+            
             input.setAttribute('type', 'number');
             input.setAttribute('class', 'input-time');
-            input.value = this.innerText;
-
-            form.appendChild(input);
-            this.innerText = '';
-            this.appendChild(form);
+            input.value = elem.innerText;
+            
+            elem.innerText = '';
+            elem.appendChild(input);
             input.select();
 
-            form.addEventListener('submit', callFinishTime);
+            input.addEventListener('blur', () => {
+                callFinishTime(elem, time);
+            });
         }
     }
-}
-
-function findSibling(elem) {
-    const siblings = [];
-    let sibling = elem.parentNode.firstChild;
-
-    while (sibling) {
-        if (sibling.nodeType === 1 && sibling !== elem ) {
-            siblings.push(sibling);
-        }
-
-        sibling = sibling.nextSibling;
-    }
-
-    return siblings;
 }
 
 function changeAtNoon() {
@@ -158,8 +107,14 @@ function init() {
     const minutes = document.querySelector('.minutes');
     const noon = document.querySelectorAll('.noon');
 
-    hours.addEventListener('click', inputTime);
-    minutes.addEventListener('click', inputTime);
+    const time = new Date;
+
+    hours.addEventListener('click', () => {
+        inputTime(hours, time);
+    });
+    minutes.addEventListener('click', () => {
+        inputTime(minutes, time);
+    });
     [].forEach.call(noon, (noon) => {
         noon.addEventListener('click', changeAtNoon);
     });
