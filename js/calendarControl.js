@@ -13,6 +13,8 @@ function foldUnfold(area, calendar) {
     if (!containMonth && !containYear) {
         makeCalendarLists(area, calendar);
     }
+
+    clickDate(calendar);
 }
 
 function wayOfShowing(fold) {

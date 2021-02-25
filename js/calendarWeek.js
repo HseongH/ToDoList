@@ -32,16 +32,6 @@ function showDate(calendar) {
     return dates;
 }
 
-function selectDate(elem) {
-    const sib = findSibling(elem);
-
-    elem.querySelector('.calendar__date').classList.add('select-list');
-    
-    [].forEach.call(sib, date => {
-        date.querySelector('.calendar__date').classList.remove('select-list');
-    });
-}
-
 function makeCalendarLists(list, calendar) {
     const currentDate = new Date;
 

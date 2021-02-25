@@ -87,16 +87,25 @@ textarea {
     fill: #767676;
 }
 
+.section--calendar .set-date .start-date,
+.section--calendar .set-date .end-date,
 .section--calendar .set-time {
     display: flex;
     align-items: center;
-    margin: 40px;
 }
 
+.section--calendar .set-date .start-date {
+    margin-right: 40px;
+}
+
+.section--calendar .set-date .start-date li,
+.section--calendar .set-date .end-date li,
 .section--calendar .set-time li {
     margin-right: 12px;
 }
 
+.section--calendar .set-date .start-date li:last-child,
+.section--calendar .set-date .end-date li:last-child,
 .section--calendar .set-time li:last-child {
     margin-right: 0;
 }

@@ -1,22 +1,3 @@
-let index = 0;
-let startDate = '';
-let endDate = '';
-
-function setFinishDate(elem) {
-    const year = document.querySelector('.select-year').innerText
-    const month = document.querySelector('.select-month').innerText;
-    const date = elem.querySelector('.calendar__date').innerText;
-    
-    if (index === 0) {
-        startDate = year + month + date;
-        endDate = '';
-        index++;
-    } else {
-        endDate = year + month + date;
-        index = 0;
-    }
-}
-
 function makeMonthCalendar(area, calendar) {
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
     const nextMonth = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
@@ -42,7 +23,7 @@ function makeMonthCalendar(area, calendar) {
         }
         
         if (i < firstDay || i - firstDay >= lastDay) {
-            dates.classList.add('not-current-month');
+            calList.classList.add('not-current-month');
         }
         calList.appendChild(dates);
         
