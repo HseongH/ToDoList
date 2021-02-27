@@ -1,6 +1,7 @@
 function foldUnfold(area, calendar) {
     const containMonth = calendarContainMonth();
     const containYear = calendarContainYear();
+    const endDate = document.querySelectorAll('.select-date');
 
     callCalendarMake(area, calendar);
     if (containMonth && !containYear) {
@@ -15,6 +16,8 @@ function foldUnfold(area, calendar) {
     }
 
     clickDate(calendar);
+    if (endDate && endDate.innerText !== '---- / -- / --') 
+    term(calendar);
 }
 
 function wayOfShowing(fold) {
