@@ -1,6 +1,6 @@
 let index = 0;
 
-function term() {
+function term(calendar) {
     const calendarList = document.querySelectorAll('.calendar__list');
     const startDate = document.querySelector('.select-date').innerText;
     const endDate = document.querySelectorAll('.select-date')[1].innerText;
@@ -36,12 +36,10 @@ function term() {
         }
     });
     
-    [].forEach.call(selectDate, date => {
-        date.querySelector('.calendar__date').classList.add('select-list');
-    });
+    addSelect(calendar, selectDate);
 }
 
-function setFinishDate(elem, calendar, lists) {
+function setFinishDate(elem, calendar) {
     const year = calendar.getFullYear();
     const month = calendar.getMonth();
     const date = elem.querySelector('.calendar__date').innerText;
@@ -62,7 +60,7 @@ function setFinishDate(elem, calendar, lists) {
 
             index = 0;
 
-            term();
+            term(calendar);
         } else {
             startDate.innerText = `${year} / ${makeTwoString(month + 1)} / ${makeTwoString(date)}`;
         }
