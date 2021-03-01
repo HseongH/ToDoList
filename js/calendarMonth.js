@@ -27,7 +27,8 @@ function makeMonthCalendar(area, calendar) {
         }
         calList.appendChild(dates);
         
-        if (month.toDateString() === currentDate.toDateString()) {
+        if (month.toDateString() === currentDate.toDateString()
+            && !calList.classList.contains('not-current-month')) {
             sunset([calList]);
             calList.classList.add('today');
         }
