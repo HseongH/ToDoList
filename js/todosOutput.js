@@ -1,16 +1,16 @@
-function removeList(del, todo) {
-    const remove = del.parentNode;
-    console.log(todo);
+let todo = JSON.parse(localStorage.getItem('toDoLists'));
+
+function removeList() {
+    const remove = this.parentNode;
     const todoList = todo.filter(todos => todos.id !== parseInt(remove.id));
-    console.log(remove.id);
 
     remove.parentNode.removeChild(remove);
     todo = todoList;
 
-    saveList(todo);
+    saveList(todoList);
 }
 
-function toDosList(todo, todoArr) {
+function toDosList(todo) {
     const todos = document.querySelector('.todos');
     const todosList = document.createElement('li');
     const todosComplete = document.createElement('div');
@@ -54,14 +54,10 @@ function toDosList(todo, todoArr) {
 
     todos.appendChild(todosList);
 
-    todosDel.addEventListener('click', () => {
-        removeList(todosDel, todoArr);
-    });
+    todosDel.addEventListener('click', removeList);
 }
 
 function init() {
-    const todo = JSON.parse(localStorage.getItem('toDoLists'));
-
     todo && todo.forEach(element => {
         toDosList(element, todo);
     });
