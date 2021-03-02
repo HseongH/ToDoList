@@ -1,3 +1,9 @@
+function sunsetList(calendar) {
+    const selectList = document.querySelectorAll('.select-list');
+
+    
+}
+
 function sunset(bg, color) {
     const date = new Date;
 
@@ -10,6 +16,7 @@ function sunset(bg, color) {
             elem.classList.remove('sunrise-color');
             elem.classList.add('sunset-color');
         });
+        
     } else {
         bg && [].forEach.call(bg, elem => {
             elem.classList.remove('sunset');
@@ -18,6 +25,9 @@ function sunset(bg, color) {
         color && [].forEach.call(color, elem => {
             elem.classList.remove('sunset-color');
             elem.classList.add('sunrise-color');
+        });
+        [].forEach.call(list, list => {
+            list.classList.remove('select-sunset');
         });
     }
 }
