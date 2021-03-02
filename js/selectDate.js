@@ -44,7 +44,7 @@ function clickDate(calendar) {
 
     [].forEach.call(calendarList, list => {
         list.addEventListener('click', () => {
-            if (!list.parentNode.classList.contains('year')) {
+            if (list.parentNode) {
                 if (list.classList.contains('not-current-month')) {
                     const listIndex = nodeIndex(list);
                     

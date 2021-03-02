@@ -41,7 +41,7 @@ function term() {
     });
 }
 
-function setFinishDate(elem, calendar, lists) {
+function setFinishDate(elem, calendar) {
     const year = calendar.getFullYear();
     const month = calendar.getMonth();
     const date = elem.querySelector('.calendar__date').innerText;

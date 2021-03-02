@@ -288,6 +288,12 @@ header.section .title {
     text-indent: 30px;
 }
 
+.section--to-do-list .todos .todos__list .task .task__time {
+    font-size: 14px;
+    margin-top: 15px;
+    text-indent: 30px;
+}
+
 .section--to-do-list .todos .todos__list .todos--delete {
     position: absolute;
     top: 10px;

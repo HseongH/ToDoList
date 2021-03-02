@@ -15,8 +15,10 @@ function foldUnfold(area, calendar) {
     }
 
     clickDate(calendar);
-    dateTerm(calendar);
-    term();
+    if (area.classList.contains('calendar-task') && !area.classList.contains('year')) {
+        dateTerm(calendar);
+        term(calendar);
+    }
 }
 
 function wayOfShowing(fold) {
