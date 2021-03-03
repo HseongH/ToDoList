@@ -26,9 +26,6 @@ function sunset(bg, color) {
             elem.classList.remove('sunset-color');
             elem.classList.add('sunrise-color');
         });
-        [].forEach.call(list, list => {
-            list.classList.remove('select-sunset');
-        });
     }
 }
 

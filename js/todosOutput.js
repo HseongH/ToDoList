@@ -1,13 +1,15 @@
-let todo = JSON.parse(localStorage.getItem('toDoLists'));
+function LocalToDo() {
+    this.todo = JSON.parse(localStorage.getItem('toDoLists'));
+}
 
 function removeList() {
     const remove = this.parentNode;
-    const todoList = todo.filter(todos => todos.id !== parseInt(remove.id));
+    const todoList = new LocalToDo;
 
+    todoList.todo = todoList.todo.filter(doList => doList.id !== parseInt(remove.id));
     remove.parentNode.removeChild(remove);
-    todo = todoList;
 
-    saveList(todoList);
+    saveList(todoList.todo);
 }
 
 function toDosList(todo) {
@@ -58,7 +60,9 @@ function toDosList(todo) {
 }
 
 function init() {
-    todo && todo.forEach(element => {
+    const todo = new LocalToDo;
+
+    todo && todo.todo.forEach(element => {
         toDosList(element, todo);
     });
 }
