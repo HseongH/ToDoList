@@ -1,9 +1,3 @@
-function sunsetList(calendar) {
-    const selectList = document.querySelectorAll('.select-list');
-
-    
-}
-
 function sunset(bg, color) {
     const date = new Date;
 

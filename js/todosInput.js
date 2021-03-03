@@ -19,7 +19,6 @@ function addTodos(todos) {
     
     todos.push(toDoLists);
     saveList(todos);
-    console.log(todos);
 }
 
 function init() {

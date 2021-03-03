@@ -329,8 +329,8 @@ header.section .title {
 }
 
 .section--to-do-list .todos .todos__list.complete .todos--complete .btn--complete {
-    border-left: 3px solid #fff;
-    border-bottom: 3px solid #fff;
+    border-left: 3px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
 }
 
 .section--to-do-list .todos .todos__list.complete .task .task__description {

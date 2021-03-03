@@ -2,11 +2,42 @@ function LocalToDo() {
     this.todo = JSON.parse(localStorage.getItem('toDoLists'));
 }
 
+function completeList() {
+    const list = this.parentNode;
+    const toDoList = new LocalToDo;
+
+    if (!list.classList.contains('complete')) {
+        toDoList.todo = toDoList.todo.map(doList => {
+            if (doList.id === parseInt(list.id)) {
+                doList.com = true;
+            }
+            return doList;
+        });
+    
+        list.classList.add('complete');
+    } else {
+        toDoList.todo = toDoList.todo.map(doList => {
+            if (doList.id === parseInt(list.id)) {
+                doList.com = false;
+            }
+            return doList;
+        });
+    
+        list.classList.remove('complete');
+    }
+
+    saveList(toDoList.todo);
+}
+
 function removeList() {
     const remove = this.parentNode;
     const todoList = new LocalToDo;
 
     todoList.todo = todoList.todo.filter(doList => doList.id !== parseInt(remove.id));
+    todoList.todo = todoList.todo.map((doList, i) => {
+        doList.id = i;
+        return doList;
+    });
     remove.parentNode.removeChild(remove);
 
     saveList(todoList.todo);
@@ -27,6 +58,8 @@ function toDosList(todo) {
 
     todosList.setAttribute('class', 'todos__list');
     todosList.setAttribute('id', todo.id);
+    todo.com && todosList.classList.add('complete');
+
     todosComplete.setAttribute('class', 'todos--complete');
     btnComplete.setAttribute('class', 'btn');
     btnComplete.classList.add('btn--complete');
@@ -57,6 +90,8 @@ function toDosList(todo) {
     todos.appendChild(todosList);
 
     todosDel.addEventListener('click', removeList);
+    todosComplete.addEventListener('click', completeList);
+    console.log(todo.id);
 }
 
 function init() {
