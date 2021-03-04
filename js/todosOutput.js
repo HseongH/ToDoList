@@ -7,8 +7,8 @@ function completeList() {
     const toDoList = new LocalToDo;
 
     if (!list.classList.contains('complete')) {
-        toDoList.todo = toDoList.todo.map(doList => {
-            if (doList.id === parseInt(list.id)) {
+        toDoList.todo = toDoList.todo.map((doList, i) => {
+            if (i === nodeIndex(list)) {
                 doList.com = true;
             }
             return doList;
@@ -16,8 +16,8 @@ function completeList() {
     
         list.classList.add('complete');
     } else {
-        toDoList.todo = toDoList.todo.map(doList => {
-            if (doList.id === parseInt(list.id)) {
+        toDoList.todo = toDoList.todo.map((doList, i) => {
+            if (i === nodeIndex(list)) {
                 doList.com = false;
             }
             return doList;
@@ -33,11 +33,7 @@ function removeList() {
     const remove = this.parentNode;
     const todoList = new LocalToDo;
 
-    todoList.todo = todoList.todo.filter(doList => doList.id !== parseInt(remove.id));
-    todoList.todo = todoList.todo.map((doList, i) => {
-        doList.id = i;
-        return doList;
-    });
+    todoList.todo = todoList.todo.filter((doList, i) => i !== nodeIndex(remove));
     remove.parentNode.removeChild(remove);
 
     saveList(todoList.todo);
@@ -57,7 +53,6 @@ function toDosList(todo) {
     const todosDel = document.createElement('div');
 
     todosList.setAttribute('class', 'todos__list');
-    todosList.setAttribute('id', todo.id);
     todo.com && todosList.classList.add('complete');
 
     todosComplete.setAttribute('class', 'todos--complete');
@@ -91,7 +86,6 @@ function toDosList(todo) {
 
     todosDel.addEventListener('click', removeList);
     todosComplete.addEventListener('click', completeList);
-    console.log(todo.id);
 }
 
 function init() {

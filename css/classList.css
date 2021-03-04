@@ -28,3 +28,8 @@
 .select-sunset {
     background: #004e923a;
 }
+
+/* NO VALUE */
+.no-value {
+    box-shadow: 0 1px 8px #ee0909d7;
+}
