@@ -199,14 +199,22 @@ header.section .title {
 }
 
 .section--calendar .calendar .calendar__list .calendar__date {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 13px;
     box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.section--calendar .calendar .calendar__list .has-list {
+    width: 5px;
+    height: 5px;
+    background-color: #ff6a00;
+    border-radius: 50%;
+    margin-top: 3px;
 }
 
 .section--calendar .calendar .calendar__list:nth-of-type(7n) {

@@ -19,6 +19,10 @@ function foldUnfold(area, calendar) {
         dateTerm(calendar);
         term(calendar);
     }
+    
+    if (!area.classList.contains('calendar-task') && !area.classList.contains('year')) {
+        hasList();
+    }
 }
 
 function wayOfShowing(fold) {
@@ -108,6 +112,8 @@ function init() {
         calendarArea.classList.toggle('year');
         foldUnfold(calendarArea, date);
     });
+
+    todayTask();
 }
 
 init();

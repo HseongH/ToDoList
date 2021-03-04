@@ -33,3 +33,12 @@
 .no-value {
     box-shadow: 0 1px 8px #ee0909d7;
 }
+
+/* SHOW & HIDE */
+.show {
+    display: flex !important;
+}
+
+.hide {
+    display: none !important;
+}

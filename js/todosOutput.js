@@ -2,6 +2,44 @@ function LocalToDo() {
     this.todo = JSON.parse(localStorage.getItem('toDoLists'));
 }
 
+function todayTask() {
+    const toDoList = new LocalToDo;
+    const year = document.querySelector('.select-year').innerText;
+    const month = document.querySelector('.select-month').innerText;
+    const today = document.querySelector('.today');
+    const date = makeTwoString(today.querySelector('.calendar__date').innerText);
+    const toDos = document.querySelectorAll('.todos__list');
+
+    [].forEach.call(toDos, list => {
+        if (toDoList.todo[nodeIndex(list)].startDate === `${year} / ${month} / ${date}`) {
+            list.classList.remove('hide');
+            list.classList.add('show');
+        } else {
+            list.classList.remove('show');
+            list.classList.add('hide');
+        }
+    });
+}
+
+function hasList() {
+    const toDoList = new LocalToDo;
+    const year = document.querySelector('.select-year').innerText;
+    const month = document.querySelector('.select-month').innerText;
+    const date = document.querySelectorAll('.calendar__date');
+
+    toDoList.todo.forEach(list => {
+        [].forEach.call(date, dt => {
+            if (list.startDate === `${year} / ${month} / ${makeTwoString(dt.innerText)}`) {
+                if (!dt.parentNode.querySelector('.has-list') && !dt.parentNode.classList.contains('not-current-month')) {
+                    const hasList = document.createElement('div');
+                    hasList.setAttribute('class', 'has-list');
+                    dt.parentNode.appendChild(hasList);
+                }
+            }
+        });
+    });
+}
+
 function completeList() {
     const list = this.parentNode;
     const toDoList = new LocalToDo;

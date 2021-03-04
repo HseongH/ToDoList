@@ -42,6 +42,24 @@ function addSelect(calendar, elem, sib) {
     });
 }
 
+function showList(elem) {
+    const toDoList = new LocalToDo;
+    const year = document.querySelector('.select-year').innerText;
+    const month = document.querySelector('.select-month').innerText;
+    const date = makeTwoString(elem.querySelector('.calendar__date').innerText);
+    const toDos = document.querySelectorAll('.todos__list');
+
+    [].forEach.call(toDos, list => {
+        if (toDoList.todo[nodeIndex(list)].startDate === `${year} / ${month} / ${date}`) {
+            list.classList.remove('hide');
+            list.classList.add('show');
+        } else {
+            list.classList.remove('show');
+            list.classList.add('hide');
+        }
+    });
+}
+
 function selectDate(elem, calendar) {
     const calendarList = document.querySelectorAll('.calendar__list');
     const [selectDate] = [].filter.call(calendarList, list => {
@@ -51,6 +69,7 @@ function selectDate(elem, calendar) {
     const sib = findSibling(selectDate);
 
     addSelect(calendar, [selectDate], sib);
+    showList(elem);
 }
 
 function clickDate(calendar) {
