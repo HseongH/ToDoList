@@ -112,8 +112,10 @@ function init() {
         calendarArea.classList.toggle('year');
         foldUnfold(calendarArea, date);
     });
-
-    todayTask();
+    
+    if (!calendarArea.classList.contains('calendar-task')) {
+        todayTask();
+    }
 }
 
 init();

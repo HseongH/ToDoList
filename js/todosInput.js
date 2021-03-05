@@ -1,5 +1,38 @@
 const todos = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem('toDoLists')) : [];
 
+function sortList(toDoLists) {
+    if (!(toDoLists.time) || todos.length === 0) {
+        todos.push(toDoLists);
+    }else {
+        for (let i = 0; i < todos.length; i++) {
+            if (!(todos[i].time)) {
+                todos.unshift(toDoLists);
+                break;
+            } else {
+                const past = toDoLists.time.split(':');
+                const current = todos[i].time.split(':');
+                const pastMi = past[1].split(' ');
+                const curMi = current[1].split(' ');
+                const pastNoon = pastMi[1] === 'AM' ? 0 : 12;
+                const curMiNoon = curMi[1] === 'AM' ? 0 : 12;
+    
+                const pastHour = parseInt(past[0]) + pastNoon;
+                const curHour = parseInt(current[0]) + curMiNoon;
+                const pastMinutes = parseInt(pastMi[0]);
+                const curMinutes = parseInt(curMi[0]);
+    
+                const pastTime = pastHour + (pastMinutes / 100);
+                const curTime = curHour + (curMinutes / 100);
+    
+                if (curTime > pastTime) {
+                    todos.splice(i, 0, toDoLists);
+                    break;
+                }
+            }
+        }
+    }
+}
+
 function inputValue() {
     if (this.value) {
         this.classList.remove('no-value');
@@ -31,7 +64,7 @@ function addTodos() {
         if (startDate === '---- / -- / --') toDoLists.startDate = `${year} / ${month} / ${makeTwoString(date)}`;
         if (endDate !== '---- / -- / --') toDoLists.endDate = endDate;
         
-        todos.push(toDoLists);
+        sortList(toDoLists);
         saveList(todos);
     } else {
         titleInput.classList.add('no-value');
