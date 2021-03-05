@@ -86,7 +86,6 @@ function toDosList(todo) {
     const task = document.createElement('div');
     const taskTitle = document.createElement('h4');
     const taskDes = document.createElement('p');
-    const taskTime = document.createElement('div');
 
     const todosDel = document.createElement('div');
 
@@ -100,7 +99,6 @@ function toDosList(todo) {
     task.setAttribute('class', 'task');
     taskTitle.setAttribute('class', 'task__title');
     taskDes.setAttribute('class', 'task__description');
-    taskTime.setAttribute('class', 'task__time');
 
     todosDel.setAttribute('class', 'todos--delete');
 
@@ -112,8 +110,17 @@ function toDosList(todo) {
     task.appendChild(taskTitle);
     task.appendChild(taskDes);
     if (todo.time) {
+        const taskTime = document.createElement('div');
+        taskTime.setAttribute('class', 'task__time');
         taskTime.innerText = todo.time;
         task.appendChild(taskTime);
+    }
+
+    if (todo.endDate) {
+        const taskEnd = document.createElement('div');
+        taskEnd.setAttribute('class', 'task__end-date');
+        taskEnd.innerText = todo.endDate;
+        task.appendChild(taskEnd);
     }
 
     todosList.appendChild(todosComplete);

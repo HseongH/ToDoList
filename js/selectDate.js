@@ -69,7 +69,9 @@ function selectDate(elem, calendar) {
     const sib = findSibling(selectDate);
 
     addSelect(calendar, [selectDate], sib);
-    showList(elem);
+    if (!document.querySelector('.calendar-task')){
+        showList(elem);
+    }
 }
 
 function clickDate(calendar) {

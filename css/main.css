@@ -209,12 +209,20 @@ header.section .title {
     align-items: center;
 }
 
+.section--calendar .calendar .calendar__list .has-list,
+.section--calendar .calendar .calendar__list .list-term {
+    height: 5px;
+    background: #ff6a005b;
+    margin-top: 3px;
+}
+
 .section--calendar .calendar .calendar__list .has-list {
     width: 5px;
-    height: 5px;
-    background-color: #ff6a00;
     border-radius: 50%;
-    margin-top: 3px;
+}
+
+.section--calendar .calendar .calendar__list .list-term {
+    width: 100%;
 }
 
 .section--calendar .calendar .calendar__list:nth-of-type(7n) {
@@ -296,7 +304,8 @@ header.section .title {
     text-indent: 30px;
 }
 
-.section--to-do-list .todos .todos__list .task .task__time {
+.section--to-do-list .todos .todos__list .task .task__time,
+.section--to-do-list .todos .todos__list .task .task__end-date {
     font-size: 14px;
     margin-top: 15px;
     text-indent: 30px;
