@@ -14,10 +14,10 @@ function sortList(toDoLists) {
                 const pastMi = past[1].split(' ');
                 const curMi = current[1].split(' ');
                 const pastNoon = pastMi[1] === 'AM' ? 0 : 12;
-                const curMiNoon = curMi[1] === 'AM' ? 0 : 12;
+                const curNoon = curMi[1] === 'AM' ? 0 : 12;
     
-                const pastHour = parseInt(past[0]) + pastNoon;
-                const curHour = parseInt(current[0]) + curMiNoon;
+                const pastHour = past[0] === '12' ? 0 + pastNoon : parseInt(past[0]) + pastNoon;
+                const curHour = current[0] === '12' ? 0 + curNoon : parseInt(current[0]) + curNoon;
                 const pastMinutes = parseInt(pastMi[0]);
                 const curMinutes = parseInt(curMi[0]);
     
