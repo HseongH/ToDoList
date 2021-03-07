@@ -1,6 +1,8 @@
 function foldUnfold(area, calendar) {
     const containMonth = calendarContainMonth();
     const containYear = calendarContainYear();
+    const startDate = document.querySelector('.select-date');
+    const endDate = document.querySelectorAll('.select-date')[1];
 
     callCalendarMake(area, calendar);
     if (containMonth && !containYear) {
@@ -17,7 +19,7 @@ function foldUnfold(area, calendar) {
     clickDate(calendar);
     if (area.classList.contains('calendar-task') && !area.classList.contains('year')) {
         dateTerm(calendar);
-        term(calendar);
+        term(startDate.innerText, endDate.innerText, calendar);
     }
     
     if (!area.classList.contains('calendar-task') && !area.classList.contains('year')) {

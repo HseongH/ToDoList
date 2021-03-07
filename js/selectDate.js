@@ -48,14 +48,26 @@ function showList(elem) {
     const month = document.querySelector('.select-month').innerText;
     const date = makeTwoString(elem.querySelector('.calendar__date').innerText);
     const toDos = document.querySelectorAll('.todos__list');
-
+    
     [].forEach.call(toDos, list => {
-        if (toDoList.todo[nodeIndex(list)].startDate === `${year} / ${month} / ${date}`) {
-            list.classList.remove('hide');
-            list.classList.add('show');
+        const localList = toDoList.todo[nodeIndex(list)];
+
+        if (localList.endDate) {
+            if (`${year} / ${month} / ${date}` >= localList.startDate && `${year} / ${month} / ${date}` <= localList.endDate) {
+                list.classList.remove('hide');
+                list.classList.add('show');
+            } else {
+                list.classList.remove('show');
+                list.classList.add('hide');
+            }
         } else {
-            list.classList.remove('show');
-            list.classList.add('hide');
+            if (localList.startDate === `${year} / ${month} / ${date}`) {
+                list.classList.remove('hide');
+                list.classList.add('show');
+            } else {
+                list.classList.remove('show');
+                list.classList.add('hide');
+            }
         }
     });
 }

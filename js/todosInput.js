@@ -6,7 +6,7 @@ function sortList(toDoLists) {
     }else {
         for (let i = 0; i < todos.length; i++) {
             if (!(todos[i].time)) {
-                todos.unshift(toDoLists);
+                todos.splice(i, 0, toDoLists);
                 break;
             } else {
                 const past = toDoLists.time.split(':');
@@ -24,8 +24,11 @@ function sortList(toDoLists) {
                 const pastTime = pastHour + (pastMinutes / 100);
                 const curTime = curHour + (curMinutes / 100);
     
-                if (curTime > pastTime) {
+                if (pastTime < curTime) {
                     todos.splice(i, 0, toDoLists);
+                    break;
+                } else if (i >= todos.length - 1) {
+                    todos.push(toDoLists);
                     break;
                 }
             }
@@ -50,9 +53,6 @@ function addTodos() {
         const noon = document.querySelector('.current-noon').innerText;
         const startDate = document.querySelector('.select-date').innerText;
         const endDate = document.querySelectorAll('.select-date')[1].innerText;
-        const year = document.querySelector('.select-year').innerText;
-        const month = document.querySelector('.select-month').innerText;
-        const date = document.querySelector('.today').querySelector('.calendar__date').innerText;
 
         const toDoLists = {
             title: titleInput.value,
@@ -61,7 +61,10 @@ function addTodos() {
         }
 
         if (hours !== '--') toDoLists.time = `${hours}:${minutes} ${noon}`;
-        if (startDate === '---- / -- / --') toDoLists.startDate = `${year} / ${month} / ${makeTwoString(date)}`;
+        if (startDate === '---- / -- / --') {
+            const date = new Date;
+            toDoLists.startDate = `${date.getFullYear()} / ${makeTwoString(date.getMonth() + 1)} / ${makeTwoString(date.getDate())}`;
+        }
         if (endDate !== '---- / -- / --') toDoLists.endDate = endDate;
         
         sortList(toDoLists);
