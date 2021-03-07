@@ -28,7 +28,11 @@ function makeCalendarYear(area, calendar) {
         calList.appendChild(month);
 
         if (year.getMonth() === calendar.getMonth()) {
-            calList.classList.add('select-list');
+            if(calendar.getHours() >= 18 || calendar.getHours() <= 6) {
+                calList.classList.add('select-sunset');
+            } else {
+                calList.classList.add('select-list');
+            }
         }
 
         area.appendChild(calList);
