@@ -11,12 +11,27 @@ function todayTask() {
     const toDos = document.querySelectorAll('.todos__list');
 
     [].forEach.call(toDos, list => {
-        if (toDoList.todo[nodeIndex(list)].startDate === `${year} / ${month} / ${date}`) {
+        const sd = toDoList.todo[nodeIndex(list)].startDate;
+        const currentDate = `${year} / ${month} / ${date}`;
+
+        if (sd === currentDate) {
             list.classList.remove('hide');
             list.classList.add('show');
         } else {
             list.classList.remove('show');
             list.classList.add('hide');
+        }
+
+        if (toDoList.todo[nodeIndex(list)].endDate) {
+            ed = toDoList.todo[nodeIndex(list)].endDate;
+
+            if (sd <= currentDate && ed >= currentDate) {
+                list.classList.remove('hide');
+                list.classList.add('show');
+            } else {
+                list.classList.remove('show');
+                list.classList.add('hide');
+            }
         }
     });
 }

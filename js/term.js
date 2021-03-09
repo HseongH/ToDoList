@@ -4,7 +4,8 @@ function term(startDate, endDate, calendar) {
     const month = document.querySelector('.select-month').innerText;
 
     const selectDate = [].filter.call(calendarList, list => {
-        const select = `${year} / ${month} / ${list.querySelector('.calendar__date').innerText}`;
+        const date = makeTwoString(list.querySelector('.calendar__date').innerText);
+        const select = `${year} / ${month} / ${date}`;
 
         return startDate <= select && endDate >= select;
     });

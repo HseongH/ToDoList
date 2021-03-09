@@ -12,10 +12,11 @@ function nodeIndex(elem) {
     return nodeIndex;
 }
 
-function notCurrentMonth(listIndex, calendar) {
+function notCurrentMonth(list, calendar) {
     const calendarArea = document.querySelector('.calendar-area');
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
     const firstDay = month.getDay();
+    const listIndex = nodeIndex(list);
 
     if (listIndex < firstDay) {
         pastDate(calendarArea, calendar);
@@ -93,9 +94,7 @@ function clickDate(calendar) {
         list.addEventListener('click', () => {
             if (list.parentNode) {
                 if (list.classList.contains('not-current-month')) {
-                    const listIndex = nodeIndex(list);
-                    
-                    notCurrentMonth(listIndex, calendar);
+                    notCurrentMonth(list, calendar);
                 }
                 
                 selectDate(list, calendar);

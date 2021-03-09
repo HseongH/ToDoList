@@ -211,13 +211,13 @@ header.section .title {
 
 .section--calendar .calendar .calendar__list .has-list,
 .section--calendar .calendar .calendar__list .list-term {
-    height: 5px;
-    background: #ff6a005b;
+    height: 8px;
+    background: #ccc;
     margin-top: 3px;
 }
 
 .section--calendar .calendar .calendar__list .has-list {
-    width: 5px;
+    width: 8px;
     border-radius: 50%;
 }
 

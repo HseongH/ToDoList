@@ -1,0 +1,16 @@
+/* SECTION */
+.section .container {
+    max-width: none;
+    width: 95%;
+    padding: 15px 30px;
+}
+
+.section .title {
+    font-size: 22px;
+    margin-bottom: 7px;
+}
+
+/* CURRENT TIME */
+.section--current-time ul li {
+    font-size: 18px;
+}
