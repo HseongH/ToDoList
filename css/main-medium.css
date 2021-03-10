@@ -17,5 +17,20 @@
 
 /* CALENDAR */
 .section--calendar .calendar-area .calendar__list {
-    padding: 10px 0;
+    height: 62px;
+    padding: 5px 0;
+}
+
+/* TO DO LIST */
+.section--to-do-list .todos .todos__list .todos--complete {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.section--to-do-list .todos .todos__list .task .task__description,
+.section--to-do-list .todos .todos__list .task .task__time,
+.section--to-do-list .todos .todos__list .task .task__end-date {
+    font-size: 12px;
+    margin-top: 10px;
 }

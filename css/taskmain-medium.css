@@ -1,0 +1,16 @@
+/* COMMON */
+/* INPUT */
+#description-input {
+    height: 200px;
+}
+
+/* SET DATE */
+.section--calendar .icon {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+.section--calendar .set-time .at-noon ul .noon {
+    font-size: 14px;
+}
