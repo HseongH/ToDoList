@@ -304,7 +304,7 @@ header.section .title {
     color: #888;
     font-size: 14px;
     margin-top: 15px;
-    text-indent: 30px;
+    padding-left: 30px;
 }
 
 .section--to-do-list .todos .todos__list .todos--delete {

@@ -1,0 +1,27 @@
+/* COMMON */
+/* SECTION */
+.section .container {
+    width: 100%;
+    padding: 12px;
+}
+
+.section--calendar .calendar {
+    padding: 0;
+}
+
+.section--calendar .btn--left,
+.section--calendar .btn--right {
+    display: none;
+}
+
+/* TO DO LIST */
+.section--to-do-list .todos .todos__list .todos--complete {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.section--calendar .calendar-area.month
+.calendar__list {
+    width: 14.285%;
+}
