@@ -1,0 +1,91 @@
+/* COMMON */
+/* SECTION */
+.section .container {
+    padding: 20px;
+}
+
+.section .title {
+    font-size: 20px;
+}
+
+/* HEADER */
+header.section .title {
+    font-size: 25px;
+}
+
+/* CURRENT TIME */
+.section--current-time ul li {
+    font-size: 16px;
+}
+
+/* CALENDAR */
+.section--calendar .control__unfold,
+.section--calendar .control__select .select-today {
+    font-size: 14px;
+}
+
+.section--calendar .calendar {
+    padding: 0 15px;
+    margin-top: 15px;
+    border: none;
+}
+
+.section--calendar .calendar-area .calendar__list {
+    height: 52px;
+}
+
+.section--calendar .calendar .calendar__list .day {
+    font-size: 10px;
+}
+
+.section--calendar .calendar .calendar__list .calendar__date {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.section--calendar .calendar .calendar__list .calendar__month {
+    font-size: 14px;
+}
+
+.section--calendar .calendar .calendar__list .has-list,
+.section--calendar .calendar .calendar__list .list-term {
+    height: 5px;
+}
+
+.section--calendar .calendar .calendar__list .has-list {
+    width: 5px;
+}
+
+.section--calendar .btn--left,
+.section--calendar .btn--right {
+    width: 15px;
+    height: 15px;
+}
+
+.section--calendar .btn--left {
+    left: 5px;
+}
+
+.section--calendar .btn--right {
+    right: 5px;
+}
+
+/* TO DO LIST */
+.section--to-do-list .todos .todos__list .todos--complete {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.section--to-do-list .todos .todos__list .task .task__title {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.section--to-do-list .add-todos {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 12px;
+}

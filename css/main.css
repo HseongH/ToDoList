@@ -153,7 +153,7 @@ header.section .title {
 }
 
 .section--calendar .calendar .calendar-area {
-    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -201,7 +201,6 @@ header.section .title {
 .section--calendar .calendar .calendar__list .calendar__date {
     width: 40px;
     height: 40px;
-    padding: 13px;
     box-sizing: border-box;
     border-radius: 50%;
     display: flex;
@@ -321,9 +320,8 @@ header.section .title {
 }
 
 .section--to-do-list .add-todos {
-    max-width: 150px;
+    width: 150px;
     height: 50px;
-    display: block;
     border-radius: 15px;
     display: flex;
     align-items: center;

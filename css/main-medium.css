@@ -1,3 +1,4 @@
+/* COMMON */
 /* SECTION */
 .section .container {
     max-width: none;
@@ -22,6 +23,12 @@
 }
 
 /* TO DO LIST */
+.section--calendar .set-date .start-date li,
+.section--calendar .set-date .end-date li,
+.section--calendar .set-time li {
+    font-size: 14px;
+}
+
 .section--to-do-list .todos .todos__list .todos--complete {
     width: 40px;
     height: 40px;

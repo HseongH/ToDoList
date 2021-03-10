@@ -1,0 +1,29 @@
+/* COMMON */
+/* INPUT */
+#description-input {
+    height: 180px;
+}
+
+/* SET DATE */
+.section--calendar .set-date .start-date li,
+.section--calendar .set-date .end-date li,
+.section--calendar .set-time li {
+    font-size: 12px;
+}
+
+.section--calendar .icon {
+    width: 35px;
+    height: 35px;
+    padding: 7px;
+}
+
+.section--calendar .set-time .at-noon ul .noon {
+    font-size: 12px;
+}
+
+.section--calendar .submit-todos {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 14px;
+}
