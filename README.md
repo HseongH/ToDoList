@@ -1,3 +1,3 @@
-#TO DO List
+# TO DO List
 
-투두 리스트 만들기
+HTML, CSS, JavaScript를 이용해서 기본적인 웹 애플리케이션 
