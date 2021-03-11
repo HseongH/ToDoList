@@ -1,17 +1,3 @@
-function nodeIndex(elem) {
-    let sibling = elem.previousSibling;
-    let nodeIndex = 0;
-
-    while(sibling) {
-        if (sibling.nodeType === 1) {
-            sibling = sibling.previousSibling;
-            nodeIndex++;
-        }
-    }
-
-    return nodeIndex;
-}
-
 function notCurrentMonth(list, calendar) {
     const calendarArea = document.querySelector('.calendar-area');
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
