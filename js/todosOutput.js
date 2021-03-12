@@ -123,7 +123,7 @@ function toDosList(todo) {
     const btnComplete = document.createElement('div');
 
     const task = document.createElement('div');
-    const taskTitle = document.createElement('h4');
+    const taskTitle = document.createElement('h3');
     const taskDes = document.createElement('p');
 
     const todosDel = document.createElement('div');
