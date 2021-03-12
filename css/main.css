@@ -138,6 +138,13 @@ header.section .title {
     color: #aaa;
     margin-top: 5px;
     cursor: pointer;
+    border: none;
+    font-size: 16px;
+    padding: 0
+}
+
+.section--calendar .control__select .select-today:focus {
+    outline: none;
 }
 
 .section--calendar .control__select .select-today:hover {
