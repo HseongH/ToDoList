@@ -53,7 +53,7 @@ function toDoTerm(lists) {
     });
 }
 
-function hasList() {
+function hasList(calendar) {
     const toDoList = new LocalToDo;
     const year = document.querySelector('.select-year').innerText;
     const month = document.querySelector('.select-month').innerText;
@@ -61,19 +61,21 @@ function hasList() {
 
     toDoList.todo.forEach(list => {
         [].forEach.call(date, dt => {
-            if (list.startDate === `${year} / ${month} / ${makeTwoString(dt.innerText)}`) {
-                const containList = dt.parentNode.querySelector('.has-list');
+            const select = `${year} / ${month} / ${makeTwoString(dt.innerText)}`
+            const containList = dt.parentNode.querySelector('.has-list');
+
+            if (list.startDate === select) {
                 if (!dt.parentNode.classList.contains('not-current-month')) {
                     if (!containList) {
                         const hasList = document.createElement('div');
                         hasList.setAttribute('class', 'has-list');
                         dt.parentNode.appendChild(hasList);
                     }
-
-                    if (list.endDate) {
-                        term(list.startDate, list.endDate);
-                    }
                 }
+            }
+
+            if (list.endDate) {
+                term(list.startDate, list.endDate, calendar);
             }
         });
     });

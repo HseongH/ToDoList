@@ -29,6 +29,12 @@ function calendarContainYear() {
     return calendarArea.classList.contains('year');
 }
 
+function currentCalendar() {
+    const calendarArea = document.querySelector('.calendar-area');
+
+    return calendarArea.classList.contains('calendar-task');
+}
+
 function nodeIndex(elem) {
     let sibling = elem.previousSibling;
     let nodeIndex = 0;

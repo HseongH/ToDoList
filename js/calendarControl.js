@@ -17,13 +17,13 @@ function foldUnfold(area, calendar) {
     }
 
     clickDate(calendar);
-    if (area.classList.contains('calendar-task') && !area.classList.contains('year')) {
+    if (currentCalendar() && !containYear) {
         dateTerm(calendar);
         term(startDate.innerText, endDate.innerText, calendar);
     }
     
-    if (!area.classList.contains('calendar-task') && !area.classList.contains('year')) {
-        hasList();
+    if (!currentCalendar() && !containYear) {
+        hasList(calendar);
     }
 }
 
@@ -115,7 +115,7 @@ function init() {
         foldUnfold(calendarArea, date);
     });
     
-    if (!calendarArea.classList.contains('calendar-task')) {
+    if (!currentCalendar()) {
         todayTask();
     }
 }

@@ -1,3 +1,29 @@
+function earlyOrSlow(list, select, calendar) {
+    const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
+    const firstDay = month.getDay();
+    const listIndex = nodeIndex(list);
+
+    if (listIndex < firstDay) {
+        const sp = select.split(' / ')
+        sp[1] = makeTwoString(parseInt(sp[1]) - 1);
+        if (sp[1] <= 0) {
+            sp[1] = '12';
+            sp[0] = `${parseInt(sp[0]) - 1}`;
+        }
+
+        return sp.join(' / ');
+    } else {
+        const sp = select.split(' / ')
+        sp[1] = makeTwoString(parseInt(sp[1]) + 1);
+        if (sp[1] >= 12) {
+            sp[1] = '01';
+            sp[0] = `${parseInt(sp[0]) + 1}`;
+        }
+
+        return sp.join(' / ');
+    }
+}
+
 function term(startDate, endDate, calendar) {
     const calendarList = document.querySelectorAll('.calendar__list');
     const year = document.querySelector('.select-year').innerText;
@@ -5,12 +31,16 @@ function term(startDate, endDate, calendar) {
 
     const selectDate = [].filter.call(calendarList, list => {
         const date = makeTwoString(list.querySelector('.calendar__date').innerText);
-        const select = `${year} / ${month} / ${date}`;
+        let select = `${year} / ${month} / ${date}`;
 
+        if (list.classList.contains('not-current-month')) {
+            select = earlyOrSlow(list, select, calendar);
+        }
+        
         return startDate <= select && endDate >= select;
     });
     
-    if (calendarList[0].parentNode.classList.contains('calendar-task')) {
+    if (currentCalendar()) {
         addSelect(calendar, selectDate);
     } else {
         toDoTerm(selectDate);
