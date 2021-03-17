@@ -7,16 +7,16 @@ function showMonth(calendar) {
     return month;
 }
 
-function calendarMonth(list, area, calendar) {
+function calendarMonth(list, area) {
     const month = parseInt(list.innerText);
 
     calendar.setMonth(month - 1);
     area.classList.remove('year');
 
-    foldUnfold(area, calendar);
+    foldUnfold(area);
 }
 
-function makeCalendarYear(area, calendar) {
+function makeCalendarYear(area) {
     const year = new Date(calendar.getFullYear(), 0);
 
     for (let i = 0; i < 12; i++) {
@@ -40,7 +40,7 @@ function makeCalendarYear(area, calendar) {
         year.setMonth(year.getMonth() + 1);
 
         calList.addEventListener('click', () => {
-            calendarMonth(month, area, calendar);
+            calendarMonth(month, area);
         });
     }
 }

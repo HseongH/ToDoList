@@ -1,17 +1,17 @@
-function notCurrentMonth(list, calendar) {
+function notCurrentMonth(list) {
     const calendarArea = document.querySelector('.calendar-area');
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
     const firstDay = month.getDay();
     const listIndex = nodeIndex(list);
 
     if (listIndex < firstDay) {
-        pastDate(calendarArea, calendar);
+        pastDate(calendarArea);
     } else {
-        nextDate(calendarArea, calendar);
+        nextDate(calendarArea);
     }
 }
 
-function addSelect(calendar, elem, sib) {
+function addSelect(elem, sib) {
     [].forEach.call(elem, elem => {
         if(calendar.getHours() >= 18 || calendar.getHours() <= 6) {
             elem.querySelector('.calendar__date').classList.add('select-sunset');
@@ -59,7 +59,7 @@ function showList(elem) {
     });
 }
 
-function selectDate(elem, calendar) {
+function selectDate(elem) {
     const calendarList = document.querySelectorAll('.calendar__list');
     const [selectDate] = [].filter.call(calendarList, list => {
         return !list.classList.contains('not-current-month') 
@@ -67,23 +67,23 @@ function selectDate(elem, calendar) {
     });
     const sib = findSibling(selectDate);
 
-    addSelect(calendar, [selectDate], sib);
+    addSelect([selectDate], sib);
     if (!currentCalendar()){
         showList(elem);
     }
 }
 
-function clickDate(calendar) {
+function clickDate() {
     const calendarList = document.querySelectorAll('.calendar__list');
 
     [].forEach.call(calendarList, list => {
         list.addEventListener('click', () => {
             if (list.parentNode) {
                 if (list.classList.contains('not-current-month')) {
-                    notCurrentMonth(list, calendar);
+                    notCurrentMonth(list);
                 }
                 
-                selectDate(list, calendar);
+                selectDate(list);
             }
         });
     });

@@ -53,7 +53,7 @@ function toDoTerm(lists) {
     });
 }
 
-function hasList(calendar) {
+function hasList() {
     const toDoList = new LocalToDo;
     const year = document.querySelector('.select-year').innerText;
     const month = document.querySelector('.select-month').innerText;
@@ -75,7 +75,7 @@ function hasList(calendar) {
             }
 
             if (list.endDate) {
-                term(list.startDate, list.endDate, calendar);
+                term(list.startDate, list.endDate);
             }
         });
     });
@@ -128,7 +128,7 @@ function toDosList(todo) {
     const taskTitle = document.createElement('h3');
     const taskDes = document.createElement('p');
 
-    const todosDel = document.createElement('div');
+    const todosDel = document.createElement('button');
 
     todosList.setAttribute('class', 'todos__list');
     todo.com && todosList.classList.add('complete');
@@ -178,7 +178,7 @@ function init() {
     const todo = new LocalToDo;
 
     todo && todo.todo.forEach(element => {
-        toDosList(element, todo);
+        toDosList(element);
     });
 }
 

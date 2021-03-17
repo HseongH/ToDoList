@@ -1,6 +1,6 @@
 let index = 0;
 
-function setFinishDate(elem, calendar) {
+function setFinishDate(elem) {
     const year = calendar.getFullYear();
     const month = calendar.getMonth();
     const date = elem.querySelector('.calendar__date').innerText;
@@ -21,19 +21,19 @@ function setFinishDate(elem, calendar) {
 
             index = 0;
 
-            term(startDate.innerText, endDate.innerText, calendar);
+            term(startDate.innerText, endDate.innerText);
         } else {
             startDate.innerText = `${year} / ${makeTwoString(month + 1)} / ${makeTwoString(date)}`;
         }
     }
 }
 
-function dateTerm(calendar) {
+function dateTerm() {
     const calendarList = document.querySelectorAll('.calendar__list');
 
     [].forEach.call(calendarList, list => {
         list.addEventListener('click', () => {
-            setFinishDate(list, calendar);
+            setFinishDate(list);
         });
     });
 }

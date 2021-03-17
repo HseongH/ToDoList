@@ -1,4 +1,4 @@
-function earlyOrSlow(list, select, calendar) {
+function earlyOrSlow(list, select) {
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
     const firstDay = month.getDay();
     const listIndex = nodeIndex(list);
@@ -24,7 +24,7 @@ function earlyOrSlow(list, select, calendar) {
     }
 }
 
-function term(startDate, endDate, calendar) {
+function term(startDate, endDate) {
     const calendarList = document.querySelectorAll('.calendar__list');
     const year = document.querySelector('.select-year').innerText;
     const month = document.querySelector('.select-month').innerText;
@@ -34,14 +34,14 @@ function term(startDate, endDate, calendar) {
         let select = `${year} / ${month} / ${date}`;
 
         if (list.classList.contains('not-current-month')) {
-            select = earlyOrSlow(list, select, calendar);
+            select = earlyOrSlow(list, select);
         }
         
         return startDate <= select && endDate >= select;
     });
     
     if (currentCalendar()) {
-        addSelect(calendar, selectDate);
+        addSelect(selectDate);
     } else {
         toDoTerm(selectDate);
     }

@@ -1,4 +1,4 @@
-function makeMonthCalendar(area, calendar) {
+function makeMonthCalendar(area) {
     const month = new Date(calendar.getFullYear(), calendar.getMonth(), 1);
     const nextMonth = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
     const currentDate = new Date;

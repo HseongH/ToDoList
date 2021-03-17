@@ -1,14 +1,14 @@
-function selectYear(select) {
+function selectYear() {
     const year = document.querySelector('.select-year');
 
-    year.innerText = select.getFullYear();
+    year.innerText = calendar.getFullYear();
 }
 
-function selectMonth(select) {
+function selectMonth() {
     const month = document.querySelector('.select-month');
     const containYear = calendarContainYear();
 
-    if (!containYear) month.innerText = makeTwoString(select.getMonth() + 1);
+    if (!containYear) month.innerText = makeTwoString(calendar.getMonth() + 1);
     else month.innerText = '';
 }
 
@@ -32,7 +32,7 @@ function showDate(calendar) {
     return dates;
 }
 
-function makeCalendarLists(list, calendar) {
+function makeCalendarLists(list) {
     const currentDate = new Date;
 
     for (let i = -3; i <= 3; i++) {
@@ -58,8 +58,8 @@ function deleteLists(list) {
     list.innerText = '';
 }
 
-function callCalendarMake(area, calendar) {
+function callCalendarMake(area) {
     deleteLists(area);
-    selectYear(calendar);
-    selectMonth(calendar);
+    selectYear();
+    selectMonth();
 }

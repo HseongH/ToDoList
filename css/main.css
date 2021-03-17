@@ -319,11 +319,17 @@ header.section .title {
     top: 10px;
     right: 20px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
+    border: none;
+    padding: 0;
 }
 
 .section--to-do-list .todos .todos__list .todos--delete:hover {
     color: #767676;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete:focus {
+    outline: none;
 }
 
 .section--to-do-list .add-todos {
