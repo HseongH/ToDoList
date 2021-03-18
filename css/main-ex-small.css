@@ -9,8 +9,8 @@
     padding: 0;
 }
 
-.section--calendar .btn--left,
-.section--calendar .btn--right {
+.section--calendar .arrow--left,
+.section--calendar .arrow--right {
     display: none;
 }
 

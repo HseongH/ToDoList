@@ -57,17 +57,17 @@ header.section .title {
     width: 5px;
 }
 
-.section--calendar .btn--left,
-.section--calendar .btn--right {
+.section--calendar .arrow--left,
+.section--calendar .arrow--right {
     width: 15px;
     height: 15px;
 }
 
-.section--calendar .btn--left {
+.section--calendar .arrow--left {
     left: 5px;
 }
 
-.section--calendar .btn--right {
+.section--calendar .arrow--right {
     right: 5px;
 }
 

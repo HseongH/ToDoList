@@ -61,7 +61,7 @@ function hasList() {
 
     toDoList.todo.forEach(list => {
         [].forEach.call(date, dt => {
-            const select = `${year} / ${month} / ${makeTwoString(dt.innerText)}`
+            const select = `${year} / ${month} / ${makeTwoString(dt.innerText)}`;
             const containList = dt.parentNode.querySelector('.has-list');
 
             if (list.startDate === select) {
@@ -121,7 +121,7 @@ function removeList() {
 function toDosList(todo) {
     const todos = document.querySelector('.todos');
     const todosList = document.createElement('li');
-    const todosComplete = document.createElement('div');
+    const todosComplete = document.createElement('button');
     const btnComplete = document.createElement('div');
 
     const task = document.createElement('div');
@@ -129,19 +129,20 @@ function toDosList(todo) {
     const taskDes = document.createElement('p');
 
     const todosDel = document.createElement('button');
-
+    
     todosList.setAttribute('class', 'todos__list');
     todo.com && todosList.classList.add('complete');
 
     todosComplete.setAttribute('class', 'todos--complete');
-    btnComplete.setAttribute('class', 'btn');
-    btnComplete.classList.add('btn--complete');
+    todosComplete.classList.add('btn');
+    btnComplete.setAttribute('class', 'btn--complete');
 
     task.setAttribute('class', 'task');
     taskTitle.setAttribute('class', 'task__title');
     taskDes.setAttribute('class', 'task__description');
 
-    todosDel.setAttribute('class', 'todos--delete');
+    todosDel.setAttribute('class', 'btn');
+    todosDel.classList.add('todos--delete');
 
     taskTitle.innerText = todo.title;
     taskDes.innerText = todo.description;
@@ -177,7 +178,7 @@ function toDosList(todo) {
 function init() {
     const todo = new LocalToDo;
 
-    todo && todo.todo.forEach(element => {
+    todo.todo && todo.todo.forEach(element => {
         toDosList(element);
     });
 }

@@ -30,13 +30,13 @@ function foldUnfold(area) {
 function wayOfShowing(fold) {
     const contain = calendarContainMonth();
     const foldText = fold.querySelector('h3');
-    const btnUnfold = document.querySelector('.btn--unfold');
+    const arrowUnfold = document.querySelector('.arrow--unfold');
 
     if (contain) {
-        btnUnfold.classList.add('showing-month');
+        arrowUnfold.classList.add('showing-month');
         foldText.innerText = '주 별로 보기';
     } else {
-        btnUnfold.classList.remove('showing-month');
+        arrowUnfold.classList.remove('showing-month');
         foldText.innerText = '월 별로 보기';
     }
 }
@@ -83,18 +83,18 @@ function currentDate(area) {
 
 function init() {
     const calendarArea = document.querySelector('.calendar-area');
-    const leftBtn = document.querySelector('.btn--left');
-    const rightBtn = document.querySelector('.btn--right');
+    const leftArrow = document.querySelector('.arrow--left');
+    const rightArrow = document.querySelector('.arrow--right');
     const today = document.querySelector('.select-today');
     const unfold = document.querySelector('.control__unfold');
     const select = document.querySelector('.select');
 
     foldUnfold(calendarArea);
 
-    leftBtn.addEventListener('click', () => {
+    leftArrow.addEventListener('click', () => {
         pastDate(calendarArea);
     });
-    rightBtn.addEventListener('click', () => {
+    rightArrow.addEventListener('click', () => {
         nextDate(calendarArea);
     });
     today.addEventListener('click', () => {
