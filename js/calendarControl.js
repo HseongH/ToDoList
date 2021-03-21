@@ -23,7 +23,9 @@ function foldUnfold(area) {
     }
     
     if (!currentCalendar() && !containYear) {
-        hasList();
+        const todo = new LocalToDo;
+        
+        todo.todo && hasList();
     }
 }
 

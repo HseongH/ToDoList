@@ -108,14 +108,43 @@ function completeList() {
     saveList(toDoList.todo);
 }
 
+function removeSelect(remove) {
+    const toDoList = new LocalToDo;
+    const year = document.querySelector('.select-year').innerText;
+    const month = document.querySelector('.select-month').innerText;
+    const date = document.querySelectorAll('.calendar__date');
+    const removeList = toDoList.todo[nodeIndex(remove)];
+    if (removeList.endDate) {
+        const term = document.querySelectorAll('.list-term');
+        const listTerm = [].filter.call(term, t => {
+            const da = t.parentNode.querySelector('.calendar__date').innerText;
+            const select = `${year} / ${month} / ${makeTwoString(da)}`;
+            
+            return removeList.startDate <= select && select <= removeList.endDate;
+        });
+        
+        [].forEach.call(listTerm, lt => {
+            lt.parentNode.removeChild(lt.parentNode.querySelector('.list-term'));
+        });
+    } else {
+        const [hasList] = [].filter.call(date, dt => {
+            const select = `${year} / ${month} / ${makeTwoString(dt.innerText)}`;
+            return removeList.startDate === select;
+        });
+        hasList.parentNode.removeChild(hasList.parentNode.querySelector('.has-list'));
+    }
+}
+
 function removeList() {
     const remove = this.parentNode;
     const todoList = new LocalToDo;
 
     todoList.todo = todoList.todo.filter((doList, i) => i !== nodeIndex(remove));
+    removeSelect(remove);
     remove.parentNode.removeChild(remove);
 
     saveList(todoList.todo);
+    hasList();
 }
 
 function toDosList(todo) {

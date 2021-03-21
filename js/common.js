@@ -37,6 +37,10 @@ function currentCalendar() {
     return calendarArea.classList.contains('calendar-task');
 }
 
+function currentMonth(list) {
+    return list.classList.contains('not-current-month');
+}
+
 function nodeIndex(elem) {
     let sibling = elem.previousSibling;
     let nodeIndex = 0;
