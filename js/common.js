@@ -1,56 +1,56 @@
-let calendar = new Date;
-
-function makeTwoString(str) {
-    return `${str}`.length === 2 ? str : `0${str}`;
+// COMMON FUNCTION
+_cal.splitByTwoLetters = str => {
+    return `${str}`.length >= 2 ? str : `0${str}`;
 }
 
-function findSibling(elem) {
+_cal.findSiblings = elem => {
     const siblings = [];
-    let sibling = elem.parentNode.firstChild;
+    let sib = elem.parentNode.firstChild;
 
-    while (sibling) {
-        if (sibling.nodeType === 1 && sibling !== elem ) {
-            siblings.push(sibling);
+    while (sib) {
+        if (sib !== elem && sib.nodeType === 1) {
+            siblings.push(sib);
         }
 
-        sibling = sibling.nextSibling;
+        sib = sib.nextSibling;
     }
 
     return siblings;
 }
 
-function calendarContainMonth() {
-    const calendarArea = document.querySelector('.calendar-area');
+_cal.nodeIndex = elem => {
+    let sib = elem.previousSibling;
+    let nodeIndex = 0;
 
-    return calendarArea.classList.contains('month');
+    while(sib) {
+        if (sib.nodeType === 1) {
+            nodeIndex++;
+        }
+        
+        sib = sib.previousSibling;
+    }
+
+    return nodeIndex;
 }
 
-function calendarContainYear() {
-    const calendarArea = document.querySelector('.calendar-area');
+_cal.isContainYear = () => {
+    const calendarArea = _cal.calendarArea;
 
     return calendarArea.classList.contains('year');
 }
 
-function currentCalendar() {
-    const calendarArea = document.querySelector('.calendar-area');
+_cal.isContainMonth = () => {
+    const calendarArea = _cal.calendarArea;
+
+    return calendarArea.classList.contains('month');
+}
+
+_cal.calendarType = () => {
+    const calendarArea = _cal.calendarArea;
 
     return calendarArea.classList.contains('calendar-task');
 }
 
-function currentMonth(list) {
-    return list.classList.contains('not-current-month');
-}
-
-function nodeIndex(elem) {
-    let sibling = elem.previousSibling;
-    let nodeIndex = 0;
-
-    while(sibling) {
-        if (sibling.nodeType === 1) {
-            sibling = sibling.previousSibling;
-            nodeIndex++;
-        }
-    }
-
-    return nodeIndex;
+_cal.isCurrentMonth = elem => {
+    return elem.classList.contains('not-current-month');
 }

@@ -1,22 +1,19 @@
-function currentDate(date, today) {
-    date.innerText = `${today.getFullYear()}.${makeTwoString(today.getMonth() + 1)}.${makeTwoString(today.getDate())}`;
-}
+_cal.makeObject('curTime');
 
-function currentTime(time, today) {
-    time.innerText = `${makeTwoString(today.getHours())}:${makeTwoString(today.getMinutes())}`;
-}
-
-function init() {
+_cal.curTime.currentDate = () => {
+    const date = _cal.indexVar.date;
     const today = new Date;
 
-    const date = document.querySelector('.date');
-    const time = document.querySelector('.time');
-
-    currentDate(date, today);
-
-    window.setInterval(() => {
-        currentTime(time, new Date);
-    }, 1000);
+    date.innerText = `${today.getFullYear()}.${_cal.splitByTwoLetters(today.getMonth() + 1)}.${_cal.splitByTwoLetters(today.getDate())}`;
 }
 
-init();
+_cal.curTime.currentTime = () => {
+    const time = _cal.indexVar.time;
+    const today = new Date;
+
+    time.innerText = `${_cal.splitByTwoLetters(today.getHours())}:${_cal.splitByTwoLetters(today.getMinutes())}`;
+}
+
+_cal.curTime.currentDate();
+
+window.setInterval(_cal.curTime.currentTime, 1000);
