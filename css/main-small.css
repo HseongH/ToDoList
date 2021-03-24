@@ -30,12 +30,12 @@ header.section .title {
     border: none;
 }
 
-.section--calendar .calendar-area .calendar__list {
-    height: 52px;
+.section--calendar .calendar .day-of-week .day {
+    font-size: 10px;
 }
 
-.section--calendar .calendar .calendar__list .day {
-    font-size: 10px;
+.section--calendar .calendar-area .calendar__list {
+    height: 52px;
 }
 
 .section--calendar .calendar .calendar__list .calendar__date {
@@ -44,7 +44,7 @@ header.section .title {
     font-size: 14px;
 }
 
-.section--calendar .calendar .calendar__list .calendar__month {
+.section--calendar .calendar .calendar-area.year .calendar__list {
     font-size: 14px;
 }
 

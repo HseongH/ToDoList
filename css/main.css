@@ -110,7 +110,7 @@ header.section .title {
     cursor: pointer;
 }
 
-.section--calendar .control__unfold:hover h3 {
+.section--calendar .control__unfold:hover .calendar-status {
     text-decoration: underline;
 }
 
@@ -119,7 +119,7 @@ header.section .title {
     border-bottom: 2px solid #aaa;
 }
 
-.section--calendar .control__unfold h3 {
+.section--calendar .control__unfold .calendar-status {
     margin-right: 10px;
 }
 
@@ -164,6 +164,20 @@ header.section .title {
     position: relative;
 }
 
+.section--calendar .calendar .day-of-week {
+    padding-top: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+}
+
+.section--calendar .calendar .day-of-week .day {
+    width: 14.285%;
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 .section--calendar .calendar .calendar-area {
     width: 100%;
     display: flex;
@@ -171,12 +185,16 @@ header.section .title {
     justify-content: center;
 }
 
+.section--calendar .calendar .calendar-area .day-container {
+    width: 100%;
+}
+
 .section--calendar .calendar-area .calendar__list {
     width: 14.285%;
     height: 72px;
     padding: 10px 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     line-height: 1.25;
     cursor: pointer;
@@ -194,20 +212,19 @@ header.section .title {
     }
 }
 
-.section--calendar .calendar-area.month
+/* .section--calendar .calendar-area.month
 .calendar__list {
     width: 13.5%;
+} */
+
+.section--calendar .calendar-area.year .day-container {
+    display: none;
 }
 
 .section--calendar .calendar-area.year
 .calendar__list {
     width: 25%;
     justify-content: center;
-}
-
-.section--calendar .calendar .calendar__list .day {
-    font-size: 12px;
-    margin-bottom: 5px;
 }
 
 .section--calendar .calendar .calendar__list .calendar__date {

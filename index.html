@@ -62,13 +62,23 @@
                 </div>
 
                 <button class="btn control__unfold float--right">
-                    <h3>월 별로 보기</h3>
+                    <strong class="calendar-status">월 별로 보기</strong>
                     <span class="arrow arrow--unfold"></span>
                 </button>
             </div>
 
             <div class="calendar">
                 <span class="arrow arrow--left"></span>
+
+                <ul class="day-of-week">
+                    <li class="day">SUN</li>
+                    <li class="day">MON</li>
+                    <li class="day">TUE</li>
+                    <li class="day">WED</li>
+                    <li class="day">THU</li>
+                    <li class="day">FRI</li>
+                    <li class="day">SAT</li>
+                </ul>
 
                 <ul class="calendar-area"></ul>
 
@@ -95,8 +105,10 @@
 
 <script src="js/init.js"></script>
 <script src="js/common.js"></script>
-<script src="js/currentTime.js"></script>
-<script src="js/makeCalendar.js"></script>
+<script src="js/current-time.js"></script>
+<script src="js/create-calendar.js"></script>
+<script src="js/calendar-control.js"></script>
+<script src="js/fold-unfold.js"></script>
 
 </body>
 

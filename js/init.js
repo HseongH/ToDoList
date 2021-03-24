@@ -1,5 +1,5 @@
 const _cal = {
-    makeObject: ns => {
+    createObject: ns => {
         let obParts = ns.split('.');
         let parent = _cal;
 
@@ -29,7 +29,7 @@ _cal.arrowLeft = document.querySelector('.arrow--left');
 _cal.arrowRight = document.querySelector('.arrow--right');
 
 // INDEX.HTML VARIABLE
-_cal.makeObject('indexVar');
+_cal.createObject('indexVar');
 
 _cal.indexVar.date = document.querySelector('.date');
 _cal.indexVar.time = document.querySelector('.time');
@@ -37,7 +37,7 @@ _cal.indexVar.unfold = document.querySelector('.control__unfold');
 _cal.indexVar.addToDos = document.querySelector('.add-to-dos');
 
 // ADDTASK.HTML VARIABLE
-_cal.makeObject('addTaskVar');
+_cal.createObject('addTaskVar');
 
 _cal.addTaskVar.title = document.getElementById('title-input');
 _cal.addTaskVar.desc = document.getElementById('description-input');

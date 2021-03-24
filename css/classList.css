@@ -8,13 +8,8 @@
     color: #004e92;
 }
 
-/* TODAY */
-.today {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-}
-
-/* NOT CURRENT MONTH */
-.not-current-month {
+/* NOT THIS MONTH */
+.not-this-month {
     color: #ccc;
 }
 

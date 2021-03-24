@@ -52,5 +52,5 @@ _cal.calendarType = () => {
 }
 
 _cal.isCurrentMonth = elem => {
-    return elem.classList.contains('not-current-month');
+    return !(elem.classList.contains('not-this-month'));
 }

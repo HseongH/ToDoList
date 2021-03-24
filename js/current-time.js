@@ -1,8 +1,10 @@
-_cal.makeObject('curTime');
+_cal.createObject('curTime');
+
+_cal.curTime.today = new Date;
 
 _cal.curTime.currentDate = () => {
     const date = _cal.indexVar.date;
-    const today = new Date;
+    const today = _cal.curTime.today;
 
     date.innerText = `${today.getFullYear()}.${_cal.splitByTwoLetters(today.getMonth() + 1)}.${_cal.splitByTwoLetters(today.getDate())}`;
 }
