@@ -3,7 +3,8 @@ _cal.calendarControl.foldAndUnfold = () => {
     const status = fold.querySelector('.calendar-status');
     const arrow = fold.querySelector('.arrow--unfold');
 
-    _cal.calendarArea.classList.toggle('month');
+    _cal.calElem.classList.remove('year');
+    _cal.calElem.classList.toggle('month');
     arrow.classList.toggle('showing-month');
 
     _cal.createCalendar.delLists();

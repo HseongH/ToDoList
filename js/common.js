@@ -3,6 +3,16 @@ _cal.splitByTwoLetters = str => {
     return `${str}`.length >= 2 ? str : `0${str}`;
 }
 
+// _cal.findSiblings = elem => {
+//     const parent = elem.parentNode;
+//     const className = elem.getAttribute('class');
+//     const apply = className ? parent.querySelectorAll(`.${className}`) : parent.children;
+//     const siblings = [].filter.call(apply, el => {
+//         return el !== elem;
+//     });
+
+//     return siblings;
+// }
 _cal.findSiblings = elem => {
     const siblings = [];
     let sib = elem.parentNode.firstChild;
@@ -34,21 +44,15 @@ _cal.nodeIndex = elem => {
 }
 
 _cal.isContainYear = () => {
-    const calendarArea = _cal.calendarArea;
-
-    return calendarArea.classList.contains('year');
+    return _cal.calElem.classList.contains('year');
 }
 
 _cal.isContainMonth = () => {
-    const calendarArea = _cal.calendarArea;
-
-    return calendarArea.classList.contains('month');
+    return _cal.calElem.classList.contains('month');
 }
 
 _cal.calendarType = () => {
-    const calendarArea = _cal.calendarArea;
-
-    return calendarArea.classList.contains('calendar-task');
+    return _cal.calElem.classList.contains('calendar-task');
 }
 
 _cal.isCurrentMonth = elem => {

@@ -171,6 +171,10 @@ header.section .title {
     display: flex;
 }
 
+.section--calendar .calendar.year .day-of-week {
+    display: none;
+}
+
 .section--calendar .calendar .day-of-week .day {
     width: 14.285%;
     font-size: 12px;
@@ -185,8 +189,9 @@ header.section .title {
     justify-content: center;
 }
 
-.section--calendar .calendar .calendar-area .day-container {
-    width: 100%;
+.section--calendar .calendar.year .calendar__list {
+    width: 25%;
+    justify-content: center;
 }
 
 .section--calendar .calendar-area .calendar__list {
@@ -216,16 +221,6 @@ header.section .title {
 .calendar__list {
     width: 13.5%;
 } */
-
-.section--calendar .calendar-area.year .day-container {
-    display: none;
-}
-
-.section--calendar .calendar-area.year
-.calendar__list {
-    width: 25%;
-    justify-content: center;
-}
 
 .section--calendar .calendar .calendar__list .calendar__date {
     width: 40px;

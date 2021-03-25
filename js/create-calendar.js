@@ -8,6 +8,16 @@ _cal.createCalendar.monthIndication = () => {
     _cal.selectMonth.innerText = _cal.splitByTwoLetters(_cal.calendar.getMonth() + 1);
 }
 
+_cal.createCalendar.delLists = () => {
+    _cal.calendarArea.innerText = '';
+}
+
+_cal.createCalendar.printANewCalendar = () => {
+    _cal.createCalendar.yearIndication();
+    _cal.createCalendar.monthIndication();
+    _cal.createCalendar.delLists();
+}
+
 _cal.createCalendar.showTheDate = date => {
     const dateCon = document.createElement('div');
 
@@ -32,8 +42,11 @@ _cal.createCalendar.createCalendarList = date => {
     return calList;
 }
 
-_cal.createCalendar.delLists = () => {
-    _cal.calendarArea.innerText = '';
+_cal.createCalendar.monthSelection = elem => {
+    const month = parseInt(elem.innerText);
+    _cal.calendar.setMonth(month - 1);
+
+    _cal.calendarControl.displayedByYear();
 }
 
 // WEEKLY CALENDAR
@@ -92,9 +105,13 @@ _cal.createCalendar.yearlyCalendar = () => {
 
         _cal.calendarArea.appendChild(calList);
 
+        if (year.getMonth() === _cal.calendar.getMonth()) {
+            calList.classList.add('select-list');
+        }
+
+        calList.addEventListener('click', () => {
+            _cal.createCalendar.monthSelection(calList);
+        });
         year.setMonth(year.getMonth() + 1);
     }
 }
-
-_cal.createCalendar.yearIndication();
-_cal.createCalendar.monthIndication();
