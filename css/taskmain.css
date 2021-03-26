@@ -101,13 +101,68 @@ textarea {
 .section--calendar .set-date .start-date li,
 .section--calendar .set-date .end-date li,
 .section--calendar .set-time li {
-    margin-right: 12px;
+    margin-left: 12px;
 }
 
-.section--calendar .set-date .start-date li:last-child,
-.section--calendar .set-date .end-date li:last-child,
-.section--calendar .set-time li:last-child {
-    margin-right: 0;
+.section--calendar .set-date .start-date li:first-child,
+.section--calendar .set-date .end-date li:first-child,
+.section--calendar .set-time li:first-child {
+    margin-left: 0;
+}
+
+.section--calendar .set-time {
+    max-width: 30%;
+    flex-wrap: wrap;
+}
+
+.section--calendar .set-time .icon {
+    cursor: pointer;
+}
+
+.section--calendar .set-time .at-noon {
+    margin-left: 40px;
+}
+
+.section--calendar .set-time .at-noon ul .noon {
+    margin: 0;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.section--calendar .set-time .at-noon ul .noon.current-noon {
+    color: #767676;
+}
+
+.section--calendar .set-time .time-selection-area {
+    width: 90px;
+    height: 210px;
+    display: flex;
+    margin-left: 75px;
+}
+
+.section--calendar .set-time .time-selection-area .selection__hours,
+.section--calendar .set-time .time-selection-area .selection__minutes {
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.section--calendar .set-time .time-selection-area .selection__hours::-webkit-scrollbar,
+.section--calendar .set-time .time-selection-area .selection__minutes::-webkit-scrollbar {
+    display: none;
+}
+
+.section--calendar .set-time .time-selection-area .selection__hours li,
+.section--calendar .set-time .time-selection-area .selection__minutes li {
+    margin-left: 0;
+    height: 30px;
+    padding: 3px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .section--calendar .submit-to-dos {
@@ -119,17 +174,4 @@ textarea {
     justify-content: center;
     margin: 30px auto 0;
     text-decoration: none;
-}
-
-.section--calendar .set-time .at-noon {
-    margin-left: 40px;
-}
-
-.section--calendar .set-time .at-noon ul .noon {
-    color: #ccc;
-    cursor: pointer;
-}
-
-.section--calendar .set-time .at-noon ul .noon.current-noon {
-    color: #767676;
 }
