@@ -17,6 +17,11 @@
     padding: 7px;
 }
 
+.section--calendar .set-time .hours,
+.section--calendar .set-time .minutes {
+    width: 30px;
+}
+
 .section--calendar .set-time .at-noon ul .noon {
     font-size: 12px;
 }

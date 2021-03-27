@@ -232,6 +232,7 @@
                 <li>
                     <div class="license">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
                 </li>
+
                 <li class="icon">
                     <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -283,18 +284,11 @@
                         </g>
                     </svg>
                 </li>
-                <li class="hours">--</li>
-                <li class="split">:</li>
-                <li class="minutes">--</li>
-                <li class="at-noon">
-                    <ul>
-                        <li class="noon current-noon">AM</li>
-                        <li class="noon">PM</li>
-                    </ul>
-                </li>
 
-                <li class="time-selection-area hide">
-                    <ul class="selection__hours">
+                <li class="hours">
+                    <ul class="selection-area">
+                        <li>12</li>
+                        <li class="selection-time">--</li>
                         <li>01</li>
                         <li>02</li>
                         <li>03</li>
@@ -306,10 +300,15 @@
                         <li>09</li>
                         <li>10</li>
                         <li>11</li>
-                        <li>12</li>
                     </ul>
+                </li>
 
-                    <ul class="selection__minutes">
+                <li class="split">:</li>
+
+                <li class="minutes">
+                    <ul class="selection-area">
+                        <li>59</li>
+                        <li class="selection-time">--</li>
                         <li>00</li>
                         <li>01</li>
                         <li>02</li>
@@ -369,7 +368,13 @@
                         <li>56</li>
                         <li>57</li>
                         <li>58</li>
-                        <li>59</li>
+                    </ul>
+                </li>
+
+                <li class="at-noon">
+                    <ul>
+                        <li class="noon current-noon">AM</li>
+                        <li class="noon">PM</li>
                     </ul>
                 </li>
             </ul>
@@ -385,7 +390,8 @@
 <script src="js/common.js"></script>
 <script src="js/create-calendar.js"></script>
 <script src="js/calendar-control.js"></script>
-<script src="js/time-setting.js"></script>
+<!-- <script src="js/time-setting.js"></script> -->
+<script src="js/scroll-test.js"></script>
 
 </body>
 

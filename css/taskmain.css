@@ -110,13 +110,31 @@ textarea {
     margin-left: 0;
 }
 
-.section--calendar .set-time {
-    max-width: 30%;
-    flex-wrap: wrap;
+.section--calendar .set-time .hours,
+.section--calendar .set-time .minutes {
+    width: 50px;
+    height: 90px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.section--calendar .set-time .icon {
-    cursor: pointer;
+.section--calendar .set-time .hours::-webkit-scrollbar,
+.section--calendar .set-time .minutes::-webkit-scrollbar {
+    display: none;
+}
+
+.section--calendar .set-time .selection-area li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    color: #ccc;
+    margin-left: 0;
+}
+
+.section--calendar .set-time .selection-area .selection-time {
+    color: #767676;
 }
 
 .section--calendar .set-time .at-noon {
@@ -131,38 +149,6 @@ textarea {
 
 .section--calendar .set-time .at-noon ul .noon.current-noon {
     color: #767676;
-}
-
-.section--calendar .set-time .time-selection-area {
-    width: 90px;
-    height: 210px;
-    display: flex;
-    margin-left: 75px;
-}
-
-.section--calendar .set-time .time-selection-area .selection__hours,
-.section--calendar .set-time .time-selection-area .selection__minutes {
-    width: 50%;
-    height: 100%;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.section--calendar .set-time .time-selection-area .selection__hours::-webkit-scrollbar,
-.section--calendar .set-time .time-selection-area .selection__minutes::-webkit-scrollbar {
-    display: none;
-}
-
-.section--calendar .set-time .time-selection-area .selection__hours li,
-.section--calendar .set-time .time-selection-area .selection__minutes li {
-    margin-left: 0;
-    height: 30px;
-    padding: 3px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .section--calendar .submit-to-dos {
