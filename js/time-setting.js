@@ -1,30 +1,15 @@
 _cal.createObject('timeSet');
 
-_cal.timeSet.hour = document.querySelector('.hours');
-_cal.timeSet.minute = document.querySelector('.minutes');
-
 _cal.timeSet.preventScroll = event => {
     event.preventDefault();
     event.stopPropagation();
-}
-
-_cal.timeSet.minutesActivation = (target) => {
-    const selection = target.querySelector('.selection-time');
-    const area = _cal.timeSet.minute.querySelector('.selection-area');
-
-    if (selection.innerText !== '--') {
-        area.classList.remove('hide');
-        return;
-    }
-
-    area.classList.add('hide');
 }
 
 _cal.timeSet.timeSelection = (target, event) => {
     const area = target.querySelector('.selection-area');
     const time = area.querySelectorAll('li');
     const selection = time[1];
-    const movement = event.deltaY;
+    const movement = event ? event.deltaY : 1;
 
     selection.classList.remove('selection-time');
 
@@ -38,28 +23,56 @@ _cal.timeSet.timeSelection = (target, event) => {
     time[0].classList.add('selection-time');
 }
 
+_cal.timeSet.hoursActivation = () => {
+    if (_cal.addTaskVar.hours.querySelector('.selection-time').innerText !== '--') {
+        return;
+    }
+    
+    const currentHour = _cal.calendar.getHours() % 12 <= 0 ? 12 :
+    _cal.calendar.getHours() % 12;
+    
+    for (let i = 0; i < currentHour; i++) {
+        _cal.timeSet.timeSelection(_cal.addTaskVar.hours);
+    }
+}
+
+_cal.timeSet.minutesActivation = target => {
+    const selection = _cal.addTaskVar.minutes.querySelector('.selection-time');
+    
+    if (target.querySelector('.selection-time').innerText === '--') {
+        selection.classList.remove('selection-time');
+        return;
+    }
+    
+    if (selection) return;
+    
+    _cal.addTaskVar.minutes.querySelectorAll('li')[1].classList.add('selection-time');
+}
+
 // SCROLL EVENT
-_cal.timeSet.hour.addEventListener('scroll', _cal.timeSet.preventScroll);
-_cal.timeSet.minute.addEventListener('scroll', _cal.timeSet.preventScroll);
+_cal.addTaskVar.hours.addEventListener('scroll', _cal.timeSet.preventScroll);
+_cal.addTaskVar.minutes.addEventListener('scroll', _cal.timeSet.preventScroll);
 
 // MOUSE WHEEL EVENT
-_cal.timeSet.hour.addEventListener('mousewheel', function() {
+_cal.addTaskVar.hours.addEventListener('mousewheel', function() {
     _cal.timeSet.preventScroll(event);
+    _cal.timeSet.timeSelection(this, event);
     _cal.timeSet.minutesActivation(this);
-    _cal.timeSet.timeSelection(this, event);
 });
-_cal.timeSet.minute.addEventListener('mousewheel', function() {
+_cal.addTaskVar.minutes.addEventListener('mousewheel', function() {
     _cal.timeSet.preventScroll(event);
     _cal.timeSet.timeSelection(this, event);
+    _cal.timeSet.hoursActivation();
 });
 
 // TOUCH MOVE EVENT
-_cal.timeSet.hour.addEventListener('touchmove', function() {
+_cal.addTaskVar.hours.addEventListener('touchmove', function() {
     _cal.timeSet.preventScroll(event);
+    _cal.timeSet.timeSelection(this, event);
     _cal.timeSet.minutesActivation(this);
-    _cal.timeSet.timeSelection(this, event);
 });
-_cal.timeSet.minute.addEventListener('touchmove', function() {
+_cal.addTaskVar.minutes.addEventListener('touchmove', function() {
     _cal.timeSet.preventScroll(event);
     _cal.timeSet.timeSelection(this, event);
+    _cal.timeSet.hoursActivation();
 });
