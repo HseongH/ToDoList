@@ -5,6 +5,14 @@ _cal.timeSet.preventScroll = event => {
     event.stopPropagation();
 }
 
+_cal.timeSet.settingAMPM = () => {
+    const currentNoon = document.querySelector('.current-noon');
+    const [noon] = _cal.findSiblings(currentNoon);
+
+    currentNoon.classList.remove('current-noon');
+    noon.classList.add('current-noon');
+}
+
 _cal.timeSet.timeSelection = (target, event) => {
     const area = target.querySelector('.selection-area');
     const time = area.querySelectorAll('li');
@@ -23,25 +31,45 @@ _cal.timeSet.timeSelection = (target, event) => {
     time[0].classList.add('selection-time');
 }
 
+_cal.timeSet.timeSetting = (target, time) => {
+    const currentNoon = document.querySelector('.current-noon');
+
+    for (let i = 0; i < time; i++) {
+        _cal.timeSet.timeSelection(target);
+    }
+
+    if (_cal.calendar.getHours() >= 12) {
+        if (currentNoon.innerText === 'PM') return;
+        _cal.timeSet.settingAMPM();
+        return;
+    }
+
+    if (currentNoon.innerText === 'AM') return;
+    _cal.timeSet.settingAMPM();
+}
+
 _cal.timeSet.hoursActivation = () => {
     if (_cal.addTaskVar.hours.querySelector('.selection-time').innerText !== '--') {
         return;
     }
-    
+
     const currentHour = _cal.calendar.getHours() % 12 <= 0 ? 12 :
     _cal.calendar.getHours() % 12;
-    
-    for (let i = 0; i < currentHour; i++) {
-        _cal.timeSet.timeSelection(_cal.addTaskVar.hours);
-    }
+
+    _cal.timeSet.timeSetting(_cal.addTaskVar.hours, currentHour);
 }
 
 _cal.timeSet.minutesActivation = target => {
     const selection = _cal.addTaskVar.minutes.querySelector('.selection-time');
+    const hoursSelection = target.querySelector('.selection-time');
     
-    if (target.querySelector('.selection-time').innerText === '--') {
+    if (hoursSelection.innerText === '--') {
         selection.classList.remove('selection-time');
         return;
+    }
+
+    if (hoursSelection.innerText === '12') {
+        _cal.timeSet.settingAMPM();
     }
     
     if (selection) return;
