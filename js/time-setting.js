@@ -79,6 +79,7 @@ _cal.timeSet.minutesActivation = target => {
         if (selection) return;
     
         _cal.addTaskVar.minutes.querySelectorAll('li')[1].classList.add('selection-time');
+        _cal.timeSet.timeInputActivation();
 
         return;
     } 

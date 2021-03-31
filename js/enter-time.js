@@ -1,3 +1,11 @@
+_cal.timeSet.setAMOrPM = target => {
+    if (target.classList.contains('current-noon')) return;
+
+    const [remove] = _cal.findSiblings(target);
+    target.classList.add('current-noon');
+    remove.classList.remove('current-noon');
+}
+
 _cal.timeSet.enterTimes = (elem, input, ori) => {
     const area = elem.parentNode.parentNode;
     const enterTime = parseInt(input);
@@ -52,3 +60,9 @@ _cal.timeSet.timeInputActivation = () => {
 }
 
 _cal.timeSet.timeInputActivation();
+
+[].forEach.call(_cal.addTaskVar.noon, noon => {
+    noon.addEventListener('click', function() {
+        _cal.timeSet.setAMOrPM(this);
+    })
+});
