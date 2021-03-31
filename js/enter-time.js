@@ -1,28 +1,29 @@
 _cal.timeSet.enterTimes = (elem, input, ori) => {
     const area = elem.parentNode.parentNode;
+    const enterTime = parseInt(input);
 
     elem.innerText = ori;
 
     if (area === _cal.addTaskVar.hours) {
-        _cal.calendar.setHours(parseInt(input));
+        _cal.calendar.setHours(enterTime);
 
         const currentHour = _cal.calendar.getHours() % 12 <= 0 ? 12 :
         _cal.calendar.getHours() % 12;
 
         _cal.timeSet.timeSetting(area, currentHour);
         _cal.timeSet.minutesActivation(area);
+        _cal.timeSet.AMOrPM();
         
         return;
     }
+
+    const currentMinute = enterTime % 60 <= 0 ? 60 : enterTime % 60;
     
-    _cal.calendar.setMinutes(parseInt(input));
-    
-    _cal.timeSet.timeSetting(area, _cal.calendar.getMinutes());
-    _cal.timeSet.hoursActivation();
+    _cal.timeSet.timeSetting(area, currentMinute);
 }
 
 _cal.timeSet.createAnInputArea = target => {
-    if (target.querySelector('input')) return;
+    if (target.querySelector('input') || !(target.classList.contains('selection-time'))) return;
 
     const inputTimeArea = document.createElement('input');
     const originalValue = target.innerText;
@@ -40,12 +41,14 @@ _cal.timeSet.createAnInputArea = target => {
     });
 }
 
-_cal.timeSet.hoursSelectionTime = _cal.addTaskVar.hours.querySelectorAll('li')[1];
-_cal.timeSet.minutesSelectionTime = _cal.addTaskVar.minutes.querySelectorAll('li')[1];
+_cal.timeSet.timeInputActivation = () => {
+    const selection = document.querySelectorAll('.selection-time');
 
-_cal.timeSet.hoursSelectionTime.addEventListener('click', function() {
-    _cal.timeSet.createAnInputArea(this);
-});
-_cal.timeSet.minutesSelectionTime.addEventListener('click', function() {
-    _cal.timeSet.createAnInputArea(this);
-});
+    [].forEach.call(selection, select => {
+        select.addEventListener('click', function() {
+            _cal.timeSet.createAnInputArea(this);
+        });
+    });
+}
+
+_cal.timeSet.timeInputActivation();

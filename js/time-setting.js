@@ -13,39 +13,45 @@ _cal.timeSet.settingAMPM = () => {
     noon.classList.add('current-noon');
 }
 
-_cal.timeSet.timeSelection = (target, event) => {
+_cal.timeSet.timeSelection = (target, event, movement = event.deltaY) => {
     const area = target.querySelector('.selection-area');
     const time = area.querySelectorAll('li');
     const selection = time[1];
-    const movement = event ? event.deltaY : 1;
 
     selection.classList.remove('selection-time');
 
     if (movement > 0) {
         area.appendChild(time[0]);
         time[2].classList.add('selection-time');
-        return;
+    } else {
+        area.insertBefore(area.lastElementChild, time[0]);
+        time[0].classList.add('selection-time');
     }
 
-    area.insertBefore(area.lastElementChild, time[0]);
-    time[0].classList.add('selection-time');
+    _cal.timeSet.timeInputActivation();
 }
 
 _cal.timeSet.timeSetting = (target, time) => {
-    const currentNoon = document.querySelector('.current-noon');
+    const selection = target.querySelector('.selection-time').innerText;
+    const ori = parseInt(selection) ? parseInt(selection) : 0;
+    const movement = time - ori < 0 ? -1 : 1;
+    const count = Math.abs(time - ori);
 
-    for (let i = 0; i < time; i++) {
-        _cal.timeSet.timeSelection(target);
+    for (let i = 0; i < count; i++) {
+        _cal.timeSet.timeSelection(target, event, movement);
     }
+}
+
+_cal.timeSet.AMOrPM = () => {
+    const currentNoon = document.querySelector('.current-noon');
 
     if (_cal.calendar.getHours() >= 12) {
         if (currentNoon.innerText === 'PM') return;
         _cal.timeSet.settingAMPM();
-        return;
+    } else {
+        if (currentNoon.innerText === 'AM') return;
+        _cal.timeSet.settingAMPM();
     }
-
-    if (currentNoon.innerText === 'AM') return;
-    _cal.timeSet.settingAMPM();
 }
 
 _cal.timeSet.hoursActivation = () => {
@@ -57,24 +63,27 @@ _cal.timeSet.hoursActivation = () => {
     _cal.calendar.getHours() % 12;
 
     _cal.timeSet.timeSetting(_cal.addTaskVar.hours, currentHour);
+
+    _cal.timeSet.AMOrPM();
 }
 
 _cal.timeSet.minutesActivation = target => {
     const selection = _cal.addTaskVar.minutes.querySelector('.selection-time');
     const hoursSelection = target.querySelector('.selection-time');
-    
-    if (hoursSelection.innerText === '--') {
-        selection.classList.remove('selection-time');
-        return;
-    }
 
     if (hoursSelection.innerText === '12') {
         _cal.timeSet.settingAMPM();
     }
+
+    if (hoursSelection.innerText !== '--') {
+        if (selection) return;
     
-    if (selection) return;
+        _cal.addTaskVar.minutes.querySelectorAll('li')[1].classList.add('selection-time');
+
+        return;
+    } 
     
-    _cal.addTaskVar.minutes.querySelectorAll('li')[1].classList.add('selection-time');
+    selection.classList.remove('selection-time');
 }
 
 // SCROLL EVENT
