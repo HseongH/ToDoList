@@ -31,6 +31,9 @@ _cal.timeSet.enterTimes = (elem, input, ori) => {
 }
 
 _cal.timeSet.createAnInputArea = target => {
+    target.addEventListener('mousewheel', _cal.timeSet.preventScroll);
+    target.addEventListener('touchmove', _cal.timeSet.preventScroll);
+
     if (target.querySelector('input') || !(target.classList.contains('selection-time'))) return;
 
     const inputTimeArea = document.createElement('input');

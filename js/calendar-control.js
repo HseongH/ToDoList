@@ -14,19 +14,16 @@ _cal.calendarControl.wayOfShowing = () => {
     const [yearType, monthType] = _cal.calendarControl.whatTypeOfCalendar();
 
     _cal.createCalendar.printANewCalendar();
+
     if (yearType) {
         _cal.createCalendar.yearlyCalendar();
-
-        return;
-    }
-
-    if (monthType) {
+    }else if (monthType) {
         _cal.createCalendar.monthlyCalendar();
-
-        return;
+    }else {
+        _cal.createCalendar.weeklyCalendar();
     }
 
-    _cal.createCalendar.weeklyCalendar();
+    _cal.chooseDate.listActivation();
 }
 
 // CREATE NEXT CALENDAR

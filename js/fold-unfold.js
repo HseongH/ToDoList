@@ -10,14 +10,11 @@ _cal.calendarControl.foldAndUnfold = () => {
     _cal.createCalendar.delLists();
 
     if (_cal.isContainMonth()) {
-        _cal.createCalendar.monthlyCalendar();
         status.innerText = '주 별로 보기';
-
-        return;
+    } else {
+        status.innerText = '월 별로 보기';
     }
-
-    _cal.createCalendar.weeklyCalendar();
-    status.innerText = '월 별로 보기';
+    _cal.calendarControl.wayOfShowing();
 }
 
 _cal.indexVar.unfold.addEventListener('click', _cal.calendarControl.foldAndUnfold);

@@ -34,7 +34,7 @@ _cal.createCalendar.createCalendarList = date => {
     calList.setAttribute('class', 'calendar__list');
 
     if (date.toDateString() === today.toDateString()
-        && _cal.isCurrentMonth(calList)) {
+        && !(_cal.isCurrentMonth(calList))) {
         calList.classList.add('sunrise');
         // sunset([calList]);
     }
