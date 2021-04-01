@@ -7,10 +7,12 @@ _cal.timeSet.setAMOrPM = target => {
 }
 
 _cal.timeSet.enterTimes = (elem, input, ori) => {
+    elem.innerText = ori;
+
+    if (!input) return;
+
     const area = elem.parentNode.parentNode;
     const enterTime = parseInt(input);
-
-    elem.innerText = ori;
 
     if (area === _cal.addTaskVar.hours) {
         _cal.calendar.setHours(enterTime);
