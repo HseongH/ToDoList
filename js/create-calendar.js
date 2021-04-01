@@ -32,9 +32,8 @@ _cal.createCalendar.createCalendarList = date => {
     const today = new Date;
     
     calList.setAttribute('class', 'calendar__list');
-
-    if (date.toDateString() === today.toDateString()
-        && !(_cal.isCurrentMonth(calList))) {
+    
+    if (date.toDateString() === today.toDateString()) {
         calList.classList.add('sunrise');
         // sunset([calList]);
     }
@@ -52,17 +51,17 @@ _cal.createCalendar.monthSelection = elem => {
 // WEEKLY CALENDAR
 _cal.createCalendar.weeklyCalendar = () => {
     const calendar = _cal.calendar;
-    const week = new Date(calendar.getFullYear(), calendar.getMonth());
+    const week = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate() - 3);
 
-    for (let i = -3; i <= 3; i++) {
-        week.setDate(calendar.getDate() + i);
-
+    for (let i = 0; i < 7; i++) {
         const calList = _cal.createCalendar.createCalendarList(week);
         const dates = _cal.createCalendar.showTheDate(week);
         
         calList.appendChild(dates);
-
+        
         _cal.calendarArea.appendChild(calList);
+        
+        week.setDate(week.getDate() + 1);
     }
 }
 
