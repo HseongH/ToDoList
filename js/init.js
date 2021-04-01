@@ -19,7 +19,9 @@ const _cal = {
 };
 
 // COMMON VARIABLE
+_cal.today = new Date;
 _cal.calendar = new Date;
+
 _cal.calElem = document.querySelector('.calendar');
 _cal.calendarArea = document.querySelector('.calendar-area');
 _cal.select = document.querySelector('.select');
@@ -28,6 +30,8 @@ _cal.selectMonth = document.querySelector('.select-month');
 _cal.selectToday = document.querySelector('.select-today');
 _cal.arrowLeft = document.querySelector('.arrow--left');
 _cal.arrowRight = document.querySelector('.arrow--right');
+
+_cal.tasks = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem('toDoLists')) : [];
 
 // INDEX.HTML VARIABLE
 _cal.createObject('indexVar');

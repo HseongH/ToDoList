@@ -58,3 +58,7 @@ _cal.calendarType = () => {
 _cal.isCurrentMonth = elem => {
     return elem.classList.contains('not-this-month');
 }
+
+_cal.saveList = todos => {
+    localStorage.setItem('toDoLists', JSON.stringify(todos));
+}
