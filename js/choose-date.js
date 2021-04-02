@@ -1,40 +1,32 @@
 _cal.createObject('chooseDate');
 
-_cal.chooseDate.redefineDate = (year, month, target) => {
+_cal.chooseDate.redefineDate = (target) => {
+    let [year, month] = [_cal.calendar.getFullYear(), _cal.calendar.getMonth() + 1];
+    const date = target.querySelector('.calendar__date').innerText;
     const firstDay = new Date(_cal.calendar.getFullYear(), _cal.calendar.getMonth(), 1).getDay();
     const index = _cal.nodeIndex(target);
 
-    if (index < firstDay) {
+    if (_cal.isCurrentMonth(target) && index < firstDay) {
         month--;
         if (month < 1) {
             month = 12;
             year--;
         }
-
-        return [year, _cal.splitByTwoLetters(month)];
+    } else if (_cal.isCurrentMonth(target) && index > firstDay) {
+        month++;
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
     }
 
-    month++;
-    if (month > 12) {
-        month = 1;
-        year++;
-    }
-
-    return [year, _cal.splitByTwoLetters(month)];
+    return `${year} / ${_cal.splitByTwoLetters(month)} / ${_cal.splitByTwoLetters(date)}`;
 }
 
 _cal.chooseDate.dateTerm = (start, end) => {
     const calenarList = document.querySelectorAll('.calendar__list');
     const target = [].filter.call(calenarList, point => {
-        let [year, month] = [_cal.calendar.getFullYear(), _cal.calendar.getMonth() + 1];
-        const calDate = point.querySelector('.calendar__date');
-        const date = _cal.splitByTwoLetters(calDate.innerText);
-
-        if (_cal.isCurrentMonth(point)) {
-            [year, month] = _cal.chooseDate.redefineDate(year, month, point);
-        }
-
-        const dateString = `${year} / ${_cal.splitByTwoLetters(month)} / ${date}`;
+        const dateString = _cal.chooseDate.redefineDate(point);
 
         return start <= dateString && dateString <= end;
     });
@@ -56,8 +48,9 @@ _cal.chooseDate.notThisMonth = target => {
 
 _cal.chooseDate.chooseDate = target => {
     let listDate = target.querySelector('.calendar__date');
+    const condition = _cal.isCurrentMonth(target) && _cal.isContainMonth();
 
-    if (_cal.isCurrentMonth(target)) {
+    if (condition) {
         _cal.chooseDate.notThisMonth(target);
 
         const calendarDate = document.querySelectorAll('.calendar__date');

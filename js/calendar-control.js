@@ -23,8 +23,11 @@ _cal.calendarControl.wayOfShowing = () => {
         _cal.createCalendar.weeklyCalendar();
     }
 
-    !(_cal.isContainYear()) && _cal.chooseDate.listActivation();
-    !(_cal.calendarType()) && _cal.displayedAList.listByDate();
+    if (!(_cal.isContainYear())) {
+        _cal.chooseDate.listActivation();
+        
+        !(_cal.calendarType()) && _cal.displayedAList.listByDate();
+    }
 }
 
 // CREATE NEXT CALENDAR
@@ -33,19 +36,12 @@ _cal.calendarControl.nextMonth = () => {
 
     if (yearType) {
         _cal.calendar.setFullYear(_cal.calendar.getFullYear() + 1);
-        _cal.calendarControl.wayOfShowing();
-
-        return;
-    }
-
-    if (monthType) {
+    }else if (monthType) {
         _cal.calendar.setMonth(_cal.calendar.getMonth() + 1);
-        _cal.calendarControl.wayOfShowing();
-
-        return;
+    }else {
+        _cal.calendar.setDate(_cal.calendar.getDate() + 7);
     }
-
-    _cal.calendar.setDate(_cal.calendar.getDate() + 7);
+    
     _cal.calendarControl.wayOfShowing();
 }
 
@@ -55,19 +51,12 @@ _cal.calendarControl.lastMonth = () => {
 
     if (yearType) {
         _cal.calendar.setFullYear(_cal.calendar.getFullYear() - 1);
-        _cal.calendarControl.wayOfShowing();
-
-        return;
-    }
-
-    if (monthType) {
+    }else if (monthType) {
         _cal.calendar.setMonth(_cal.calendar.getMonth() - 1);
-        _cal.calendarControl.wayOfShowing();
-
-        return;
+    }else {
+        _cal.calendar.setDate(_cal.calendar.getDate() - 7);
     }
-
-    _cal.calendar.setDate(_cal.calendar.getDate() - 7);
+    
     _cal.calendarControl.wayOfShowing();
 }
 

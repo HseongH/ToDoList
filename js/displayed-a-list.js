@@ -1,19 +1,21 @@
 _cal.createObject('displayedAList');
 
-_cal.displayedAList.toDo = JSON.parse(localStorage.getItem('toDoLists'));
+_cal.displayedAList.toDo = () => {
+    return JSON.parse(localStorage.getItem('toDoLists'));
+};
+
+_cal.displayedAList.modifyList = target => {
+    const id = parseInt(target.parentNode.id);
+    const [toDo] = _cal.displayedAList.toDo().filter(task => task.id === id);
+    console.log(toDo);
+
+    _cal.modify.modifyList(toDo);
+}
 
 _cal.displayedAList.returnDate = () => {
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = [].map.call(calendarList, list => {
-        let [year, month] = [_cal.calendar.getFullYear(), _cal.calendar.getMonth() + 1];
-        const calDate = list.querySelector('.calendar__date');
-        const date = _cal.splitByTwoLetters(calDate.innerText);
-
-        if (_cal.isCurrentMonth(list)) {
-            [year, month] = _cal.chooseDate.redefineDate(year, month, list);
-        }
-
-        const dateString = `${year} / ${_cal.splitByTwoLetters(month)} / ${date}`;
+        const dateString = _cal.chooseDate.redefineDate(list);
 
         return dateString;
     });
@@ -25,7 +27,7 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
     const term = _cal.chooseDate.dateTerm(start, end);
     
     [].forEach.call(term, apply => {
-        const contains = apply.querySelector('list-term');
+        const contains = apply.querySelector('.list-term');
 
         if (contains) return;
 
@@ -38,7 +40,7 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
 _cal.displayedAList.listByDate = () => {
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = _cal.displayedAList.returnDate();
-    const todo = _cal.displayedAList.toDo;
+    const todo = _cal.displayedAList.toDo();
 
     todo.forEach(task => {
         if (task.endDate) {
@@ -62,14 +64,11 @@ _cal.displayedAList.listByDate = () => {
 }
 
 _cal.displayedAList.listDisplay = list => {
-    const year = _cal.calendar.getFullYear();
-    const month = _cal.splitByTwoLetters(_cal.calendar.getMonth() + 1);
-    const date = _cal.splitByTwoLetters(list.querySelector('.calendar__date').innerText);
-    const dateString = `${year} / ${month} / ${date}`;
     const lists = document.querySelectorAll('.todos__list');
+    const dateString = _cal.chooseDate.redefineDate(list);
     
     [].forEach.call(lists, (task, idx) => {
-        const toDo = _cal.displayedAList.toDo[idx];
+        const toDo = _cal.displayedAList.toDo()[idx];
 
         if (toDo.startDate === dateString) {
             task.classList.remove('hide');
@@ -88,7 +87,7 @@ _cal.displayedAList.listDisplay = list => {
 _cal.displayedAList.completeList = target => {
     const comList = target.parentNode;
 
-    const retouch = _cal.displayedAList.toDo.map(task => {
+    const retouch = _cal.displayedAList.toDo().map(task => {
         if (task.id !== parseInt(comList.id)) {
             return task;
         }
@@ -106,7 +105,32 @@ _cal.displayedAList.completeList = target => {
     _cal.saveList(retouch);
 }
 
-_cal.displayedAList.reorderItems = function() {
+_cal.displayedAList.removeListByDate = target => {
+    const calendarList = document.querySelectorAll('.calendar__list');
+    const dateArr = _cal.displayedAList.returnDate();
+    const [todo] = _cal.displayedAList.toDo().filter(task => 
+        task.id === parseInt(target.id)    
+    );
+
+    if (todo.endDate) {
+        const term = _cal.chooseDate.dateTerm(todo.startDate, todo.endDate);
+
+        [].forEach.call(term, apply => {
+            const listTerm = apply.querySelector('.list-term');
+
+            apply.removeChild(listTerm);
+        })
+
+        return;
+    }
+
+    const idx = dateArr.indexOf(todo.startDate);
+    const hasList = calendarList[idx].querySelector('.has-list');
+
+    calendarList[idx].removeChild(hasList);
+}
+
+_cal.displayedAList.reorderItems = () => {
     const lists = document.querySelectorAll('.todos__list');
 
     lists.forEach((list, idx) => {
@@ -116,18 +140,19 @@ _cal.displayedAList.reorderItems = function() {
 
 _cal.displayedAList.removeList = target => {
     const removeTarget = target.parentNode;
-
-    _cal.displayedAList.toDo = _cal.displayedAList.toDo.filter(task => 
+    const toDo = _cal.displayedAList.toDo().filter(task => 
         task.id !== parseInt(removeTarget.id)    
     );
-    _cal.displayedAList.toDo.forEach((task, idx) => {
+    toDo.forEach((task, idx) => {
         task.id = idx;
     });
 
+    _cal.displayedAList.removeListByDate(removeTarget);
     removeTarget.parentNode.removeChild(removeTarget);
-
+    
     _cal.displayedAList.reorderItems();
-    _cal.saveList(_cal.displayedAList.toDo);
+    _cal.saveList(toDo);
+    _cal.displayedAList.listByDate();
 }
 
 _cal.displayedAList.disTask = task => {
@@ -199,8 +224,11 @@ _cal.displayedAList.disTask = task => {
     complete.addEventListener('click', function() {
         _cal.displayedAList.completeList(this);
     });
+    modify.addEventListener('click', function() {
+        _cal.displayedAList.modifyList(this);
+    });
 }
 
-_cal.displayedAList.toDo && _cal.displayedAList.toDo.forEach(task => {
+_cal.displayedAList.toDo() && _cal.displayedAList.toDo().forEach(task => {
     _cal.displayedAList.disTask(task);
 });

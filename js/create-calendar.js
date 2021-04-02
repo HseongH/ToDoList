@@ -29,11 +29,10 @@ _cal.createCalendar.showTheDate = date => {
 
 _cal.createCalendar.createCalendarList = date => {
     const calList = document.createElement('li');
-    const today = new Date;
     
     calList.setAttribute('class', 'calendar__list');
     
-    if (date.toDateString() === today.toDateString()) {
+    if (date.toDateString() === _cal.today.toDateString()) {
         calList.classList.add('sunrise');
         // sunset([calList]);
     }
@@ -51,13 +50,18 @@ _cal.createCalendar.monthSelection = elem => {
 // WEEKLY CALENDAR
 _cal.createCalendar.weeklyCalendar = () => {
     const calendar = _cal.calendar;
-    const week = new Date(calendar.getFullYear(), calendar.getMonth(), _cal.today.getDate() - 3);
+    const week = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
+
+    week.setDate(week.getDate() - week.getDay());
 
     for (let i = 0; i < 7; i++) {
         const calList = _cal.createCalendar.createCalendarList(week);
         const dates = _cal.createCalendar.showTheDate(week);
+        const conditions = week.getMonth() !== calendar.getMonth();
         
         calList.appendChild(dates);
+
+        if (conditions) calList.classList.add('not-this-month');
         
         _cal.calendarArea.appendChild(calList);
         
@@ -80,10 +84,11 @@ _cal.createCalendar.monthlyCalendar = () => {
     for (let i = 0; i < numberOfLists; i++) {
         const calList = _cal.createCalendar.createCalendarList(month);
         const dates = _cal.createCalendar.showTheDate(month);
+        const conditions = [i < firstDay, i >= lastDay + firstDay];
         
         calList.appendChild(dates);
 
-        if (i < firstDay || i >= lastDay + firstDay) {
+        if (conditions.includes(true)) {
             calList.classList.add('not-this-month');
         }
 

@@ -32,3 +32,9 @@ _cal.endTimeSetting.endTimeSetting = target => {
 
     _cal.endTimeSetting.numberOfClick = 0;
 }
+
+// [].forEach.call(_cal.calendarList(), list => {
+//     list.addEventListener('click', function() {
+//         _cal.endTimeSetting.endTimeSetting(this);
+//     })
+// });

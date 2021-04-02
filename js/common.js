@@ -43,6 +43,10 @@ _cal.nodeIndex = elem => {
     return nodeIndex;
 }
 
+_cal.calendarList = () => {
+    return document.querySelectorAll('.calendar__list');
+}
+
 _cal.isContainYear = () => {
     return _cal.calElem.classList.contains('year');
 }
