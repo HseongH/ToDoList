@@ -20,7 +20,7 @@ const _cal = {
 
 // COMMON VARIABLE
 _cal.today = new Date;
-_cal.calendar = new Date;
+_cal.calendar = new Date(_cal.today.getFullYear(), _cal.today.getMonth(), 1);
 
 _cal.calElem = document.querySelector('.calendar');
 _cal.calendarArea = document.querySelector('.calendar-area');

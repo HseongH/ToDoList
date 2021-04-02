@@ -51,7 +51,7 @@ _cal.createCalendar.monthSelection = elem => {
 // WEEKLY CALENDAR
 _cal.createCalendar.weeklyCalendar = () => {
     const calendar = _cal.calendar;
-    const week = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate() - 3);
+    const week = new Date(calendar.getFullYear(), calendar.getMonth(), _cal.today.getDate() - 3);
 
     for (let i = 0; i < 7; i++) {
         const calList = _cal.createCalendar.createCalendarList(week);

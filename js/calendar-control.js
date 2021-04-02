@@ -23,7 +23,7 @@ _cal.calendarControl.wayOfShowing = () => {
         _cal.createCalendar.weeklyCalendar();
     }
 
-    _cal.chooseDate.listActivation();
+    !(_cal.isContainYear()) && _cal.chooseDate.listActivation();
 }
 
 // CREATE NEXT CALENDAR

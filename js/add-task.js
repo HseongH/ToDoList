@@ -1,7 +1,7 @@
 _cal.createObject('enterToDo');
 
 _cal.enterToDo.sortList = task => {
-    const condition = [!(task.time), _cal.tasks.length <= 0, _cal.tasks[_cal.tasks.length - 1].time < task.time];
+    const condition = [!(task.time), _cal.tasks.length <= 0];
 
     if (condition.includes(true)) {
         _cal.tasks.push(task);
@@ -11,11 +11,31 @@ _cal.enterToDo.sortList = task => {
     for (let i = 0; i < _cal.tasks.length; i++) {
         if (!(_cal.tasks[i].time)) {
             _cal.tasks.splice(i, 0, task);
-            break;
+            return;
         }
 
+        const past = task.time.split(':');
+        const current = _cal.tasks[i].time.split(':');
+        const pastMi = past[1].split(' ');
+        const curMi = current[1].split(' ');
+        const pastNoon = pastMi[1] === 'AM' ? 0 : 12;
+        const curNoon = curMi[1] === 'AM' ? 0 : 12;
 
+        const pastHour = past[0] === '12' ? 0 + pastNoon : parseInt(past[0]) + pastNoon;
+        const curHour = current[0] === '12' ? 0 + curNoon : parseInt(current[0]) + curNoon;
+        const pastMinutes = parseInt(pastMi[0]);
+        const curMinutes = parseInt(curMi[0]);
+
+        const pastTime = pastHour + (pastMinutes / 100);
+        const curTime = curHour + (curMinutes / 100);
+
+        if (pastTime < curTime) {
+            _cal.tasks.splice(i, 0, task);
+            return;
+        }
     }
+
+    _cal.tasks.push(task);
 }
 
 _cal.enterToDo.addTasks = () => {
@@ -39,10 +59,10 @@ _cal.enterToDo.addTasks = () => {
 
     const startDate = _cal.addTaskVar.startDate.innerText;
     const endDate = _cal.addTaskVar.endDate.innerText;
-    const hours = _cal.addTaskVar.hours.innerText;
-    const minutes = _cal.addTaskVar.minutes.innerText;
+    const hours = _cal.addTaskVar.hours.querySelector('.selection-time').innerText;
+    const minutes = _cal.addTaskVar.minutes.querySelector('.selection-time');
     const noon = document.querySelector('.current-noon').innerText;
-    const dateString = `${_cal.today.getFullYear()} / ${_cal.splitByTwoLetters(_cal.today.getMonth() + 1)} / ${_cal.today.getDate()}`;
+    const dateString = `${_cal.today.getFullYear()} / ${_cal.splitByTwoLetters(_cal.today.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.today.getDate())}`;
 
     const toDoLists = {
         id: _cal.tasks.length,
@@ -52,7 +72,10 @@ _cal.enterToDo.addTasks = () => {
     }
 
     if (parseInt(endDate)) toDoLists.endDate = endDate;
-    if (parseInt(hours)) toDoLists.time = `${hours}:${minutes} ${noon}`;
+    if (parseInt(hours)) toDoLists.time = `${hours}:${minutes.innerText} ${noon}`;
+
+    _cal.enterToDo.sortList(toDoLists);
+    _cal.saveList(_cal.tasks);
 }
 
 _cal.addTaskVar.submitToDos.onclick = _cal.enterToDo.addTasks;
