@@ -24,6 +24,7 @@ _cal.calendarControl.wayOfShowing = () => {
     }
 
     !(_cal.isContainYear()) && _cal.chooseDate.listActivation();
+    !(_cal.calendarType()) && _cal.displayedAList.listByDate();
 }
 
 // CREATE NEXT CALENDAR

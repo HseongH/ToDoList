@@ -79,11 +79,20 @@ _cal.chooseDate.listActivation = () => {
     [].forEach.call(calendarList, list => {
         list.addEventListener('click', function() {
             _cal.chooseDate.chooseDate(this);
-            _cal.calendarType() && _cal.endTimeSetting.endTimeSetting(this);
+
+            if (_cal.calendarType()) {
+                _cal.endTimeSetting.endTimeSetting(this);
+                return;
+            }
+            
+            _cal.displayedAList.listDisplay(this);
         });
     });
 
-    _cal.calendarType() && _cal.endTimeSetting.selectedDate();
+    if (_cal.calendarType()) {
+        _cal.endTimeSetting.selectedDate();
+        return;
+    }
 }
 
 _cal.chooseDate.listActivation();

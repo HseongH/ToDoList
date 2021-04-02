@@ -59,8 +59,8 @@ _cal.timeSet.hoursActivation = () => {
         return;
     }
 
-    const currentHour = _cal.calendar.getHours() % 12 <= 0 ? 12 :
-    _cal.calendar.getHours() % 12;
+    const currentHour = _cal.today.getHours() % 12 <= 0 ? 12 :
+    _cal.today.getHours() % 12;
 
     _cal.timeSet.timeSetting(_cal.addTaskVar.hours, currentHour);
 

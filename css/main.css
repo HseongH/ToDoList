@@ -199,7 +199,7 @@ header.section .title {
     height: 72px;
     padding: 10px 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     line-height: 1.25;
     cursor: pointer;
@@ -330,7 +330,8 @@ header.section .title {
     padding-left: 30px;
 }
 
-.section--to-do-list .todos .todos__list .todos--delete {
+.section--to-do-list .todos .todos__list .todos--delete,
+.section--to-do-list .todos .todos__list .todos--modify {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -339,7 +340,13 @@ header.section .title {
     color: #aaa;
 }
 
-.section--to-do-list .todos .todos__list .todos--delete:hover {
+.section--to-do-list .todos .todos__list .todos--modify {
+    right: 50px;
+    font-size: 20px;
+}
+
+.section--to-do-list .todos .todos__list .todos--delete:hover,
+.section--to-do-list .todos .todos__list .todos--modify:hover {
     color: #767676;
 }
 
