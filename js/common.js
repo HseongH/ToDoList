@@ -66,3 +66,7 @@ _cal.isCurrentMonth = elem => {
 _cal.saveList = todos => {
     localStorage.setItem('toDoLists', JSON.stringify(todos));
 }
+
+_cal.getToDoList = () => {
+    return JSON.parse(localStorage.getItem('toDoLists'));
+};

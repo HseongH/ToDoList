@@ -1,7 +1,7 @@
 _cal.createObject('enterToDo');
 
 _cal.enterToDo.sortList = task => {
-    const condition = [!(task.time), _cal.tasks.length <= 0];
+    const condition = [!(task.time) && !(task.endDate), _cal.tasks.length <= 0];
 
     if (condition.includes(true)) {
         _cal.tasks.push(task);
@@ -9,7 +9,9 @@ _cal.enterToDo.sortList = task => {
     }
 
     for (let i = 0; i < _cal.tasks.length; i++) {
-        if (!(_cal.tasks[i].time)) {
+        const condition = [Boolean(_cal.tasks[i].time), _cal.tasks[i].endDate <= task.endDate];
+
+        if (condition.includes(false)) {
             _cal.tasks.splice(i, 0, task);
             return;
         }

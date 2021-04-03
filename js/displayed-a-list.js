@@ -1,15 +1,9 @@
 _cal.createObject('displayedAList');
 
-_cal.displayedAList.toDo = () => {
-    return JSON.parse(localStorage.getItem('toDoLists'));
-};
-
 _cal.displayedAList.modifyList = target => {
-    const id = parseInt(target.parentNode.id);
-    const [toDo] = _cal.displayedAList.toDo().filter(task => task.id === id);
-    console.log(toDo);
+    const id = target.parentNode.id;
 
-    _cal.modify.modifyList(toDo);
+    location.href = `addTask.html?${id}`;
 }
 
 _cal.displayedAList.returnDate = () => {
@@ -40,7 +34,7 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
 _cal.displayedAList.listByDate = () => {
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = _cal.displayedAList.returnDate();
-    const todo = _cal.displayedAList.toDo();
+    const todo = _cal.getToDoList();
 
     todo.forEach(task => {
         if (task.endDate) {
@@ -68,7 +62,7 @@ _cal.displayedAList.listDisplay = list => {
     const dateString = _cal.chooseDate.redefineDate(list);
     
     [].forEach.call(lists, (task, idx) => {
-        const toDo = _cal.displayedAList.toDo()[idx];
+        const toDo = _cal.getToDoList()[idx];
 
         if (toDo.startDate === dateString) {
             task.classList.remove('hide');
@@ -87,7 +81,7 @@ _cal.displayedAList.listDisplay = list => {
 _cal.displayedAList.completeList = target => {
     const comList = target.parentNode;
 
-    const retouch = _cal.displayedAList.toDo().map(task => {
+    const retouch = _cal.getToDoList().map(task => {
         if (task.id !== parseInt(comList.id)) {
             return task;
         }
@@ -108,7 +102,7 @@ _cal.displayedAList.completeList = target => {
 _cal.displayedAList.removeListByDate = target => {
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = _cal.displayedAList.returnDate();
-    const [todo] = _cal.displayedAList.toDo().filter(task => 
+    const [todo] = _cal.getToDoList().filter(task => 
         task.id === parseInt(target.id)    
     );
 
@@ -140,7 +134,7 @@ _cal.displayedAList.reorderItems = () => {
 
 _cal.displayedAList.removeList = target => {
     const removeTarget = target.parentNode;
-    const toDo = _cal.displayedAList.toDo().filter(task => 
+    const toDo = _cal.getToDoList().filter(task => 
         task.id !== parseInt(removeTarget.id)    
     );
     toDo.forEach((task, idx) => {
@@ -156,7 +150,7 @@ _cal.displayedAList.removeList = target => {
 }
 
 _cal.displayedAList.disTask = task => {
-    const todayString = `${_cal.today.getFullYear()} / ${_cal.splitByTwoLetters(_cal.today.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.today.getDate())}`;
+    const todayString = `${_cal.calendar.getFullYear()} / ${_cal.splitByTwoLetters(_cal.calendar.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.calendar.getDate())}`;
 
     const area = document.querySelector('.todos');
     const doLists = document.createElement('li');
@@ -229,6 +223,6 @@ _cal.displayedAList.disTask = task => {
     });
 }
 
-_cal.displayedAList.toDo() && _cal.displayedAList.toDo().forEach(task => {
+_cal.getToDoList() && _cal.getToDoList().forEach(task => {
     _cal.displayedAList.disTask(task);
 });
