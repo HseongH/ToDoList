@@ -5,7 +5,7 @@ _cal.displayedAList.modifyList = target => {
 
     _cal.calendarInitial.id = id;
 
-    localStorage.setItem('dateSet', JSON.stringify(_cal.calendarInitial));
+    _cal.sendLink.sendAsTask();
 
     location.href = 'addTask.html';
 }
@@ -158,6 +158,9 @@ _cal.displayedAList.removeList = target => {
 
 _cal.displayedAList.disTask = task => {
     const todayString = `${_cal.calendar.getFullYear()} / ${_cal.splitByTwoLetters(_cal.calendar.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.calendar.getDate())}`;
+    const showCondition = task.endDate ? 
+    task.startDate <= todayString && todayString <= task.endDate : 
+    task.startDate === todayString;
 
     const area = document.querySelector('.todos');
     const doLists = document.createElement('li');
@@ -173,7 +176,7 @@ _cal.displayedAList.disTask = task => {
 
     doLists.id = task.id;
     doLists.setAttribute('class', 'todos__list');
-    task.startDate !== todayString && doLists.classList.add('hide');
+    !(showCondition) && doLists.classList.add('hide');
     task.complete && doLists.classList.add('complete');
 
     complete.setAttribute('class', 'todos--complete');
@@ -233,3 +236,5 @@ _cal.displayedAList.disTask = task => {
 _cal.getToDoList() && _cal.getToDoList().forEach(task => {
     _cal.displayedAList.disTask(task);
 });
+
+_cal.indexVar.addToDos.addEventListener('click', _cal.sendLink.sendAsTask);

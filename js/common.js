@@ -1,5 +1,7 @@
 // COMMON FUNCTION
 _cal.initialCalendarValue = () => {
+    _cal.calendarInitial = _cal.dateSet;
+
     _cal.calendar.setFullYear(_cal.dateSet.year);
     _cal.calendar.setMonth(_cal.dateSet.month);
     _cal.calendar.setDate(_cal.dateSet.date);

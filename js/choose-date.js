@@ -49,12 +49,12 @@ _cal.chooseDate.chooseDate = target => {
     _cal.calendarInitial.month = parseInt(date[1]) - 1;
     _cal.calendarInitial.date = date[2];
 
+    console.log(_cal.calendarInitial);
+
     sib && [].forEach.call(sib, sib => {
         sib.classList.remove('select-list');
     });
     listDate.classList.add('select-list');
-    
-    localStorage.setItem('dateSet', JSON.stringify(_cal.calendarInitial));
 }
 
 _cal.chooseDate.listActivation = () => {

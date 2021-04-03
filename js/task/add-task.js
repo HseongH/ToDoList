@@ -78,7 +78,7 @@ _cal.enterToDo.addTasks = () => {
 
     _cal.enterToDo.sortList(toDoLists);
     _cal.saveList(_cal.tasks);
-    _cal.enterToDo.sendAsIndex();
+    _cal.sendLink.sendAsTask();
 }
 
 _cal.addTaskVar.submitToDos.onclick = _cal.enterToDo.addTasks;
