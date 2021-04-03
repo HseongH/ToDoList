@@ -40,6 +40,12 @@ _cal.enterToDo.sortList = task => {
     _cal.tasks.push(task);
 }
 
+_cal.enterToDo.sendAsIndex = () => {
+    const date = document.querySelector('.select-list').innerText;
+
+    _cal.addTaskVar.submitToDos.href = `index.html?year=${_cal.calendar.getFullYear()}&month=${_cal.calendar.getMonth()}&date=${date}`;
+}
+
 _cal.enterToDo.addTasks = () => {
     const titleInput = document.getElementById('title-input');
     const desInput = document.getElementById('description-input');
@@ -78,6 +84,7 @@ _cal.enterToDo.addTasks = () => {
 
     _cal.enterToDo.sortList(toDoLists);
     _cal.saveList(_cal.tasks);
+    _cal.enterToDo.sendAsIndex();
 }
 
 _cal.addTaskVar.submitToDos.onclick = _cal.enterToDo.addTasks;

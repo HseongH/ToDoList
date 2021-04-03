@@ -22,7 +22,7 @@ _cal.timeSet.enterTimes = (elem, input, ori) => {
 
         _cal.timeSet.timeSetting(area, currentHour);
         _cal.timeSet.minutesActivation(area);
-        _cal.timeSet.AMOrPM();
+        _cal.timeSet.AMOrPM(_cal.calendar);
         
         return;
     }

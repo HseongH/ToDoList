@@ -1,6 +1,7 @@
 _cal.createObject('endTimeSetting');
 
-_cal.endTimeSetting.numberOfClick = 0;
+_cal.endTimeSetting.numberOfClick = 1;
+_cal.addTaskVar.startDate.innerText = _cal.fullDate;
 
 _cal.endTimeSetting.selectedDate = () => {
     const term = _cal.chooseDate.dateTerm(_cal.addTaskVar.startDate.innerText, _cal.addTaskVar.endDate.innerText);
@@ -29,9 +30,3 @@ _cal.endTimeSetting.endTimeSetting = target => {
 
     _cal.endTimeSetting.numberOfClick = 0;
 }
-
-// [].forEach.call(_cal.calendarList(), list => {
-//     list.addEventListener('click', function() {
-//         _cal.endTimeSetting.endTimeSetting(this);
-//     })
-// });

@@ -324,7 +324,6 @@ header.section .title {
 .section--to-do-list .todos .todos__list .task .task__description,
 .section--to-do-list .todos .todos__list .task .task__time,
 .section--to-do-list .todos .todos__list .task .task__end-date {
-    color: #888;
     font-size: 14px;
     margin-top: 15px;
     padding-left: 30px;

@@ -1,9 +1,9 @@
 _cal.createObject('modify');
 
 _cal.modify.modifyList = () => {
-    const getId = location.search.substring(1);
-    const [toDo] = _cal.getToDoList().filter(task => task.id === parseInt(getId));
-    const modifyToDo = _cal.getToDoList().filter(task => task.id !== parseInt(getId));
+    const getId = parseInt(_cal.calFullDate.id);
+    const [toDo] = _cal.getToDoList().filter(task => task.id === getId);
+    const modifyToDo = _cal.getToDoList().filter(task => task.id !== getId);
     const title = document.getElementById('title-input');
     const description = document.getElementById('description-input');
     const startDate = _cal.addTaskVar.startDate;
@@ -11,6 +11,7 @@ _cal.modify.modifyList = () => {
     title.value = toDo.title;
     description.value = toDo.description;
     startDate.innerText = decodeURI(toDo.startDate);
+    _cal.fullDate = decodeURI(toDo.startDate);
 
     if (toDo.endDate) {
         const endDate = _cal.addTaskVar.endDate;
@@ -31,4 +32,4 @@ _cal.modify.modifyList = () => {
     _cal.tasks = modifyToDo;
 }
 
-location.search && _cal.modify.modifyList();
+_cal.calFullDate.id && _cal.modify.modifyList();

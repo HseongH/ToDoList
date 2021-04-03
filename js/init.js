@@ -15,12 +15,33 @@ const _cal = {
         }
 
         return parent;
+    },
+
+    createDateObject: () => {
+        const url = location.search.substring(1);
+
+        if (!url) return false;
+
+        const dateArr = url.split('&');
+        const dateObj = {};
+
+        for (let i = 0; i < dateArr.length; i++) {
+            const item = dateArr[i].split('=');
+            dateObj[item[0]] = decodeURIComponent(item[1]);
+        }
+
+        return dateObj;
     }
 };
 
 // COMMON VARIABLE
+_cal.calFullDate = _cal.createDateObject();
 _cal.today = new Date;
-_cal.calendar = new Date;
+_cal.calendar = _cal.calFullDate ? new Date(
+    _cal.calFullDate.year,
+    _cal.calFullDate.month,
+    _cal.calFullDate.date
+) : new Date;
 
 _cal.calElem = document.querySelector('.calendar');
 _cal.calendarArea = document.querySelector('.calendar-area');

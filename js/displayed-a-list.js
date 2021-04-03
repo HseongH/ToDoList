@@ -2,8 +2,9 @@ _cal.createObject('displayedAList');
 
 _cal.displayedAList.modifyList = target => {
     const id = target.parentNode.id;
+    const date = document.querySelector('.select-list').innerText;
 
-    location.href = `addTask.html?${id}`;
+    location.href = `addTask.html?year=${_cal.calendar.getFullYear()}&month=${_cal.calendar.getMonth()}&date=${date}&id=${id}`;
 }
 
 _cal.displayedAList.returnDate = () => {

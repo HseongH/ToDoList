@@ -42,10 +42,10 @@ _cal.timeSet.timeSetting = (target, time) => {
     }
 }
 
-_cal.timeSet.AMOrPM = () => {
+_cal.timeSet.AMOrPM = hour => {
     const currentNoon = document.querySelector('.current-noon');
-
-    if (_cal.calendar.getHours() >= 12) {
+    
+    if (hour.getHours() >= 12) {
         if (currentNoon.innerText === 'PM') return;
         _cal.timeSet.settingAMPM();
     } else {
@@ -58,13 +58,13 @@ _cal.timeSet.hoursActivation = () => {
     if (_cal.addTaskVar.hours.querySelector('.selection-time').innerText !== '--') {
         return;
     }
-
+    
     const currentHour = _cal.today.getHours() % 12 <= 0 ? 12 :
     _cal.today.getHours() % 12;
 
     _cal.timeSet.timeSetting(_cal.addTaskVar.hours, currentHour);
 
-    _cal.timeSet.AMOrPM();
+    _cal.timeSet.AMOrPM(_cal.today);
 }
 
 _cal.timeSet.minutesActivation = target => {
