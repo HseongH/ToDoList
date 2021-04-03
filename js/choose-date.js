@@ -3,16 +3,20 @@ _cal.createObject('chooseDate');
 _cal.chooseDate.redefineDate = target => {
     let [year, month] = [_cal.calendar.getFullYear(), _cal.calendar.getMonth() + 1];
     const date = target.querySelector('.calendar__date').innerText;
-    const firstDay = new Date(_cal.calendar.getFullYear(), _cal.calendar.getMonth(), 1).getDay();
+    const firstDay = new Date(_cal.calendar.getFullYear(), _cal.calendar.getMonth()).getDay();
     const index = _cal.nodeIndex(target);
 
-    if (_cal.isCurrentMonth(target) && index < firstDay) {
+    if (!(_cal.isCurrentMonth(target))) {
+        return `${year} / ${_cal.splitByTwoLetters(month)} / ${_cal.splitByTwoLetters(date)}`;
+    }
+
+    if (index < firstDay) {
         month--;
         if (month < 1) {
             month = 12;
             year--;
         }
-    } else if (_cal.isCurrentMonth(target) && index > firstDay) {
+    } else {
         month++;
         if (month > 12) {
             month = 1;
@@ -35,16 +39,22 @@ _cal.chooseDate.dateTerm = (start, end) => {
 }
 
 _cal.chooseDate.chooseDate = target => {
-    let listDate = target.querySelector('.calendar__date');
-
-    _cal.fullDate = _cal.chooseDate.redefineDate(target);
-
+    const listDate = target.querySelector('.calendar__date');
     const sib = document.querySelectorAll('.select-list');
+
+    const dateString = _cal.chooseDate.redefineDate(target);
+    const date = dateString.split(' / ');
+
+    _cal.calendarInitial.year = date[0];
+    _cal.calendarInitial.month = parseInt(date[1]) - 1;
+    _cal.calendarInitial.date = date[2];
 
     sib && [].forEach.call(sib, sib => {
         sib.classList.remove('select-list');
     });
     listDate.classList.add('select-list');
+    
+    localStorage.setItem('dateSet', JSON.stringify(_cal.calendarInitial));
 }
 
 _cal.chooseDate.listActivation = () => {
@@ -65,7 +75,6 @@ _cal.chooseDate.listActivation = () => {
 
     if (_cal.calendarType()) {
         _cal.endTimeSetting.selectedDate();
-        return;
     }
 }
 

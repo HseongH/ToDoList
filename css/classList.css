@@ -9,7 +9,7 @@
 }
 
 /* NOT THIS MONTH */
-.not-this-month {
+.calendar.month .not-this-month {
     color: #ccc;
 }
 

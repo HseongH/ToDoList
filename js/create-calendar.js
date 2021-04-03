@@ -57,10 +57,11 @@ _cal.createCalendar.monthSelection = elem => {
 _cal.createCalendar.weeklyCalendar = () => {
     const calendar = _cal.calendar;
     const week = new Date(calendar.getFullYear(), calendar.getMonth(), calendar.getDate());
+    const numberOfLists = 7;
 
     week.setDate(week.getDate() - week.getDay());
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < numberOfLists; i++) {
         const calList = _cal.createCalendar.createCalendarList(week);
         const dates = _cal.createCalendar.showTheDate(week);
         const conditions = week.getMonth() !== calendar.getMonth();

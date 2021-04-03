@@ -1,18 +1,16 @@
 // COMMON FUNCTION
+_cal.initialCalendarValue = () => {
+    _cal.calendar.setFullYear(_cal.dateSet.year);
+    _cal.calendar.setMonth(_cal.dateSet.month);
+    _cal.calendar.setDate(_cal.dateSet.date);
+
+    localStorage.removeItem('dateSet');
+}
+
 _cal.splitByTwoLetters = str => {
     return `${str}`.length >= 2 ? `${str}` : `0${str}`;
 }
 
-// _cal.findSiblings = elem => {
-//     const parent = elem.parentNode;
-//     const className = elem.getAttribute('class');
-//     const apply = className ? parent.querySelectorAll(`.${className}`) : parent.children;
-//     const siblings = [].filter.call(apply, el => {
-//         return el !== elem;
-//     });
-
-//     return siblings;
-// }
 _cal.findSiblings = elem => {
     const siblings = [];
     let sib = elem.parentNode.firstChild;
@@ -43,10 +41,6 @@ _cal.nodeIndex = elem => {
     return nodeIndex;
 }
 
-_cal.calendarList = () => {
-    return document.querySelectorAll('.calendar__list');
-}
-
 _cal.isContainYear = () => {
     return _cal.calElem.classList.contains('year');
 }
@@ -70,5 +64,7 @@ _cal.saveList = todos => {
 _cal.getToDoList = () => {
     return JSON.parse(localStorage.getItem('toDoLists'));
 }
+
+_cal.dateSet.year && _cal.initialCalendarValue();
 
 _cal.fullDate = `${_cal.calendar.getFullYear()} / ${_cal.splitByTwoLetters(_cal.calendar.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.calendar.getDate())}`;

@@ -15,33 +15,16 @@ const _cal = {
         }
 
         return parent;
-    },
-
-    createDateObject: () => {
-        const url = location.search.substring(1);
-
-        if (!url) return false;
-
-        const dateArr = url.split('&');
-        const dateObj = {};
-
-        for (let i = 0; i < dateArr.length; i++) {
-            const item = dateArr[i].split('=');
-            dateObj[item[0]] = decodeURIComponent(item[1]);
-        }
-
-        return dateObj;
     }
 };
 
 // COMMON VARIABLE
-_cal.calFullDate = _cal.createDateObject();
+_cal.tasks = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem('toDoLists')) : [];
+_cal.dateSet = localStorage.getItem('dateSet') ? JSON.parse(localStorage.getItem('dateSet')) : [];
+_cal.calendarInitial = {}
+
 _cal.today = new Date;
-_cal.calendar = _cal.calFullDate ? new Date(
-    _cal.calFullDate.year,
-    _cal.calFullDate.month,
-    _cal.calFullDate.date
-) : new Date;
+_cal.calendar = new Date;
 
 _cal.calElem = document.querySelector('.calendar');
 _cal.calendarArea = document.querySelector('.calendar-area');
@@ -51,8 +34,6 @@ _cal.selectMonth = document.querySelector('.select-month');
 _cal.selectToday = document.querySelector('.select-today');
 _cal.arrowLeft = document.querySelector('.arrow--left');
 _cal.arrowRight = document.querySelector('.arrow--right');
-
-_cal.tasks = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem('toDoLists')) : [];
 
 // INDEX.HTML VARIABLE
 _cal.createObject('indexVar');

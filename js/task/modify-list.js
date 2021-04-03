@@ -1,7 +1,7 @@
 _cal.createObject('modify');
 
 _cal.modify.modifyList = () => {
-    const getId = parseInt(_cal.calFullDate.id);
+    const getId = parseInt(_cal.dateSet.id);
     const [toDo] = _cal.getToDoList().filter(task => task.id === getId);
     const modifyToDo = _cal.getToDoList().filter(task => task.id !== getId);
     const title = document.getElementById('title-input');
@@ -32,4 +32,4 @@ _cal.modify.modifyList = () => {
     _cal.tasks = modifyToDo;
 }
 
-_cal.calFullDate.id && _cal.modify.modifyList();
+_cal.dateSet.id && _cal.modify.modifyList();

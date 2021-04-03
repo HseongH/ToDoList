@@ -2,9 +2,12 @@ _cal.createObject('displayedAList');
 
 _cal.displayedAList.modifyList = target => {
     const id = target.parentNode.id;
-    const date = document.querySelector('.select-list').innerText;
 
-    location.href = `addTask.html?year=${_cal.calendar.getFullYear()}&month=${_cal.calendar.getMonth()}&date=${date}&id=${id}`;
+    _cal.calendarInitial.id = id;
+
+    localStorage.setItem('dateSet', JSON.stringify(_cal.calendarInitial));
+
+    location.href = 'addTask.html';
 }
 
 _cal.displayedAList.returnDate = () => {
@@ -33,9 +36,12 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
 }
 
 _cal.displayedAList.listByDate = () => {
+    const todo = _cal.getToDoList();
+
+    if (!todo) return;
+
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = _cal.displayedAList.returnDate();
-    const todo = _cal.getToDoList();
 
     todo.forEach(task => {
         if (task.endDate) {

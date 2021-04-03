@@ -17,17 +17,18 @@ _cal.calendarControl.wayOfShowing = () => {
 
     if (yearType) {
         _cal.createCalendar.yearlyCalendar();
-    }else if (monthType) {
+        return;
+    }
+    
+    if (monthType) {
         _cal.createCalendar.monthlyCalendar();
     }else {
         _cal.createCalendar.weeklyCalendar();
     }
-
-    if (!(_cal.isContainYear())) {
-        _cal.chooseDate.listActivation();
+    
+    _cal.chooseDate.listActivation();
         
-        !(_cal.calendarType()) && _cal.displayedAList.listByDate();
-    }
+    !(_cal.calendarType()) && _cal.displayedAList.listByDate();
 }
 
 // CREATE NEXT CALENDAR
