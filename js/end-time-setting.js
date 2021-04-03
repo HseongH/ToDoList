@@ -11,10 +11,7 @@ _cal.endTimeSetting.selectedDate = () => {
 }
 
 _cal.endTimeSetting.endTimeSetting = target => {
-    const year = _cal.calendar.getFullYear();
-    const month = _cal.calendar.getMonth() + 1;
-    const date = _cal.splitByTwoLetters(target.querySelector('.calendar__date').innerText);
-    const dateString = `${year} / ${_cal.splitByTwoLetters(month)} / ${date}`;
+    const dateString = _cal.chooseDate.redefineDate(target);
     
     if (_cal.endTimeSetting.numberOfClick <= 0 || dateString <= _cal.addTaskVar.startDate.innerText) {
         _cal.addTaskVar.startDate.innerText = dateString;

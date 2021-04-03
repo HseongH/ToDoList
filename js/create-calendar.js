@@ -20,8 +20,14 @@ _cal.createCalendar.printANewCalendar = () => {
 
 _cal.createCalendar.showTheDate = date => {
     const dateCon = document.createElement('div');
+    const dateString = `${date.getFullYear()} / ${_cal.splitByTwoLetters(date.getMonth() + 1)} / ${_cal.splitByTwoLetters(date.getDate())}`;
 
     dateCon.setAttribute('class', 'calendar__date');
+    
+    if (dateString === _cal.fullDate) {
+        dateCon.classList.add('select-list');
+    }
+
     dateCon.innerText = date.getDate();
 
     return dateCon;

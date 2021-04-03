@@ -1,6 +1,6 @@
 _cal.createObject('chooseDate');
 
-_cal.chooseDate.redefineDate = (target) => {
+_cal.chooseDate.redefineDate = target => {
     let [year, month] = [_cal.calendar.getFullYear(), _cal.calendar.getMonth() + 1];
     const date = target.querySelector('.calendar__date').innerText;
     const firstDay = new Date(_cal.calendar.getFullYear(), _cal.calendar.getMonth(), 1).getDay();
@@ -34,29 +34,10 @@ _cal.chooseDate.dateTerm = (start, end) => {
     return target;
 }
 
-_cal.chooseDate.notThisMonth = target => {
-    const firstDay = new Date(_cal.calendar.getFullYear(), _cal.calendar.getMonth(), 1).getDay();
-    const index = _cal.nodeIndex(target);
-
-    if (index < firstDay) {
-        _cal.calendarControl.lastMonth();
-        return;
-    }
-
-    _cal.calendarControl.nextMonth();
-}
-
 _cal.chooseDate.chooseDate = target => {
     let listDate = target.querySelector('.calendar__date');
-    const condition = _cal.isCurrentMonth(target) && _cal.isContainMonth();
 
-    if (condition) {
-        _cal.chooseDate.notThisMonth(target);
-
-        const calendarDate = document.querySelectorAll('.calendar__date');
-
-        [listDate] = [].filter.call(calendarDate, date => date.innerText === listDate.innerText && !(_cal.isCurrentMonth(date.parentNode)));
-    }
+    _cal.fullDate = _cal.chooseDate.redefineDate(target);
 
     const sib = document.querySelectorAll('.select-list');
 

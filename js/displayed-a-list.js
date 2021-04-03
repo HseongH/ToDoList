@@ -27,7 +27,7 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
 
         const listTerm = document.createElement('div');
         listTerm.setAttribute('class', 'list-term');
-        apply.appendChild(listTerm);
+        apply.insertBefore(listTerm, apply.children[1]);
     })
 }
 

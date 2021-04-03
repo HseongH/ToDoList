@@ -1,6 +1,6 @@
 // COMMON FUNCTION
 _cal.splitByTwoLetters = str => {
-    return `${str}`.length >= 2 ? str : `0${str}`;
+    return `${str}`.length >= 2 ? `${str}` : `0${str}`;
 }
 
 // _cal.findSiblings = elem => {
@@ -69,4 +69,6 @@ _cal.saveList = todos => {
 
 _cal.getToDoList = () => {
     return JSON.parse(localStorage.getItem('toDoLists'));
-};
+}
+
+_cal.fullDate = `${_cal.calendar.getFullYear()} / ${_cal.splitByTwoLetters(_cal.calendar.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.calendar.getDate())}`;
