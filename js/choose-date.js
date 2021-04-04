@@ -53,8 +53,10 @@ _cal.chooseDate.chooseDate = target => {
 
     sib && [].forEach.call(sib, sib => {
         sib.classList.remove('select-list');
+        sib.classList.remove('select-sunset');
     });
     listDate.classList.add('select-list');
+    _cal.colorChange.selectOverTime(listDate);
 }
 
 _cal.chooseDate.listActivation = () => {

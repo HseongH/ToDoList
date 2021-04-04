@@ -7,7 +7,10 @@ _cal.endTimeSetting.selectedDate = () => {
     const term = _cal.chooseDate.dateTerm(_cal.addTaskVar.startDate.innerText, _cal.addTaskVar.endDate.innerText);
 
     [].forEach.call(term, elem => {
-        elem.querySelector('.calendar__date').classList.add('select-list');
+        const select = elem.querySelector('.calendar__date');
+
+        select.classList.add('select-list');
+        _cal.colorChange.selectOverTime(select);
     });
 }
 

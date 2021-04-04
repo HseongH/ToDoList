@@ -24,6 +24,7 @@ _cal.dateSet = localStorage.getItem('dateSet') ? JSON.parse(localStorage.getItem
 _cal.calendarInitial = {}
 
 _cal.today = new Date;
+_cal.today.setHours(18);
 _cal.calendar = new Date;
 
 _cal.calElem = document.querySelector('.calendar');

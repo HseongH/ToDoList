@@ -26,6 +26,7 @@ _cal.createCalendar.showTheDate = date => {
     
     if (dateString === _cal.fullDate) {
         dateCon.classList.add('select-list');
+        _cal.colorChange.selectOverTime(dateCon);
     }
 
     dateCon.innerText = date.getDate();
@@ -40,7 +41,7 @@ _cal.createCalendar.createCalendarList = date => {
     
     if (date.toDateString() === _cal.today.toDateString()) {
         calList.classList.add('sunrise');
-        // sunset([calList]);
+        _cal.colorChange.overTime(calList);
     }
 
     return calList;
@@ -121,6 +122,7 @@ _cal.createCalendar.yearlyCalendar = () => {
 
         if (year.getMonth() === _cal.calendar.getMonth()) {
             calList.classList.add('select-list');
+            _cal.colorChange.selectOverTime(calList);
         }
 
         calList.addEventListener('click', () => {
