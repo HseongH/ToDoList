@@ -25,3 +25,13 @@
 .calendar__list {
     width: 14.285%;
 }
+
+.section--to-do-list .to-do__control button {
+    font-size: 10px;
+    padding: 3px;
+    margin-right: 5px;
+}
+
+.section--to-do-list .to-do__control button:first-child {
+    margin-right: 8px;
+}

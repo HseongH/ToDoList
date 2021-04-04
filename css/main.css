@@ -353,6 +353,33 @@ header.section .title {
     outline: none;
 }
 
+.section--to-do-list .to-do__control {
+    display: flex;
+    margin-top: 30px;
+}
+
+.section--to-do-list .to-do__control button {
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    color: #888;
+    border-radius: 7px;
+    margin-right: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.section--to-do-list .to-do__control button:first-child {
+    margin-right: 15px;
+}
+
+.section--to-do-list .to-do__control button:last-child {
+    margin-right: 0;
+}
+
+.section--to-do-list .to-do__control button:hover {
+    background: #e5e5e5;
+}
+
 .section--to-do-list .add-to-dos {
     width: 150px;
     height: 50px;
@@ -360,7 +387,7 @@ header.section .title {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 30px auto 0;
+    margin: 10px auto 0;
     text-decoration: none;
 }
 

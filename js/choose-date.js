@@ -44,7 +44,7 @@ _cal.chooseDate.chooseDate = target => {
     const listDate = target.querySelector('.calendar__date');
     const sib = document.querySelectorAll('.select-list');
 
-    const dateString = _cal.chooseDate.redefineDate(target);
+    const dateString = _cal.fullDate;
     const date = dateString.split(' / ');
 
     _cal.calendarInitial.year = date[0];
