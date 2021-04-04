@@ -106,11 +106,13 @@ _cal.displayedAList.completeList = target => {
     _cal.saveList(retouch);
 }
 
-_cal.displayedAList.removeListByDate = target => {
-    const calendarList = document.querySelectorAll('.calendar__list');
-    const dateArr = _cal.displayedAList.returnDate();
+_cal.displayedAList.removeListByDate = id => {
+    const selectList = document.querySelector('.select-list');
+
+    if (!selectList) return;
+
     const [todo] = _cal.getToDoList().filter(task => 
-        task.id === parseInt(target.id)    
+        task.id === id
     );
 
     if (todo.endDate) {
@@ -125,10 +127,10 @@ _cal.displayedAList.removeListByDate = target => {
         return;
     }
 
-    const idx = dateArr.indexOf(todo.startDate);
-    const hasList = calendarList[idx].querySelector('.has-list');
+    const calendarList = selectList.parentNode;
+    const hasList = calendarList.querySelector('.has-list');
 
-    calendarList[idx].removeChild(hasList);
+    calendarList.removeChild(hasList);
 }
 
 _cal.displayedAList.reorderItems = () => {
@@ -136,19 +138,20 @@ _cal.displayedAList.reorderItems = () => {
 
     lists.forEach((list, idx) => {
         list.id = idx;
-    })
+    });
 }
 
 _cal.displayedAList.removeList = target => {
     const removeTarget = target.parentNode;
+    const id = parseInt(removeTarget.id);
     const toDo = _cal.getToDoList().filter(task => 
-        task.id !== parseInt(removeTarget.id)    
+        task.id !== id     
     );
     toDo.forEach((task, idx) => {
         task.id = idx;
     });
 
-    _cal.displayedAList.removeListByDate(removeTarget);
+    _cal.displayedAList.removeListByDate(id);
     removeTarget.parentNode.removeChild(removeTarget);
     
     _cal.displayedAList.reorderItems();
@@ -157,7 +160,7 @@ _cal.displayedAList.removeList = target => {
 }
 
 _cal.displayedAList.disTask = task => {
-    const todayString = `${_cal.calendar.getFullYear()} / ${_cal.splitByTwoLetters(_cal.calendar.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.calendar.getDate())}`;
+    const todayString = _cal.fullDate;
     const showCondition = task.endDate ? 
     task.startDate <= todayString && todayString <= task.endDate : 
     task.startDate === todayString;
@@ -166,6 +169,7 @@ _cal.displayedAList.disTask = task => {
     const doLists = document.createElement('li');
     const complete = document.createElement('button');
     const comBtn = document.createElement('div');
+    const date = document.createElement('div');
 
     const todo = document.createElement('div');
     const title = document.createElement('h3');
@@ -186,15 +190,16 @@ _cal.displayedAList.disTask = task => {
     todo.setAttribute('class', 'task');
     title.setAttribute('class', 'task__title');
     des.setAttribute('class', 'task__description');
+    date.setAttribute('class', 'task__date');
 
     modify.setAttribute('class', 'todos--modify');
     modify.classList.add('btn');
-
     delBtn.setAttribute('class', 'todos--delete');
     delBtn.classList.add('btn');
 
     title.innerText = task.title;
     des.innerText = task.description;
+    date.innerText = task.startDate;
     modify.innerText = '✏';
     delBtn.innerText = '×';
 
@@ -209,12 +214,10 @@ _cal.displayedAList.disTask = task => {
     }
 
     if (task.endDate) {
-        const term = document.createElement('div');
-        term.setAttribute('class', 'task__end-date');
-        term.innerText = task.endDate;
-        todo.appendChild(term);
+        date.innerText = `${task.startDate} ~ ${task.endDate}`;
     }
 
+    todo.appendChild(date);
     doLists.appendChild(complete);
     doLists.appendChild(todo);
     doLists.appendChild(modify);

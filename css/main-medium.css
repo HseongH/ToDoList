@@ -37,7 +37,7 @@
 
 .section--to-do-list .todos .todos__list .task .task__description,
 .section--to-do-list .todos .todos__list .task .task__time,
-.section--to-do-list .todos .todos__list .task .task__end-date {
+.section--to-do-list .todos .todos__list .task .task__date {
     font-size: 12px;
     margin-top: 10px;
 }

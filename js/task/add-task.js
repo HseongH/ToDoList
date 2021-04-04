@@ -1,48 +1,68 @@
 _cal.createObject('enterToDo');
 
 _cal.enterToDo.sortList = task => {
-    const condition = [!(task.time) && !(task.endDate), _cal.tasks.length <= 0];
+    const toDo = _cal.tasks;
 
-    if (condition.includes(true)) {
-        _cal.tasks.push(task);
+    if (toDo.length <= 0) {
+        toDo.push(task);
         return;
     }
 
-    for (let i = 0; i < _cal.tasks.length; i++) {
-        const condition = [Boolean(_cal.tasks[i].time), _cal.tasks[i].endDate <= task.endDate];
+    const lastList = toDo[toDo.length - 1];
+    const pushCondition = [
+        Boolean(
+            lastList.startDate === task.startDate &&
+            (!(lastList.endDate) && task.endDate)
+        ),
+        (lastList.startDate === task.startDate &&
+        lastList.endDate < task.endDate),
+        lastList.startDate < task.startDate
+    ];
 
-        if (condition.includes(false)) {
-            _cal.tasks.splice(i, 0, task);
+    if (pushCondition.includes(true)) {
+        toDo.push(task);
+        return;
+    }
+
+    for (let i = 0; i < toDo.length; i++) {
+        if (toDo[i].startDate > task.startDate) {
+            toDo.splice(i, 0, task);
             return;
         }
 
-        const past = task.time.split(':');
-        const current = _cal.tasks[i].time.split(':');
-        const pastMi = past[1].split(' ');
-        const curMi = current[1].split(' ');
-        const pastNoon = pastMi[1] === 'AM' ? 0 : 12;
-        const curNoon = curMi[1] === 'AM' ? 0 : 12;
+        if (toDo[i].startDate === task.startDate) {
+            const condition = [
+                Boolean(toDo[i].endDate && !(task.endDate)),
+                toDo[i].endDate > task.endDate,
+                Boolean(toDo[i].endDate === task.endDate &&
+                (!(toDo.time) && task.time))
+            ];
 
-        const pastHour = past[0] === '12' ? 0 + pastNoon : parseInt(past[0]) + pastNoon;
-        const curHour = current[0] === '12' ? 0 + curNoon : parseInt(current[0]) + curNoon;
-        const pastMinutes = parseInt(pastMi[0]);
-        const curMinutes = parseInt(curMi[0]);
+            if (condition.includes(true)) {
+                _cal.tasks.splice(i, 0, task);
+                return;
+            }
 
-        const pastTime = pastHour + (pastMinutes / 100);
-        const curTime = curHour + (curMinutes / 100);
+            if (toDo[i].time && task.time) {
+                const toDoSp = toDo.time.split(' ');
+                const taskSp = task.time.split(' ');
+                const toDoTime = toDoSp[1] + toDoSp[0];
+                const taskTime = taskSp[1] + taskSp[0];
 
-        if (pastTime < curTime) {
-            _cal.tasks.splice(i, 0, task);
-            return;
+                if (taskTime < toDoTime) {
+                    _cal.tasks.splice(i, 0, task);
+                    return;
+                }
+            }
         }
     }
 
-    _cal.tasks.push(task);
+    toDo.push(task);
 }
 
 _cal.enterToDo.addTasks = () => {
-    const titleInput = document.getElementById('title-input');
-    const desInput = document.getElementById('description-input');
+    const titleInput = _cal.addTaskVar.title;
+    const desInput = _cal.addTaskVar.desc;
 
     if (!titleInput.value) {
         titleInput.classList.add('no-value');
@@ -64,13 +84,12 @@ _cal.enterToDo.addTasks = () => {
     const hours = _cal.addTaskVar.hours.querySelector('.selection-time').innerText;
     const minutes = _cal.addTaskVar.minutes.querySelector('.selection-time');
     const noon = document.querySelector('.current-noon').innerText;
-    const dateString = `${_cal.today.getFullYear()} / ${_cal.splitByTwoLetters(_cal.today.getMonth() + 1)} / ${_cal.splitByTwoLetters(_cal.today.getDate())}`;
 
     const toDoLists = {
         id: _cal.tasks.length,
         title: titleInput.value,
         description: desInput.value,
-        startDate: parseInt(startDate) ? startDate : dateString
+        startDate
     }
 
     if (parseInt(endDate)) toDoLists.endDate = endDate;

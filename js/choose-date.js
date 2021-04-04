@@ -39,6 +39,8 @@ _cal.chooseDate.dateTerm = (start, end) => {
 }
 
 _cal.chooseDate.chooseDate = target => {
+    _cal.fullDate = _cal.chooseDate.redefineDate(target);
+
     const listDate = target.querySelector('.calendar__date');
     const sib = document.querySelectorAll('.select-list');
 
@@ -48,8 +50,6 @@ _cal.chooseDate.chooseDate = target => {
     _cal.calendarInitial.year = date[0];
     _cal.calendarInitial.month = parseInt(date[1]) - 1;
     _cal.calendarInitial.date = date[2];
-
-    console.log(_cal.calendarInitial);
 
     sib && [].forEach.call(sib, sib => {
         sib.classList.remove('select-list');
@@ -72,10 +72,6 @@ _cal.chooseDate.listActivation = () => {
             _cal.displayedAList.listDisplay(this);
         });
     });
-
-    if (_cal.calendarType()) {
-        _cal.endTimeSetting.selectedDate();
-    }
 }
 
 _cal.chooseDate.listActivation();

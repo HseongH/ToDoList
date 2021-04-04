@@ -91,7 +91,10 @@ _cal.createCalendar.monthlyCalendar = () => {
     for (let i = 0; i < numberOfLists; i++) {
         const calList = _cal.createCalendar.createCalendarList(month);
         const dates = _cal.createCalendar.showTheDate(month);
-        const conditions = [i < firstDay, i >= lastDay + firstDay];
+        const conditions = [
+            i < firstDay,
+            i >= lastDay + firstDay
+        ];
         
         calList.appendChild(dates);
 

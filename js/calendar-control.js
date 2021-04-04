@@ -28,7 +28,8 @@ _cal.calendarControl.wayOfShowing = () => {
     
     _cal.chooseDate.listActivation();
         
-    !(_cal.calendarType()) && _cal.displayedAList.listByDate();
+    _cal.calendarType() || _cal.displayedAList.listByDate();
+    _cal.calendarType() && _cal.endTimeSetting.selectedDate();
 }
 
 // CREATE NEXT CALENDAR
@@ -64,6 +65,10 @@ _cal.calendarControl.lastMonth = () => {
 // RESET THE CALENDAR
 _cal.calendarControl.curMonth = () => {
     _cal.calendar = new Date;
+
+    _cal.calendarInitial.year = _cal.calendar.getFullYear();
+    _cal.calendarInitial.month = _cal.calendar.getMonth();
+    _cal.calendarInitial.date = _cal.calendar.getDate();
 
     _cal.calendarControl.wayOfShowing();
 }
