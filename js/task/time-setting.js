@@ -102,3 +102,11 @@ _cal.addTaskVar.minutes.addEventListener('mousewheel', function() {
     _cal.timeSet.timeSelection(this, event);
     _cal.timeSet.hoursActivation();
 });
+
+// MOUSE MOVE
+_cal.addTaskVar.hours.addEventListener('mousemove', function() {
+    _cal.timeSet.preventScroll(event);
+});
+_cal.addTaskVar.minutes.addEventListener('mousemove', function() {
+    _cal.timeSet.preventScroll(event);
+});
