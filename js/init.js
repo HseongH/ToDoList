@@ -21,7 +21,7 @@ const _cal = {
 // COMMON VARIABLE
 _cal.tasks = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem('toDoLists')) : [];
 _cal.dateSet = localStorage.getItem('dateSet') ? JSON.parse(localStorage.getItem('dateSet')) : [];
-_cal.calendarInitial = {}
+_cal.calendarInitial = {};
 
 _cal.today = new Date;
 _cal.calendar = new Date;

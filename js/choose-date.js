@@ -47,9 +47,11 @@ _cal.chooseDate.chooseDate = target => {
     const dateString = _cal.fullDate;
     const date = dateString.split(' / ');
 
-    _cal.calendarInitial.year = date[0];
-    _cal.calendarInitial.month = parseInt(date[1]) - 1;
-    _cal.calendarInitial.date = date[2];
+    _cal.calendarInitial = {
+        year: date[0],
+        month: parseInt(date[1]) - 1,
+        date: date[2]
+    }
 
     sib && [].forEach.call(sib, sib => {
         sib.classList.remove('select-list');
