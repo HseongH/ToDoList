@@ -1,7 +1,7 @@
 _cal.mobile.moveY;
 
 _cal.mobile.minuteSetting = (event, target) => {
-    const movement = event.changedTouches[0].clientY - _cal.mobile.moveY;
+    const movement = _cal.mobile.moveY - event.changedTouches[0].clientY;
 
     _cal.timeSet.preventScroll(event);
     _cal.timeSet.timeSelection(target, event, movement);
@@ -9,7 +9,7 @@ _cal.mobile.minuteSetting = (event, target) => {
 }
 
 _cal.mobile.hourSetting = (event, target) => {
-    const movement = event.changedTouches[0].clientY - _cal.mobile.moveY;
+    const movement = _cal.mobile.moveY - event.changedTouches[0].clientY;
 
     _cal.timeSet.preventScroll(event);
     _cal.timeSet.timeSelection(target, event, movement);

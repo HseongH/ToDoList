@@ -5,7 +5,7 @@ _cal.mobile.moveX;
 _cal.mobile.createCalendar = event => {
     const movement = _cal.mobile.moveX - event.changedTouches[0].clientX;
 
-    if (movement >= 50) {
+    if (movement > 100) {
         _cal.calendarControl.nextMonth();
         return;
     }
