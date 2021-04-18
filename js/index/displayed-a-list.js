@@ -178,6 +178,9 @@ _cal.displayedAList.disTask = task => {
     const modify = document.createElement('button');
     const delBtn = document.createElement('button');
 
+    const modifyIcon = document.createElement('img');
+    const deleteIcon = document.createElement('img');
+
     doLists.id = task.id;
     doLists.setAttribute('class', 'todos__list');
     !(showCondition) && doLists.classList.add('hide');
@@ -197,11 +200,16 @@ _cal.displayedAList.disTask = task => {
     delBtn.setAttribute('class', 'todos--delete');
     delBtn.classList.add('btn');
 
+    modifyIcon.src = 'https://img.icons8.com/windows/32/000000/edit--v1.png';
+    modifyIcon.alt = 'edit icon';
+    deleteIcon.src = 'https://img.icons8.com/windows/32/000000/delete-sign.png';
+    deleteIcon.alt = 'delete icon';
+
     title.innerText = task.title;
     des.innerText = task.description;
     date.innerText = task.startDate;
-    modify.innerText = '✏';
-    delBtn.innerText = '×';
+    modify.appendChild(modifyIcon);
+    delBtn.appendChild(deleteIcon);
 
     complete.appendChild(comBtn);
     todo.appendChild(title);

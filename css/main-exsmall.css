@@ -26,6 +26,11 @@
     width: 14.285%;
 }
 
+.section--to-do-list .todos .todos__list .todos--delete,
+.section--to-do-list .todos .todos__list .todos--modify {
+    width: 20px;
+}
+
 .section--to-do-list .to-do__control button {
     font-size: 10px;
     padding: 3px;
