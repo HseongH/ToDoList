@@ -36,9 +36,10 @@ _cal.displayedAList.showCompletionDueDate = (start, end) => {
 }
 
 _cal.displayedAList.listByDate = () => {
+    const sectionCalendar = document.querySelector('.section--calendar');
     const todo = _cal.getToDoList();
 
-    if (!todo) return;
+    if (sectionCalendar.classList.contains('hide') || !todo) return;
 
     const calendarList = document.querySelectorAll('.calendar__list');
     const dateArr = _cal.displayedAList.returnDate();
@@ -107,9 +108,10 @@ _cal.displayedAList.completeList = target => {
 }
 
 _cal.displayedAList.removeListByDate = id => {
+    const sectionCalendar = document.querySelector('.section--calendar');
     const selectList = document.querySelector('.select-list');
 
-    if (!selectList) return;
+    if (sectionCalendar.classList.contains('hide') || !selectList) return;
 
     const [todo] = _cal.getToDoList().filter(task => 
         task.id === id
