@@ -51,7 +51,7 @@ _cal.timeSet.createAnInputArea = target => {
     target.appendChild(inputTimeArea);
     inputTimeArea.select();
 
-    inputTimeArea.addEventListener('blur', () => {
+    inputTimeArea.addEventListener('change', () => {
         _cal.timeSet.enterTimes(target, inputTimeArea.value, originalValue);
     });
 }

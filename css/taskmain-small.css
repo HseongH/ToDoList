@@ -6,8 +6,7 @@
 
 /* SET DATE */
 .section--calendar .set-date .start-date li,
-.section--calendar .set-date .end-date li,
-.section--calendar .set-time li {
+.section--calendar .set-date .end-date li {
     font-size: 12px;
 }
 
