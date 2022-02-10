@@ -1,220 +1,220 @@
 /* COMMON */
 .body__container {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #767676;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #767676;
 }
 
 /* SECTION */
 .section {
-    position: relative;
-    padding-top: 30px;
+  position: relative;
+  padding-top: 30px;
 }
 
 .section .container {
-    position: relative;
-    max-width: 1024px;
-    margin: 0 auto;
-    border-radius: 15px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(#e5e5e5, #fff);
-    padding: 20px 40px;
-    box-sizing: border-box;
+  position: relative;
+  max-width: 1024px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(#e5e5e5, #fff);
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
 .section .title {
-    font-size: 28px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: #656565;
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #656565;
 }
 
 /* SUNRISE */
 .section .sunrise {
-    background: linear-gradient(to left top, #ee0979, #ff6a00);
-    color: #eee;
+  background: linear-gradient(to left top, #ee0979, #ff6a00);
+  color: #eee;
 }
 
 .sunrise-color {
-    color: #ff6a00;
+  color: #ff6a00;
 }
 
 /* BUTTON */
 .btn {
-    cursor: pointer;
-    border: none;
-    font-size: 16px;
-    padding: 0;
-    background: none;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding: 0;
+  background: none;
 }
 
 .btn:focus {
-    outline: none;
+  outline: none;
 }
 
 /* ARROW */
 .arrow {
-    border-left: 2px solid #ddd;
-    border-bottom: 2px solid #ddd;
-    display: inline-block;
-    box-sizing: border-box;
+  border-left: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 .arrow:hover {
-    border-left: 2px solid #aaa;
-    border-bottom: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
 }
 
 /* CLEARFIX FLOAT */
 .clearfix::after {
-    content: "";
-    clear: both;
-    display: block;
+  content: '';
+  clear: both;
+  display: block;
 }
 
 .float--left {
-    float: left;
+  float: left;
 }
 
 .float--right {
-    float: right;
+  float: right;
 }
 
 /* HEADER */
 header.section .title {
-    font-size: 32px;
-    margin-bottom: 0;
-    color: #eee;
+  font-size: 32px;
+  margin-bottom: 0;
+  color: #eee;
 }
 
 /* CURRENT TIME */
 .section--current-time ul {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .section--current-time ul li {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .section--current-time ul .date {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 /* CALENDAR */
 .section--calendar .control__unfold {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .section--calendar .control__unfold:hover .calendar-status {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .section--calendar .control__unfold:hover .arrow--unfold {
-    border-left: 2px solid #aaa;
-    border-bottom: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
 }
 
 .section--calendar .control__unfold .calendar-status {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .section--calendar .control__unfold .arrow--unfold {
-    width: 7px;
-    height: 7px;
-    transform: rotate(-45deg);
-    transition-duration: 0.3s;
+  width: 7px;
+  height: 7px;
+  transform: rotate(-45deg);
+  transition-duration: 0.3s;
 }
 
 .section--calendar .control__unfold .arrow--unfold.showing-month {
-    transform: rotate(-225deg);
+  transform: rotate(-225deg);
 }
 
 .section--calendar .control__select ul {
-    display: flex;
+  display: flex;
 }
 
 .section--calendar .control__select ul .select-year,
 .section--calendar .control__select ul .select-month {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .section--calendar .control__select ul .select-year {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .section--calendar .control__select .select-today {
-    margin-top: 5px;
-    color: #aaa;
+  margin-top: 5px;
+  color: #aaa;
 }
 
 .section--calendar .control__select .select-today:hover {
-    color: #767676;
+  color: #767676;
 }
 
 .section--calendar .calendar {
-    padding: 0 40px;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    position: relative;
+  padding: 0 40px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative;
 }
 
 .section--calendar .calendar .day-of-week {
-    padding-top: 5px;
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
+  padding-top: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
 }
 
 .section--calendar .calendar.year .day-of-week {
-    display: none;
+  display: none;
 }
 
 .section--calendar .calendar .day-of-week .day {
-    width: 14.285%;
-    font-size: 12px;
-    margin-bottom: 5px;
-    text-align: center;
+  width: 14.285%;
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .section--calendar .calendar .calendar-area {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .section--calendar .calendar.year .calendar__list {
-    width: 25%;
-    justify-content: center;
+  width: 25%;
+  justify-content: center;
 }
 
 .section--calendar .calendar-area .calendar__list {
-    width: 14.285%;
-    height: 72px;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.25;
-    cursor: pointer;
-    animation-name: trans;
-    animation-fill-mode: forwards;
-    animation-duration: 0.3s;
+  width: 14.285%;
+  height: 72px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.25;
+  cursor: pointer;
+  animation-name: trans;
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
 }
 
 @keyframes trans {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* .section--calendar .calendar-area.month
@@ -223,182 +223,182 @@ header.section .title {
 } */
 
 .section--calendar .calendar .calendar__list .calendar__date {
-    width: 40px;
-    height: 40px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section--calendar .calendar .calendar__list .has-list,
 .section--calendar .calendar .calendar__list .list-term {
-    height: 8px;
-    background: #ccc;
-    margin-top: 3px;
+  height: 8px;
+  background: #ccc;
+  margin-top: 3px;
 }
 
 .section--calendar .calendar .calendar__list .has-list {
-    width: 8px;
-    border-radius: 50%;
+  width: 8px;
+  border-radius: 50%;
 }
 
 .section--calendar .calendar .calendar__list .list-term {
-    width: 100%;
+  width: 100%;
 }
 
 .section--calendar .calendar .calendar__list:nth-of-type(7n) {
-    border-right: 0;
+  border-right: 0;
 }
 
 .section--calendar .arrow--left,
 .section--calendar .arrow--right {
-    width: 25px;
-    height: 25px;
-    border-width: 3px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-width: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
 }
 
 .section--calendar .arrow--left {
-    left: 20px;
-    transform: rotate(45deg);
+  left: 20px;
+  transform: rotate(45deg);
 }
 
 .section--calendar .arrow--right {
-    right: 20px;
-    transform: rotate(-135deg);
+  right: 20px;
+  transform: rotate(-135deg);
 }
 
 /* TO DO LIST */
 .section--to-do-list {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .section--to-do-list .todos .todos__list {
-    width: 100%;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .section--to-do-list .todos .todos__list .todos--complete {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid #ccc;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
 }
 
 .section--to-do-list .todos .todos__list .todos--complete .btn--complete {
-    width: 50%;
-    height: 30%;
-    border-left: 3px solid #ccc;
-    border-bottom: 3px solid #ccc;
-    transform: rotate(-45deg);
-    margin-top: -13%;
+  width: 50%;
+  height: 30%;
+  border-left: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  transform: rotate(-45deg);
+  margin-top: -13%;
 }
 
 .section--to-do-list .todos .todos__list .task {
-    flex: 2;
+  flex: 2;
 }
 
 .section--to-do-list .todos .todos__list .task .task__title {
-    font-size: 20px;
-    line-height: 2;
+  font-size: 20px;
+  line-height: 2;
 }
 
 .section--to-do-list .todos .todos__list .task .task__description,
 .section--to-do-list .todos .todos__list .task .task__time,
 .section--to-do-list .todos .todos__list .task .task__date {
-    font-size: 14px;
-    margin-top: 15px;
-    padding-left: 30px;
+  font-size: 14px;
+  margin-top: 15px;
+  padding-left: 30px;
 }
 
 .section--to-do-list .todos .todos__list .todos--delete,
 .section--to-do-list .todos .todos__list .todos--modify {
-    width: 25px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+  width: 25px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .section--to-do-list .todos .todos__list .todos--delete img,
 .section--to-do-list .todos .todos__list .todos--modify img {
-    width: 100%;
+  width: 100%;
 }
 
 .section--to-do-list .todos .todos__list .todos--modify {
-    right: 50px;
+  right: 50px;
 }
 
 .section--to-do-list .to-do__control {
-    display: flex;
-    margin-top: 30px;
+  display: flex;
+  margin-top: 30px;
 }
 
 .section--to-do-list .to-do__control button {
-    font-size: 12px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    color: #888;
-    border-radius: 7px;
-    margin-right: 7px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+  font-size: 12px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  color: #888;
+  border-radius: 7px;
+  margin-right: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 }
 
 .section--to-do-list .to-do__control button:first-child {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .section--to-do-list .to-do__control button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .section--to-do-list .to-do__control button:hover {
-    background: #e5e5e5;
+  background: #e5e5e5;
 }
 
 .section--to-do-list .add-to-dos {
-    width: 150px;
-    height: 50px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto 0;
-    text-decoration: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto 0;
+  text-decoration: none;
 }
 
 /* TASK COMPLETE */
 .section--to-do-list .todos .todos__list.complete {
-    text-decoration: line-through;
-    color: #ccc;
+  text-decoration: line-through;
+  color: #ccc;
 }
 
 .section--to-do-list .todos .todos__list.complete .todos--complete {
-    border: 0;
+  border: 0;
 }
 
 .section--to-do-list .todos .todos__list.complete .todos--complete .btn--complete {
-    border-left: 3px solid rgba(0, 0, 0, 0.5);
-    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+  border-left: 3px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
 }
 
 .section--to-do-list .todos .todos__list.complete .task .task__description {
-    color: #ccc;
+  color: #ccc;
 }

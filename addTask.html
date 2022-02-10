@@ -1,245 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>To Do List</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
 
     <!-- STYLE MAIN -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/main-medium.css" media="(max-width: 1024px)">
-    <link rel="stylesheet" href="css/main-small.css" media="(max-width: 750px)">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main-medium.css" media="(max-width: 1024px)" />
+    <link rel="stylesheet" href="css/main-small.css" media="(max-width: 750px)" />
 
     <!-- STYLE TASK -->
-    <link rel="stylesheet" href="css/taskmain.css">
-    <link rel="stylesheet" href="css/taskmain-medium.css" media="(max-width: 1024px)">
-    <link rel="stylesheet" href="css/taskmain-small.css" media="(max-width: 750px)">
-    <link rel="stylesheet" href="css/main-exsmall.css" media="(max-width: 500px)">
+    <link rel="stylesheet" href="css/taskmain.css" />
+    <link rel="stylesheet" href="css/taskmain-medium.css" media="(max-width: 1024px)" />
+    <link rel="stylesheet" href="css/taskmain-small.css" media="(max-width: 750px)" />
+    <link rel="stylesheet" href="css/main-exsmall.css" media="(max-width: 500px)" />
 
     <!-- CLASS LIST -->
-    <link rel="stylesheet" href="css/classList.css">
-</head>
+    <link rel="stylesheet" href="css/classList.css" />
+  </head>
 
-<body>
-<div class="body__container">
-
-    <!-- TITLE -->
-    <section class="section section--task-title">
+  <body>
+    <div class="body__container">
+      <!-- TITLE -->
+      <section class="section section--task-title">
         <div class="container">
+          <h2 class="title">제목</h2>
 
-            <h2 class="title">제목</h2>
-            
-            <input class="input--text" type="text" id="title-input" placeholder="제목을 입력해주세요">
-
+          <input
+            class="input--text"
+            type="text"
+            id="title-input"
+            placeholder="제목을 입력해주세요"
+          />
         </div>
-    </section>
+      </section>
 
-    <!-- DESCRIPTION -->
-    <section class="section section--task-description">
+      <!-- DESCRIPTION -->
+      <section class="section section--task-description">
         <div class="container">
+          <h2 class="title">내용</h2>
 
-            <h2 class="title">내용</h2>
-            
-            <textarea class="input--text" id="description-input" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
-
+          <textarea
+            class="input--text"
+            id="description-input"
+            cols="30"
+            rows="10"
+            placeholder="내용을 입력해주세요"
+          ></textarea>
         </div>
-    </section>
-    
-    <!-- CALENDAR -->
-    <section class="section section--calendar">
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="section section--calendar">
         <div class="container">
+          <h2 class="title">날짜 / 시간</h2>
 
-            <h2 class="title">날짜 / 시간</h2>
+          <div class="control">
+            <div class="control__select">
+              <ul class="select sunrise-color">
+                <li class="select-year">0000</li>
+                <li class="select-month">00</li>
+              </ul>
 
-            <div class="control">
-                <div class="control__select">
-                    <ul class="select sunrise-color">
-                        <li class="select-year">0000</li>
-                        <li class="select-month">00</li>
-                    </ul>
-                    
-                    <button class="btn select-today">TODAY</button>
-                </div>
+              <button class="btn select-today">TODAY</button>
             </div>
+          </div>
 
-            <div class="calendar month calendar-task">
-                <span class="arrow arrow--left"></span>
+          <div class="calendar month calendar-task">
+            <span class="arrow arrow--left"></span>
 
-                <ul class="day-of-week">
-                    <li class="day">SUN</li>
-                    <li class="day">MON</li>
-                    <li class="day">TUE</li>
-                    <li class="day">WED</li>
-                    <li class="day">THU</li>
-                    <li class="day">FRI</li>
-                    <li class="day">SAT</li>
-                </ul>
+            <ul class="day-of-week">
+              <li class="day">SUN</li>
+              <li class="day">MON</li>
+              <li class="day">TUE</li>
+              <li class="day">WED</li>
+              <li class="day">THU</li>
+              <li class="day">FRI</li>
+              <li class="day">SAT</li>
+            </ul>
 
-                <ul class="calendar-area"></ul>
+            <ul class="calendar-area"></ul>
 
-                <span class="arrow arrow--right"></span>
-            </div>
+            <span class="arrow arrow--right"></span>
+          </div>
 
-            <div class="set-date">
-                <ul class="start-date">
-                    <li class='license'>Icons made by
-                        <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
-                            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                    </li>
-                    <li class="icon">
-                        <?xml version="1.0" encoding="iso-8859-1"?>
-                        <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29.121 29.121"
-                            style="enable-background:new 0 0 29.121 29.121;" xml:space="preserve">
-                            <g>
-                                <path style="fill:#767676;" d="M21.706,6.146c1.116,0,2.02-0.898,2.02-2.016V2.02c0-1.119-0.903-2.02-2.02-2.02
-        s-2.019,0.9-2.019,2.02v2.111C19.688,5.248,20.59,6.146,21.706,6.146z" />
-                                <path style="fill:#767676;" d="M28.882,3.494h-4.066v1.027c0,1.695-1.377,3.076-3.075,3.076c-1.7,0-3.074-1.381-3.074-3.076V3.494
+          <div class="set-date">
+            <ul class="start-date">
+              <li class="license">
+                Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+              </li>
+              <li class="icon">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <svg
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 29.121 29.121"
+                  style="enable-background: new 0 0 29.121 29.121"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <path
+                      style="fill: #767676"
+                      d="M21.706,6.146c1.116,0,2.02-0.898,2.02-2.016V2.02c0-1.119-0.903-2.02-2.02-2.02
+        s-2.019,0.9-2.019,2.02v2.111C19.688,5.248,20.59,6.146,21.706,6.146z"
+                    />
+                    <path
+                      style="fill: #767676"
+                      d="M28.882,3.494h-4.066v1.027c0,1.695-1.377,3.076-3.075,3.076c-1.7,0-3.074-1.381-3.074-3.076V3.494
         h-8.205v1.027c0,1.695-1.379,3.076-3.076,3.076s-3.075-1.38-3.075-3.076V3.494L0.208,3.443v25.678H2.26h24.604l2.049-0.006
-        L28.882,3.494z M26.862,27.076H2.26V10.672h24.604v16.404H26.862z" />
-                                <path style="fill:#767676;" d="M7.354,6.146c1.116,0,2.021-0.898,2.021-2.016V2.02C9.375,0.9,8.47,0,7.354,0S5.336,0.9,5.336,2.02
-        v2.111C5.336,5.248,6.237,6.146,7.354,6.146z" />
-                                <rect x="10.468" y="12.873" style="fill:#767676;" width="3.231" height="2.852" />
-                                <rect x="15.692" y="12.873" style="fill:#767676;" width="3.234" height="2.852" />
-                                <rect x="20.537" y="12.873" style="fill:#767676;" width="3.231" height="2.852" />
-                                <rect x="10.468" y="17.609" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="15.692" y="17.609" style="fill:#767676;" width="3.234" height="2.85" />
-                                <rect x="20.537" y="17.609" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="10.468" y="22.439" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="5.336" y="17.609" style="fill:#767676;" width="3.229" height="2.85" />
-                                <rect x="5.336" y="22.439" style="fill:#767676;" width="3.229" height="2.85" />
-                                <rect x="15.692" y="22.439" style="fill:#767676;" width="3.234" height="2.85" />
-                                <rect x="20.537" y="22.439" style="fill:#767676;" width="3.231" height="2.85" />
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                        </svg>
+        L28.882,3.494z M26.862,27.076H2.26V10.672h24.604v16.404H26.862z"
+                    />
+                    <path
+                      style="fill: #767676"
+                      d="M7.354,6.146c1.116,0,2.021-0.898,2.021-2.016V2.02C9.375,0.9,8.47,0,7.354,0S5.336,0.9,5.336,2.02
+        v2.111C5.336,5.248,6.237,6.146,7.354,6.146z"
+                    />
+                    <rect
+                      x="10.468"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.231"
+                      height="2.852"
+                    />
+                    <rect
+                      x="15.692"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.234"
+                      height="2.852"
+                    />
+                    <rect
+                      x="20.537"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.231"
+                      height="2.852"
+                    />
+                    <rect x="10.468" y="17.609" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="15.692" y="17.609" style="fill: #767676" width="3.234" height="2.85" />
+                    <rect x="20.537" y="17.609" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="10.468" y="22.439" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="5.336" y="17.609" style="fill: #767676" width="3.229" height="2.85" />
+                    <rect x="5.336" y="22.439" style="fill: #767676" width="3.229" height="2.85" />
+                    <rect x="15.692" y="22.439" style="fill: #767676" width="3.234" height="2.85" />
+                    <rect x="20.537" y="22.439" style="fill: #767676" width="3.231" height="2.85" />
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </svg>
+              </li>
+              <li class="select-date">---- / -- / --</li>
+            </ul>
 
-                    </li>
-                    <li class="select-date">
-                        ---- / -- / --
-                    </li>
-                </ul>
-
-                <ul class="end-date">
-                    <li class='license'>Icons made by
-                        <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
-                            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                    </li>
-                    <li class="icon">
-                        <?xml version="1.0" encoding="iso-8859-1"?>
-                        <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29.121 29.121"
-                            style="enable-background:new 0 0 29.121 29.121;" xml:space="preserve">
-                            <g>
-                                <path style="fill:#767676;" d="M21.706,6.146c1.116,0,2.02-0.898,2.02-2.016V2.02c0-1.119-0.903-2.02-2.02-2.02
-        s-2.019,0.9-2.019,2.02v2.111C19.688,5.248,20.59,6.146,21.706,6.146z" />
-                                <path style="fill:#767676;" d="M28.882,3.494h-4.066v1.027c0,1.695-1.377,3.076-3.075,3.076c-1.7,0-3.074-1.381-3.074-3.076V3.494
+            <ul class="end-date">
+              <li class="license">
+                Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+              </li>
+              <li class="icon">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <svg
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 29.121 29.121"
+                  style="enable-background: new 0 0 29.121 29.121"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <path
+                      style="fill: #767676"
+                      d="M21.706,6.146c1.116,0,2.02-0.898,2.02-2.016V2.02c0-1.119-0.903-2.02-2.02-2.02
+        s-2.019,0.9-2.019,2.02v2.111C19.688,5.248,20.59,6.146,21.706,6.146z"
+                    />
+                    <path
+                      style="fill: #767676"
+                      d="M28.882,3.494h-4.066v1.027c0,1.695-1.377,3.076-3.075,3.076c-1.7,0-3.074-1.381-3.074-3.076V3.494
         h-8.205v1.027c0,1.695-1.379,3.076-3.076,3.076s-3.075-1.38-3.075-3.076V3.494L0.208,3.443v25.678H2.26h24.604l2.049-0.006
-        L28.882,3.494z M26.862,27.076H2.26V10.672h24.604v16.404H26.862z" />
-                                <path style="fill:#767676;" d="M7.354,6.146c1.116,0,2.021-0.898,2.021-2.016V2.02C9.375,0.9,8.47,0,7.354,0S5.336,0.9,5.336,2.02
-        v2.111C5.336,5.248,6.237,6.146,7.354,6.146z" />
-                                <rect x="10.468" y="12.873" style="fill:#767676;" width="3.231" height="2.852" />
-                                <rect x="15.692" y="12.873" style="fill:#767676;" width="3.234" height="2.852" />
-                                <rect x="20.537" y="12.873" style="fill:#767676;" width="3.231" height="2.852" />
-                                <rect x="10.468" y="17.609" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="15.692" y="17.609" style="fill:#767676;" width="3.234" height="2.85" />
-                                <rect x="20.537" y="17.609" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="10.468" y="22.439" style="fill:#767676;" width="3.231" height="2.85" />
-                                <rect x="5.336" y="17.609" style="fill:#767676;" width="3.229" height="2.85" />
-                                <rect x="5.336" y="22.439" style="fill:#767676;" width="3.229" height="2.85" />
-                                <rect x="15.692" y="22.439" style="fill:#767676;" width="3.234" height="2.85" />
-                                <rect x="20.537" y="22.439" style="fill:#767676;" width="3.231" height="2.85" />
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                        </svg>
+        L28.882,3.494z M26.862,27.076H2.26V10.672h24.604v16.404H26.862z"
+                    />
+                    <path
+                      style="fill: #767676"
+                      d="M7.354,6.146c1.116,0,2.021-0.898,2.021-2.016V2.02C9.375,0.9,8.47,0,7.354,0S5.336,0.9,5.336,2.02
+        v2.111C5.336,5.248,6.237,6.146,7.354,6.146z"
+                    />
+                    <rect
+                      x="10.468"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.231"
+                      height="2.852"
+                    />
+                    <rect
+                      x="15.692"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.234"
+                      height="2.852"
+                    />
+                    <rect
+                      x="20.537"
+                      y="12.873"
+                      style="fill: #767676"
+                      width="3.231"
+                      height="2.852"
+                    />
+                    <rect x="10.468" y="17.609" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="15.692" y="17.609" style="fill: #767676" width="3.234" height="2.85" />
+                    <rect x="20.537" y="17.609" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="10.468" y="22.439" style="fill: #767676" width="3.231" height="2.85" />
+                    <rect x="5.336" y="17.609" style="fill: #767676" width="3.229" height="2.85" />
+                    <rect x="5.336" y="22.439" style="fill: #767676" width="3.229" height="2.85" />
+                    <rect x="15.692" y="22.439" style="fill: #767676" width="3.234" height="2.85" />
+                    <rect x="20.537" y="22.439" style="fill: #767676" width="3.231" height="2.85" />
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </svg>
+              </li>
+              <li class="select-date">---- / -- / --</li>
+            </ul>
+          </div>
 
-                    </li>
-                    <li class="select-date">
-                        ---- / -- / --
-                    </li>
-                </ul>
-            </div>
+          <ul class="set-time">
+            <li>
+              <div class="license">
+                Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+              </div>
+            </li>
 
-            <ul class="set-time">
-                <li>
-                    <div class="license">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-                </li>
-
-                <li class="icon">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
-                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490"
-                        style="enable-background:new 0 0 490 490;" xml:space="preserve">
-                        <path id="XMLID_494_" d="M260,274.974c0,0.081,0,0.162-0.001,0.243c0,0.001,0,0.001,0,0.002c0,0.004,0,0.009,0,0.014
+            <li class="icon">
+              <?xml version="1.0" encoding="iso-8859-1"?>
+              <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 490 490"
+                style="enable-background: new 0 0 490 490"
+                xml:space="preserve"
+              >
+                <path
+                  id="XMLID_494_"
+                  d="M260,274.974c0,0.081,0,0.162-0.001,0.243c0,0.001,0,0.001,0,0.002c0,0.004,0,0.009,0,0.014
 	c-0.029,1.947-0.431,3.805-1.135,5.505c-0.707,1.711-1.745,3.318-3.112,4.723c-0.001,0.001-0.002,0.002-0.004,0.004
 	c-0.003,0.003-0.005,0.005-0.008,0.008c-0.049,0.05-0.098,0.1-0.148,0.15l-39.984,39.984C212.678,328.536,208.839,330,205,330
 	s-7.678-1.464-10.606-4.394c-5.858-5.858-5.858-15.355,0-21.213L230,268.787V135c0-8.284,6.716-15,15-15s15,6.716,15,15V274.974z
@@ -251,155 +308,137 @@
 	H185c-8.271,0-15,6.729-15,15V73.383z M260,422.826v36.572c90.073-7.262,162.136-79.325,169.398-169.398h-36.572
 	c-8.284,0-15-6.716-15-15s6.716-15,15-15h36.572C421.737,164.979,341.96,90,245,90S68.263,164.979,60.602,260h36.572
 	c8.284,0,15,6.716,15,15s-6.716,15-15,15H60.602C67.864,380.073,139.927,452.136,230,459.398v-36.572c0-8.284,6.716-15,15-15
-	S260,414.542,260,422.826z" />
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                    </svg>
-                </li>
+	S260,414.542,260,422.826z"
+                />
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </li>
 
-                <li class="hours">
-                    <ul class="selection-area">
-                        <li>12</li>
-                        <li class="selection-time">--</li>
-                        <li>01</li>
-                        <li>02</li>
-                        <li>03</li>
-                        <li>04</li>
-                        <li>05</li>
-                        <li>06</li>
-                        <li>07</li>
-                        <li>08</li>
-                        <li>09</li>
-                        <li>10</li>
-                        <li>11</li>
-                    </ul>
-                </li>
+            <li class="hours">
+              <ul class="selection-area">
+                <li>12</li>
+                <li class="selection-time">--</li>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+              </ul>
+            </li>
 
-                <li class="split">:</li>
+            <li class="split">:</li>
 
-                <li class="minutes">
-                    <ul class="selection-area">
-                        <li>59</li>
-                        <li>00</li>
-                        <li>01</li>
-                        <li>02</li>
-                        <li>03</li>
-                        <li>04</li>
-                        <li>05</li>
-                        <li>06</li>
-                        <li>07</li>
-                        <li>08</li>
-                        <li>09</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                        <li>32</li>
-                        <li>33</li>
-                        <li>34</li>
-                        <li>35</li>
-                        <li>36</li>
-                        <li>37</li>
-                        <li>38</li>
-                        <li>39</li>
-                        <li>40</li>
-                        <li>41</li>
-                        <li>42</li>
-                        <li>43</li>
-                        <li>44</li>
-                        <li>45</li>
-                        <li>46</li>
-                        <li>47</li>
-                        <li>48</li>
-                        <li>49</li>
-                        <li>50</li>
-                        <li>51</li>
-                        <li>52</li>
-                        <li>53</li>
-                        <li>54</li>
-                        <li>55</li>
-                        <li>56</li>
-                        <li>57</li>
-                        <li>58</li>
-                    </ul>
-                </li>
+            <li class="minutes">
+              <ul class="selection-area">
+                <li>59</li>
+                <li>00</li>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <li>32</li>
+                <li>33</li>
+                <li>34</li>
+                <li>35</li>
+                <li>36</li>
+                <li>37</li>
+                <li>38</li>
+                <li>39</li>
+                <li>40</li>
+                <li>41</li>
+                <li>42</li>
+                <li>43</li>
+                <li>44</li>
+                <li>45</li>
+                <li>46</li>
+                <li>47</li>
+                <li>48</li>
+                <li>49</li>
+                <li>50</li>
+                <li>51</li>
+                <li>52</li>
+                <li>53</li>
+                <li>54</li>
+                <li>55</li>
+                <li>56</li>
+                <li>57</li>
+                <li>58</li>
+              </ul>
+            </li>
 
-                <li class="at-noon">
-                    <ul>
-                        <li class="noon current-noon">AM</li>
-                        <li class="noon">PM</li>
-                    </ul>
-                </li>
-            </ul>
+            <li class="at-noon">
+              <ul>
+                <li class="noon current-noon">AM</li>
+                <li class="noon">PM</li>
+              </ul>
+            </li>
+          </ul>
 
-            <a href="index.html" class="submit-to-dos sunrise">작성 완료</a>
-
+          <a href="index.html" class="submit-to-dos sunrise">작성 완료</a>
         </div>
-    </section>
+      </section>
+    </div>
 
-</div>
-
-<script src="js/init.js"></script>
-<script src="js/common.js"></script>
-<script src="js/color-change.js"></script>
-<script src="js/create-calendar.js"></script>
-<script src="js/task/time-setting.js"></script>
-<script src="js/task/enter-time.js"></script>
-<script src="js/task/modify-list.js"></script>
-<script src="js/task/end-time-setting.js"></script>
-<script src="js/choose-date.js"></script>
-<script src="js/calendar-control.js"></script>
-<script src="js/send-as-task.js"></script>
-<script src="js/task/add-task.js"></script>
-<script src="js/mobile.js"></script>
-<script src="js/task/time-setting-mobile.js"></script>
-
-</body>
-
+    <script src="js/init.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/color-change.js"></script>
+    <script src="js/create-calendar.js"></script>
+    <script src="js/task/time-setting.js"></script>
+    <script src="js/task/enter-time.js"></script>
+    <script src="js/task/modify-list.js"></script>
+    <script src="js/task/end-time-setting.js"></script>
+    <script src="js/choose-date.js"></script>
+    <script src="js/calendar-control.js"></script>
+    <script src="js/send-as-task.js"></script>
+    <script src="js/task/add-task.js"></script>
+    <script src="js/mobile.js"></script>
+    <script src="js/task/time-setting-mobile.js"></script>
+  </body>
 </html>

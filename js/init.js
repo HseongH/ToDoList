@@ -1,21 +1,21 @@
 const _cal = {
-    createObject: ns => {
-        let obParts = ns.split('.');
-        let parent = _cal;
+  createObject: (ns) => {
+    let obParts = ns.split('.');
+    let parent = _cal;
 
-        if (obParts[0] === '_cal') {
-            obParts = obParts.slice(1);
-        }
-
-        for (let i = 0; i < obParts.length; i++) {
-            if (!parent[obParts[i]]) {
-                parent[obParts[i]] = {};
-            }
-            parent = parent[obParts[i]];
-        }
-
-        return parent;
+    if (obParts[0] === '_cal') {
+      obParts = obParts.slice(1);
     }
+
+    for (let i = 0; i < obParts.length; i++) {
+      if (!parent[obParts[i]]) {
+        parent[obParts[i]] = {};
+      }
+      parent = parent[obParts[i]];
+    }
+
+    return parent;
+  },
 };
 
 // COMMON VARIABLE
@@ -23,8 +23,8 @@ _cal.tasks = localStorage.getItem('toDoLists') ? JSON.parse(localStorage.getItem
 _cal.dateSet = localStorage.getItem('dateSet') ? JSON.parse(localStorage.getItem('dateSet')) : [];
 _cal.calendarInitial = {};
 
-_cal.today = new Date;
-_cal.calendar = new Date;
+_cal.today = new Date();
+_cal.calendar = new Date();
 
 _cal.calElem = document.querySelector('.calendar');
 _cal.calendarArea = document.querySelector('.calendar-area');

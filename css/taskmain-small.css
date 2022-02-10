@@ -1,33 +1,33 @@
 /* COMMON */
 /* INPUT */
 #description-input {
-    height: 180px;
+  height: 180px;
 }
 
 /* SET DATE */
 .section--calendar .set-date .start-date li,
 .section--calendar .set-date .end-date li {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .section--calendar .icon {
-    width: 35px;
-    height: 35px;
-    padding: 7px;
+  width: 35px;
+  height: 35px;
+  padding: 7px;
 }
 
 .section--calendar .set-time .hours,
 .section--calendar .set-time .minutes {
-    width: 30px;
+  width: 30px;
 }
 
 .section--calendar .set-time .at-noon ul .noon {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .section--calendar .submit-to-dos {
-    width: 100px;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 14px;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 14px;
 }

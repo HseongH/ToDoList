@@ -1,39 +1,39 @@
 /* SUN RISE */
 .section .sunset {
-    background: linear-gradient(to left top, #000428, #004e92);
-    color: #eee;
+  background: linear-gradient(to left top, #000428, #004e92);
+  color: #eee;
 }
 
 .sunset-color {
-    color: #004e92;
+  color: #004e92;
 }
 
 /* NOT THIS MONTH */
 .calendar.month .not-this-month {
-    color: #ccc;
+  color: #ccc;
 }
 
 /* MONTH */
 
 /* SELECT LIST */
 .select-list {
-    background: #ff6a003a;
+  background: #ff6a003a;
 }
 
 .select-sunset {
-    background: #004e923a;
+  background: #004e923a;
 }
 
 /* NO VALUE */
 .no-value {
-    box-shadow: 0 1px 8px #ee0909d7;
+  box-shadow: 0 1px 8px #ee0909d7;
 }
 
 /* SHOW & HIDE */
 .show {
-    display: flex !important;
+  display: flex !important;
 }
 
 .hide {
-    display: none !important;
+  display: none !important;
 }

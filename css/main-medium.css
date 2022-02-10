@@ -1,43 +1,43 @@
 /* COMMON */
 /* SECTION */
 .section .container {
-    max-width: none;
-    width: 95%;
-    padding: 15px 30px;
+  max-width: none;
+  width: 95%;
+  padding: 15px 30px;
 }
 
 .section .title {
-    font-size: 22px;
-    margin-bottom: 7px;
+  font-size: 22px;
+  margin-bottom: 7px;
 }
 
 /* CURRENT TIME */
 .section--current-time ul li {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 /* CALENDAR */
 .section--calendar .calendar-area .calendar__list {
-    height: 62px;
-    padding: 5px 0;
+  height: 62px;
+  padding: 5px 0;
 }
 
 /* TO DO LIST */
 .section--calendar .set-date .start-date li,
 .section--calendar .set-date .end-date li,
 .section--calendar .set-time li {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .section--to-do-list .todos .todos__list .todos--complete {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
 }
 
 .section--to-do-list .todos .todos__list .task .task__description,
 .section--to-do-list .todos .todos__list .task .task__time,
 .section--to-do-list .todos .todos__list .task .task__date {
-    font-size: 12px;
-    margin-top: 10px;
+  font-size: 12px;
+  margin-top: 10px;
 }

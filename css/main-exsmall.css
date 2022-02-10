@@ -1,42 +1,41 @@
 /* COMMON */
 /* SECTION */
 .section .container {
-    width: 100%;
-    padding: 12px;
+  width: 100%;
+  padding: 12px;
 }
 
 .section--calendar .calendar {
-    padding: 0;
+  padding: 0;
 }
 
 .section--calendar .arrow--left,
 .section--calendar .arrow--right {
-    display: none;
+  display: none;
 }
 
 /* TO DO LIST */
 .section--to-do-list .todos .todos__list .todos--complete {
-    width: 30px;
-    height: 30px;
-    margin-right: 15px;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
 }
 
-.section--calendar .calendar-area.month
-.calendar__list {
-    width: 14.285%;
+.section--calendar .calendar-area.month .calendar__list {
+  width: 14.285%;
 }
 
 .section--to-do-list .todos .todos__list .todos--delete,
 .section--to-do-list .todos .todos__list .todos--modify {
-    width: 20px;
+  width: 20px;
 }
 
 .section--to-do-list .to-do__control button {
-    font-size: 10px;
-    padding: 3px;
-    margin-right: 5px;
+  font-size: 10px;
+  padding: 3px;
+  margin-right: 5px;
 }
 
 .section--to-do-list .to-do__control button:first-child {
-    margin-right: 8px;
+  margin-right: 8px;
 }

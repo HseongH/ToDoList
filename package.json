@@ -1,0 +1,26 @@
+{
+  "name": "ToDoList",
+  "version": "1.0.0",
+  "description": "HTML, CSS, JavaScript를 이용해서 기본적인 웹 애플리케이션 만들기\r ------------",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HseongH/ToDoList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HseongH/ToDoList/issues"
+  },
+  "homepage": "https://github.com/HseongH/ToDoList#readme",
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0"
+  }
+}
